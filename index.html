@@ -263,6 +263,9 @@ textarea{background:var(--bg);color:var(--ink);border:1px solid var(--line);bord
 .tu-cents{font:700 1.1rem var(--f-body);min-height:1.5em}.tu-cents.ok{color:var(--c-7)}.tu-cents.off{color:var(--c-root)}
 .controls label.pb-auto{flex-direction:row;align-items:center;gap:.4rem;text-transform:none;letter-spacing:0;font-size:.85rem;font-weight:400;color:var(--ink)}
 .pb-run h3{margin-top:.2rem}
+.snd-btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;font:600 .8rem var(--f-body);color:#F6EFE3;background:var(--wood-2);border:1px solid #5a4537;border-radius:999px;padding:.35rem .7rem;margin-top:1.2rem}
+.snd-btn:focus-visible{outline:2px solid #F2B23A}.snd-btn.pop{background:#2E9E5B}
+.mobilenav .snd-btn{margin-top:0;padding:.35rem .5rem}.mobilenav .snd-label{display:none}
 .level{display:inline-block;font:700 .7rem var(--f-mono);padding:.15rem .45rem;border-radius:3px;background:var(--sunk);color:var(--ink)}
 @media (max-width:520px){.chart{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
@@ -3696,8 +3699,15 @@ details[open] summary{margin-bottom:.4rem}
     <li><b>Desktop:</b> double-click <code>fretwork.html</code>; it runs in any modern browser, no install needed.</li>
     <li><b>Home network:</b> on a computer, run <code>python3 -m http.server</code> in the unzipped folder, then open <code>http://&lt;computer's IP&gt;:8000</code> in Safari on the iPad (same Wi-Fi; not offline).</li>
   </ul>
-  <h3>Sound on iPad</h3>
-  <p>Audio starts after your first tap. If you hear nothing, check the volume and that the iPad is not in silent mode.</p>
+  <h3>Sound on iPad and iPhone</h3>
+  <ol>
+    <li>Tap <b>🔊 Test sound</b> (bottom of the left bar, or top-right on a narrow screen). You should hear four notes. Sound only starts after a tap; that is an iOS rule.</li>
+    <li>Still silent? Turn off <b>Silent mode</b>: open Control Center and make sure the bell is not crossed out (or flip the side switch on an iPhone). Newer iOS versions let the course play through Silent mode; older ones do not.</li>
+    <li>Turn the media volume up with the volume buttons while the course is open.</li>
+    <li>Bluetooth headphones or a speaker connected? Sound goes there.</li>
+    <li>If sound stops after you switch apps or take a call, tap anywhere in the course once to wake it up.</li>
+    <li>Using the Home Screen app: after an update, open it while online, close it fully (swipe it away), and open it again to load the new version.</li>
+  </ol>
   <div class="lesson-sec"><span class="num">B</span><h2>Back up and move your progress</h2></div>
   <p>Ticks, quiz bests, change-timer logs and your routine length are stored in the browser for the address you use. A new address (for example moving from this hosted page to your iPad copy) starts empty. Create a backup here, then restore it on the other copy.</p>
   <div class="tool"><div class="tool-title"><h4>Backup and restore</h4><span class="eyebrow">Progress</span></div><div data-tool="backup"></div></div>
@@ -4035,7 +4045,29 @@ function pcMap(root,f){ const r=parseRoot(root),m={}; f.forEach(iv=>{ m[(r+IV[iv
 let AC=null, MASTER=null; const bufCache={};
 function dest(){ const a=ac(); if(!MASTER){ MASTER=a.createGain(); MASTER.connect(a.destination); } return MASTER; }
 function hush(){ if(MASTER){ try{MASTER.disconnect();}catch(e){} MASTER=null; } }
-function ac(){ if(!AC){ const C=window.AudioContext||window.webkitAudioContext; if(!C)return null; AC=new C(); } if(AC.state==='suspended')AC.resume(); return AC; }
+/* --- Audio start-up, hardened for iPad/iPhone Safari and Home Screen apps ---
+   1. Ask iOS (Safari 17+) to treat our sound as media playback, so Silent mode does not mute it.
+   2. On every user gesture, create/resume the AudioContext and play a 1-sample silent buffer (the iOS "unlock").
+   3. Keep a silent looping <audio> element playing while the page is visible: older iOS versions only
+      switch to the playback audio session when an HTML media element plays.
+   4. Resume after the app returns from the background or an interruption (calls, Siri). */
+const IS_IOS=/iP(hone|ad|od)/.test(navigator.platform)||(navigator.userAgent.includes('Mac')&&'ontouchend' in document);
+try{ if(navigator.audioSession)navigator.audioSession.type='playback'; }catch(e){}
+let keepAlive=null;
+function silentWavURL(){ const sr=8000,n=sr/2,b=new ArrayBuffer(44+n),v=new DataView(b); const w=(o,s)=>{ for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i)); };
+  w(0,'RIFF'); v.setUint32(4,36+n,true); w(8,'WAVE'); w(12,'fmt '); v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true); v.setUint32(24,sr,true); v.setUint32(28,sr,true); v.setUint16(32,1,true); v.setUint16(34,8,true); w(36,'data'); v.setUint32(40,n,true); for(let i=0;i<n;i++)v.setUint8(44+i,128);
+  return URL.createObjectURL(new Blob([b],{type:'audio/wav'})); }
+function startKeepAlive(){ try{ if(!keepAlive){ keepAlive=document.createElement('audio'); keepAlive.setAttribute('playsinline',''); keepAlive.setAttribute('x-webkit-airplay','deny'); keepAlive.loop=true; keepAlive.preload='auto'; keepAlive.src=silentWavURL(); }
+    if(keepAlive.paused){ const p=keepAlive.play(); if(p&&p.catch)p.catch(()=>{}); } }catch(e){} }
+function ac(){ if(!AC){ const C=window.AudioContext||window.webkitAudioContext; if(!C)return null; try{ AC=new C({latencyHint:'interactive'}); }catch(e){ AC=new C(); }
+    AC.onstatechange=()=>{ const s=document.querySelector('.snd-state'); if(s)s.dataset.state=AC.state; }; }
+  if(AC.state!=='running'){ try{ const p=AC.resume(); if(p&&p.catch)p.catch(()=>{}); }catch(e){} }
+  return AC; }
+function unlockAudio(){ const a=ac(); if(!a)return; try{ const b=a.createBuffer(1,1,22050); const s=a.createBufferSource(); s.buffer=b; s.connect(a.destination); s.start(0); }catch(e){} if(IS_IOS)startKeepAlive(); }
+['touchend','pointerup','click','keydown'].forEach(ev=>document.addEventListener(ev,unlockAudio,{capture:true,passive:true}));
+document.addEventListener('visibilitychange',()=>{ if(document.hidden){ if(keepAlive)try{ keepAlive.pause(); }catch(e){} } else if(AC&&AC.state!=='running'){ try{ AC.resume(); }catch(e){} } });
+window.addEventListener('pageshow',()=>{ if(AC&&AC.state!=='running')try{ AC.resume(); }catch(e){} });
+function soundCheck(){ unlockAudio(); const a=ac(); if(!a)return false; const t=a.currentTime+0.06; [60,64,67,72].forEach((m,i)=>pluck(m,t+i*0.12,1.2,0.6)); return true; }
 function pluckBuf(midi){ const a=ac(); if(!a)return null; const key=midi; if(bufCache[key])return bufCache[key];
   const sr=a.sampleRate, f=440*Math.pow(2,(midi-69)/12), dur=2.2, len=Math.floor(sr*dur); const buf=a.createBuffer(1,len,sr); const d=buf.getChannelData(0);
   const N=Math.max(2,Math.round(sr/f)); const ring=new Float32Array(N); for(let i=0;i<N;i++)ring[i]=Math.random()*2-1;
@@ -4962,7 +4994,9 @@ function checklists(){ const all=$$('input[data-check]'); const saved=store.get(
 
 /* ============ NAV ============ */
 function lbl(c){ const n=c.dataset.num||''; return (/^(W|RB\d)/.test(n)?n+' · ':'')+c.dataset.title; }
-function nav(){ const chapters=$$('.chapter'); const rail=$('.rail nav'); const msel=$('#mnav'); let lastPart=null, og=null;
+function soundButtons(){ const mk=()=>{ const b=h('button',{class:'snd-btn',type:'button','aria-label':'Test sound'},h('span',{class:'snd-state','aria-hidden':'true'},'🔊'),h('span',{class:'snd-label'},'Test sound')); b.onclick=()=>{ soundCheck(); b.classList.add('pop'); setTimeout(()=>b.classList.remove('pop'),500); }; return b; };
+  const mn=$('.mobilenav'); if(mn)mn.append(mk()); const lg=$('.rail .legend'); if(lg)lg.before(mk()); }
+function nav(){ soundButtons(); const chapters=$$('.chapter'); const rail=$('.rail nav'); const msel=$('#mnav'); let lastPart=null, og=null;
   chapters.forEach(c=>{ const part=c.dataset.part||''; if(part!==lastPart){ rail.append(h('div',{class:'navgroup'},part)); og=h('optgroup',{label:part}); msel.append(og); lastPart=part; }
     const t=c.dataset.title, n=c.dataset.num||''; rail.append(h('button',{type:'button','data-go':c.id},h('span',{class:'n'},n),h('span',{},t))); og.append(h('option',{value:c.id},(n?n+'  ':'')+t)); });
   function show(id,scroll){ const target=chapters.find(c=>c.id===id)||chapters[0]; chapters.forEach(c=>c.hidden=c!==target); $$('.rail button').forEach(b=>b.setAttribute('aria-current',b.dataset.go===target.id)); msel.value=target.id; store.set('chapter',target.id);
