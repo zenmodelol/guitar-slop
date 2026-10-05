@@ -243,6 +243,26 @@ textarea{background:var(--bg);color:var(--ink);border:1px solid var(--line);bord
 @media (max-width:900px){.dash{grid-template-columns:1fr}}
 .cf-name{font:800 2.2rem var(--f-display);margin-top:.6rem}
 .cf-out .small{margin:.2rem 0}
+.pb-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem;align-items:start}
+@media (max-width:900px){.pb-grid{grid-template-columns:1fr}}
+.pb-list{list-style:none;padding:0;margin:.6rem 0;display:grid;gap:4px;counter-reset:pb}
+.pb-item{background:var(--bg);border-radius:4px;padding:.5rem .6rem;display:flex;flex-wrap:wrap;gap:.4rem .8rem;align-items:center;justify-content:space-between;counter-increment:pb}
+.pb-item .pb-name::before{content:counter(pb) ". ";font:700 .8rem var(--f-mono);color:var(--accent)}
+.pb-ctl{display:flex;gap:.3rem;align-items:center;flex-wrap:wrap}.pb-f{display:inline-flex;gap:.25rem;align-items:center;font-size:.8rem;color:var(--muted)}
+.pb-lib{max-height:70vh;overflow:auto;margin-top:.6rem}.pb-lib h4{margin:.8rem 0 .3rem}
+.pb-libitem{display:flex;gap:.6rem;justify-content:space-between;align-items:flex-start;padding:.45rem 0;border-bottom:1px solid var(--line)}
+.pb-add{padding:.25rem .6rem;font-size:.8rem;white-space:nowrap}
+.pb-dots{display:flex;flex-wrap:wrap;gap:4px;margin:.6rem 0}.pb-dot{all:unset;cursor:pointer;width:1.9rem;height:1.9rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font:700 .75rem var(--f-mono);background:var(--sunk)}
+.pb-dot.done{background:var(--c-7);color:#fff}.pb-dot.cur{outline:2px solid var(--accent)}.pb-dot:focus-visible{outline:2px solid var(--c-3)}
+.pb-timer .tw{font-size:1.3rem;padding:.4rem .7rem}.pb-timer .tw-b{width:2em;height:2em}
+.tu-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:1.4rem;align-items:start}
+@media (max-width:760px){.tu-wrap{grid-template-columns:1fr}}
+.tu-display{text-align:center;background:var(--bg);border-radius:var(--r);padding:1rem}
+.tu-note{font:800 4.5rem/1 var(--f-display)}.tu-note::after{content:attr(data-oct);font-size:1.4rem;color:var(--muted)}
+.tu-meter{width:100%;max-width:340px;height:auto;display:block;margin:auto}
+.tu-cents{font:700 1.1rem var(--f-body);min-height:1.5em}.tu-cents.ok{color:var(--c-7)}.tu-cents.off{color:var(--c-root)}
+.controls label.pb-auto{flex-direction:row;align-items:center;gap:.4rem;text-transform:none;letter-spacing:0;font-size:.85rem;font-weight:400;color:var(--ink)}
+.pb-run h3{margin-top:.2rem}
 .level{display:inline-block;font:700 .7rem var(--f-mono);padding:.15rem .45rem;border-radius:3px;background:var(--sunk);color:var(--ink)}
 @media (max-width:520px){.chart{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
@@ -354,6 +374,7 @@ details[open] summary{margin-bottom:.4rem}
   <h3>Before week 1</h3>
   <ul>
     <li>Read <a href="#method" data-jump="method">How This Course Works</a> (10 minutes). It explains the routines and how to practise without a teacher.</li>
+    <li>Build your own sessions in the <a href="#pr-builder" data-jump="pr-builder">Practice Builder</a>, and use the <a href="#pr-metronome" data-jump="pr-metronome">Metronome</a> and <a href="#pr-tuner" data-jump="pr-tuner">Tuner</a> in the Practice Room.</li>
     <li>Bookmark the <a href="#h-practice" data-jump="h-practice">Daily Practice Glossary</a>: every drill in every routine, with how to do it.</li>
     <li>Want it on your iPad, offline? See <a href="#h-offline" data-jump="h-offline">Offline &amp; Backup</a>.</li>
     <li>Tap a fretboard dot below to check your sound works. Browsers only allow audio after you interact with the page.</li>
@@ -423,6 +444,48 @@ details[open] summary{margin-bottom:.4rem}
     <li>Press only as hard as needed: play a chord, release until it buzzes, add just enough pressure back.</li>
     <li>Sit or stand with the neck angled up a little; keep the fretting wrist as straight as the shape allows.</li>
     <li>A clean amp tone shows mistakes. Practise clean; add drive for fun.</li>
+  </ul>
+  <div class="pager"></div>
+</section>
+
+<!-- ===================== PRACTICE ROOM ===================== -->
+<section class="chapter" id="pr-builder" data-part="Practice Room" data-num="P1" data-title="Practice Builder" hidden>
+  <div class="chap-head"><span class="eyebrow">Practice Room</span><h1>Practice Builder</h1>
+    <p class="lede">Build your own practice schedule from the drill library, save it, and run it. Games play inside the session; everything else gets a timer with instructions and tab. Drills with a ♩ badge come with a metronome you can set per drill.</p></div>
+  <div data-tool="builder"></div>
+  <div class="lesson-sec"><span class="num">?</span><h2>How it works</h2></div>
+  <ol>
+    <li><b>Add drills</b> from the library on the right, or load a preset (Quick 20, Jazz 40, Funk 30, Rock 30, Fretboard blitz, Ear workout).</li>
+    <li><b>Set minutes</b> for each drill, the <b>tempo</b> for drills with tab or rhythm, and whether its <b>metronome</b> is on. Reorder with the arrows.</li>
+    <li><b>Save</b> the schedule under its name to reuse it. Saving again with the same name updates it.</li>
+    <li><b>Start practice.</b> Each drill opens with its timer running, its instructions, and its game, tab, rhythm grid or chart. When the timer ends it moves on (untick "Move on automatically" to stay).</li>
+    <li><b>Finish &amp; log</b> records the session in your streak, level and calendar on <a href="#start" data-jump="start">Start Here</a>.</li>
+  </ol>
+  <div class="pager"></div>
+</section>
+
+<section class="chapter" id="pr-metronome" data-part="Practice Room" data-num="P2" data-title="Metronome" hidden>
+  <div class="chap-head"><span class="eyebrow">Practice Room</span><h1>Metronome</h1>
+    <p class="lede">Odd meters, subdivisions, clicks on 2 and 4 only, and a gap trainer that drops the click out to test your time.</p></div>
+  <div class="tool"><div class="tool-title"><h4>Metronome</h4><span class="eyebrow">Time</span></div><div data-tool="metronome"></div></div>
+  <div class="grid3">
+    <div class="panel"><h4>Clicks on 2 &amp; 4</h4><p class="small">Set "Clicks on" to beats 2 &amp; 4 at half your usual tempo. The click becomes the snare; you feel 1 and 3. The jazz, funk and soul setting.</p></div>
+    <div class="panel"><h4>Gap trainer</h4><p class="small">2 bars on, 2 silent. Keep playing; if you land exactly with the click when it returns, your time is solid.</p></div>
+    <div class="panel"><h4>Odd meters</h4><p class="small">Choose 5/4, 7/8 or 9/8: accents mark each group of 2 or 3. Count the groups, never to 7.</p></div>
+  </div>
+  <p class="small muted">Every rhythm grid in the course also has its own click (every beat, 2 &amp; 4, or off) and a loop timer.</p>
+  <div class="pager"></div>
+</section>
+
+<section class="chapter" id="pr-tuner" data-part="Practice Room" data-num="P3" data-title="Tuner" hidden>
+  <div class="chap-head"><span class="eyebrow">Practice Room</span><h1>Tuner</h1>
+    <p class="lede">A chromatic tuner that listens through your device's microphone, with standard and alternate tunings and reference notes.</p></div>
+  <div class="tool"><div class="tool-title"><h4>Tuner</h4><span class="eyebrow">Microphone</span></div><div data-tool="tuner"></div></div>
+  <ul>
+    <li>Play one string at a time and let it ring; pick firmly, then let the note sustain.</li>
+    <li>Tune <b>up</b> to the note: if you are sharp, go below the note and come back up. The string holds pitch better.</li>
+    <li>Check the low E and A last; tuning the others pulls the neck slightly.</li>
+    <li>The microphone works when the course runs as its own web page (your GitHub Pages site, the iPad Home Screen app, or the single HTML file in a browser). Your browser asks for permission the first time.</li>
   </ul>
   <div class="pager"></div>
 </section>
@@ -3427,6 +3490,8 @@ details[open] summary{margin-bottom:.4rem}
   <div class="tool"><div class="tool-title"><h4>One-minute change timer</h4><span class="eyebrow">Changes</span></div><div data-tool="changetimer"></div></div>
 
   <div class="tool"><div class="tool-title"><h4>Chord finder</h4><span class="eyebrow">Place notes, get the name</span></div><div data-tool="chordfinder"></div></div>
+
+  <div class="tool"><div class="tool-title"><h4>Name that chord</h4><span class="eyebrow">Game</span></div><div data-tool="chordquiz"></div></div>
   <h2>Games</h2>
   <p>Each game keeps your best score in this browser. Set a time limit once you are accurate, then go for speed.</p>
   <div class="tool"><div class="tool-title"><h4>Octave hop</h4><span class="eyebrow">Game</span></div><div data-tool="octavequiz"></div></div>
@@ -4300,28 +4365,29 @@ function rhythm(el){ const d=el.dataset; const pat=d.pattern.replace(/\s/g,''); 
     const cls=c==='-'?'':(c==='x'?'mute':(c===c.toUpperCase()?'acc':'hit')); const cell=h('div',{class:'cell '+cls},c==='-'?arrow:(c==='x'?'×':arrow)); cells.push(cell); g.append(cell); }
   const rid=nid('rg'); const playB=h('button',{class:'btn',type:'button'},'▶ Loop'); const rng=h('input',{type:'range',min:40,max:140,value:bpm,id:rid}); const bl=h('span',{},bpm+' bpm');
   const chS=sel(rid+'c',Object.keys(RCH).map(k=>[k,k]),ch); chS.onchange=()=>ch=chS.value;
+  const clkS=sel(rid+'k',[['beat','Click: every beat'],['24','Click: 2 & 4'],['off','Click: off']],'beat');
   const durS=sel(rid+'d',[['0','Loop: no limit'],['1','Loop: 1 min'],['2','Loop: 2 min'],['3','Loop: 3 min'],['5','Loop: 5 min']],'2'); const left=h('span',{class:'tw-disp small'},''); let stopAt=0;
   let running=false, nextT=0, idx=0, iv=null; const q=[];
   rng.oninput=()=>{ bpm=+rng.value; bl.textContent=bpm+' bpm'; };
   function sched(){ const a=ac(); const step=60/bpm/sub; while(nextT<a.currentTime+0.12){ const c=pat[idx]; const midis=RCH[ch].map((f,s)=>f<0?null:TUNINGS.std.m[s]+f).filter(x=>x!=null);
-      if(idx%sub===0)click(nextT,idx===0?1:0);
+      if(idx%sub===0){ const bt=Math.floor(idx/sub)%4; if(clkS.value==='beat')click(nextT,idx===0?1:0); else if(clkS.value==='24'&&(bt===1||bt===3))click(nextT,1); }
       if(c==='x')noiseHit(nextT,0.45); else if(c!=='-')strum(midis,nextT,c===c.toUpperCase()?0.22:0.14,c===c.toUpperCase()?0.75:0.4,(idx%2===1)&&sub!==3);
       q.push({i:idx,t:nextT}); nextT+=step; idx=(idx+1)%n; }
     while(q.length&&q[0].t<=a.currentTime){ const it=q.shift(); cells.forEach((c,j)=>c.classList.toggle('now',j===it.i)); }
     if(stopAt){ const l=(stopAt-performance.now())/1000; left.textContent=fmtT(l)+' left'; if(l<=0){ const m=+durS.value; playB.click(); beep3(); addPracticeMinutes(m); left.textContent='Done ✓'; } } }
   playB.onclick=()=>{ const a=ac(); if(!a)return; if(running){ running=false; clearInterval(iv); stopAt=0; cells.forEach(c=>c.classList.remove('now')); playB.textContent='▶ Loop'; return; }
     running=true; idx=0; nextT=a.currentTime+0.1; q.length=0; iv=setInterval(sched,25); playB.textContent='■ Stop'; const m=+durS.value; stopAt=m?performance.now()+m*60000:0; if(!m)left.textContent=''; };
-  el.append(h('div',{class:'scroll'},g),h('div',{class:'tabctl'},playB,rng,bl,lab('Chord',chS),durS,left)); }
+  el.append(h('div',{class:'scroll'},g),h('div',{class:'tabctl'},playB,rng,bl,lab('Chord',chS),clkS,durS,left)); }
 
 /* ============ METRONOME ============ */
 function metronome(el){
   const id=nid('mt'); const METERS={'4/4':{g:[4],u:4},'3/4':{g:[3],u:4},'2/4':{g:[2],u:4},'5/4':{g:[3,2],u:4},'6/8':{g:[3,3],u:8},'5/8 (3+2)':{g:[3,2],u:8},'7/8 (2+2+3)':{g:[2,2,3],u:8},'7/8 (3+2+2)':{g:[3,2,2],u:8},'9/8 (2+2+2+3)':{g:[2,2,2,3],u:8},'11/8 (3+3+3+2)':{g:[3,3,3,2],u:8},'13/8 (3+3+3+2+2)':{g:[3,3,3,2,2],u:8}};
-  let bpm=80, meter='4/4', subd=1, mode='all', gapOn=2, gapOff=0, running=false, nextT=0, pulse=0, sub=0, bar=0, iv=null; const q=[];
+  let bpm=+(el.dataset.bpm||80), meter=METERS[el.dataset.meter]?el.dataset.meter:'4/4', subd=1, mode='all', gapOn=+(el.dataset.gap||2), gapOff=+(el.dataset.gap||0), running=false, nextT=0, pulse=0, sub=0, bar=0, iv=null; const q=[];
   const big=h('div',{class:'kv'}); const bpmB=h('b',{},bpm); big.append(h('div',{},bpmB,h('span',{},'BPM')));
   const rng=h('input',{type:'range',min:30,max:260,value:bpm,id:id+'b',style:'width:100%'});
   const meterS=sel(id+'m',Object.keys(METERS).map(k=>[k,k]),meter), subS=sel(id+'s',[['1','None'],['2','8ths'],['3','Triplets'],['4','16ths']],'1');
   const modeS=sel(id+'o',[['all','Every beat'],['24','Beats 2 & 4 only (jazz/funk)'],['1','Beat 1 only']],'all');
-  const gapS=sel(id+'g',[['0','Off'],['1','1 bar on / 1 bar silent'],['2','2 on / 2 silent'],['4','4 on / 4 silent']],'0');
+  const gapS=sel(id+'g',[['0','Off'],['1','1 bar on / 1 bar silent'],['2','2 on / 2 silent'],['4','4 on / 4 silent']],String(el.dataset.gap||'0'));
   const beats=h('div',{class:'beats'}); const unitL=h('span',{class:'small muted'});
   const start=h('button',{class:'btn',type:'button'},'▶ Start'); const tap=h('button',{class:'btn ghost',type:'button'},'Tap tempo'); const taps=[];
   const minus=h('button',{class:'btn ghost',type:'button','aria-label':'Slower by 4'},'−4'), plus=h('button',{class:'btn ghost',type:'button','aria-label':'Faster by 4'},'+4');
@@ -4348,7 +4414,7 @@ function metronome(el){
 
 /* ============ EAR TRAINER ============ */
 function ear(el){
-  const id=nid('ear'); let mode='int', dir='up', cur=null, score=0, tries=0, answered=false;
+  const id=nid('ear'); let mode=['int','qual','deg'].includes(el.dataset.mode)?el.dataset.mode:'int', dir='up', cur=null, score=0, tries=0, answered=false;
   const INTS=[['m2',1,'Jaws theme'],['M2',2,'Happy Birthday (first two notes)'],['m3',3,'Greensleeves (opening)'],['M3',4,'When the Saints Go Marching In'],['P4',5,'Here Comes the Bride'],['TT',6,'The Simpsons theme'],['P5',7,'Star Wars main theme'],['m6',8,'The Entertainer (the leap up)'],['M6',9,'My Bonnie Lies Over the Ocean'],['m7',10,'Somewhere (West Side Story)'],['M7',11,'Take On Me (chorus leap)'],['P8',12,'Somewhere Over the Rainbow']];
   const QUALS=[['Major','maj'],['Minor','min'],['Diminished','dim'],['Augmented','aug'],['sus4','sus4'],['maj7','maj7'],['7 (dominant)','dom7'],['m7','m7'],['m7♭5','m7b5'],['°7','dim7']];
   const DEG=[['1',0],['2',2],['3',4],['4',5],['5',7],['6',9],['7',11]];
@@ -4699,6 +4765,195 @@ function chordFinder(el){ const tun=TUNINGS.std.m; let fr=[null,null,null,null,n
   clr.onclick=()=>{ fr=[null,null,null,null,null,null]; pick=0; render(); }; apply.onclick=()=>setShape(inp.value); inp.addEventListener('keydown',e=>{ if(e.key==='Enter')setShape(inp.value); });
   el.append(box,h('div',{class:'cf-out'},nameEl,why),h('div',{class:'controls'},h('span',{class:'small muted'},'Other names for the same notes:'),alts),h('div',{class:'controls'},playB,clr,lab('Shape (low E → high e)',inp),apply),h('div',{class:'controls'},h('span',{class:'small muted'},'Examples:'),ex),diag); render(); }
 
+
+/* ============ CHORD-NAME GAME ============ */
+function chordQuiz(el){ const id=nid('cq'); const SETS={tri:{n:'Triads',sets:[]},sev:{n:'7th chords',sets:['shells6','shells5','full6']},ext:{n:'Extended',sets:['full5']}}; let level='sev', cur=null, score=0, tries=0, streak=0, sprint=false, sEnd=0, sScore=0, sIv=null;
+  const levS=sel(id+'v',[['tri','Triads'],['sev','7th chords'],['ext','Extended & altered']],level); const limS=limitSel(id+'l','0'); const cd=qCountdown(); const sprB=h('button',{class:'btn ghost',type:'button'},'⚡ 60-second sprint');
+  const card=h('div',{class:'chordrow'}); const ans=h('div',{class:'answer-grid'}); const stat=h('div',{class:'status'}); const prompt=h('div',{class:'big-prompt'},'Name this chord');
+  function triadShape(){ const q=['maj','min','dim'][Math.floor(Math.random()*3)]; const root=ROOTS[Math.floor(Math.random()*12)]; const set=['1','2','3'][Math.floor(Math.random()*3)]; const v=findTriads(root,q,TRIAD_SETS[set]).filter(x=>Math.min(...x.fr)<=12); if(!v.length)return null; const p=v[Math.floor(Math.random()*v.length)]; const full=[-1,-1,-1,-1,-1,-1]; p.fr.forEach((f,i)=>full[6-TRIAD_SETS[set][i]]=f); return {root,q,frets:full,pool:['maj','min','dim','aug','sus4']}; }
+  function shape(){ if(level==='tri')return triadShape(); const sets=SETS[level].sets; const set=sets[Math.floor(Math.random()*sets.length)]; const rs=set.endsWith('6')?6:5; const list=SHAPES[set]; const [q,off]=list[Math.floor(Math.random()*list.length)];
+    const root=ROOTS[Math.floor(Math.random()*12)]; let rf=(parseRoot(root)-(rs===6?4:9)+12)%12; if(rf<2)rf+=12; const fr=off.map(o=>o===X?-1:rf+o); return {root,q,frets:fr,pool:list.map(x=>x[0])}; }
+  function name(root,q){ return root+CHORDS[q].s; }
+  function next(){ let s=null; for(let k=0;k<20&&!s;k++)s=shape(); cur=s; card.innerHTML=''; ans.innerHTML='';
+    const c=chordCard('?',cur.frets,null,'tap to hear'); card.append(c); const right=name(cur.root,cur.q);
+    const opts=new Set([right]); const pool=[...new Set(cur.pool)].filter(q=>q!==cur.q); while(opts.size<3&&pool.length){ const q=pool.splice(Math.floor(Math.random()*pool.length),1)[0]; opts.add(name(cur.root,q)); }
+    while(opts.size<4){ const r=ROOTS[Math.floor(Math.random()*12)]; opts.add(name(r,cur.q)); }
+    [...opts].sort(()=>Math.random()-.5).forEach(o=>{ const b=h('button',{class:'chip',type:'button'},o); b.onclick=()=>pickA(o===right,b,right); ans.append(b); });
+    upd(); const lim=+limS.value; if(lim&&!sprint)cd.start(lim,()=>{ tries++; streak=0; $$('.chip',ans).forEach(b=>{ if(b.textContent===right)b.classList.add('ok'); }); upd('Time!'); setTimeout(next,1200); }); }
+  function pickA(ok,b,right){ cd.stop(); tries++; if(ok){ score++; streak++; if(sprint)sScore++; b.classList.add('ok'); const m=cur.frets.map((f,s)=>f<0?null:TUNINGS.std.m[s]+f).filter(x=>x!=null); ac(); strum(m,null,1.2,.5); setTimeout(next,sprint?250:700); }
+    else { streak=0; b.classList.add('bad'); $$('.chip',ans).forEach(x=>{ if(x.textContent===right)x.classList.add('ok'); }); setTimeout(next,1300); } upd(); }
+  function upd(msg){ const b=store.get('best-cq',0); stat.textContent=(sprint?`Sprint: ${sScore} · ${Math.max(0,Math.ceil((sEnd-performance.now())/1000))}s left · `:'')+`Score ${score}/${tries} · Streak ${streak} · Best sprint ${b}`+(msg?' · '+msg:''); }
+  sprB.onclick=()=>{ if(sprint)return; ac(); sprint=true; sScore=0; sEnd=performance.now()+60000; next(); sIv=setInterval(()=>{ upd(); if(performance.now()>=sEnd){ clearInterval(sIv); sprint=false; const b=store.get('best-cq',0); if(sScore>b)store.set('best-cq',sScore); beep3(); addPracticeMinutes(1); upd(`Sprint over: ${sScore}${sScore>b?' — new best!':''}`); } },250); };
+  levS.onchange=()=>{ level=levS.value; next(); }; limS.onchange=()=>next();
+  el.append(h('div',{class:'controls'},lab('Chords',levS),lab('Time per chord',limS),sprB),prompt,cd.el,card,ans,stat,h('p',{class:'small muted'},'Tip: play the shape first, find the root, then decide the quality from the 3rd and 7th.')); next(); }
+
+/* ============ TUNER ============ */
+function tuner(el){ const id=nid('tu'); let stream=null, an=null, raf=0, buf=null, hist=[]; let tun='std', a4=440;
+  const tunS=sel(id+'t',Object.keys(TUNINGS).map(k=>[k,TUNINGS[k].n]),tun); const a4I=h('input',{type:'number',id:id+'a',value:440,min:425,max:455,step:1,style:'width:5em'});
+  const startB=h('button',{class:'btn',type:'button'},'🎤 Start tuner'); const msg=h('p',{class:'small'});
+  const noteEl=h('div',{class:'tu-note'},'–'); const hzEl=h('div',{class:'small muted tu-hz'},'Play a single string'); const centsEl=h('div',{class:'tu-cents'},'');
+  const W=320,H=150; const svg=S('svg',{viewBox:`0 0 ${W} ${H}`,class:'tu-meter',role:'img','aria-label':'Tuning meter'});
+  function drawMeter(c){ svg.innerHTML=''; const cx=W/2, cy=H-12, r=120;
+    for(let t=-50;t<=50;t+=10){ const a=(t/50)*Math.PI/2.6; const x1=cx+Math.sin(a)*(r-6), y1=cy-Math.cos(a)*(r-6), x2=cx+Math.sin(a)*(r+(t%50===0||t===0?10:4)), y2=cy-Math.cos(a)*(r+(t%50===0||t===0?10:4)); svg.append(S('line',{x1,y1,x2,y2,stroke:cssv(t===0?'--c-7':'--muted'),'stroke-width':t===0?3:1.5})); }
+    const zone=S('path',{d:`M${cx+Math.sin(-.06)*r},${cy-Math.cos(-.06)*r} A${r},${r} 0 0 1 ${cx+Math.sin(.06)*r},${cy-Math.cos(.06)*r}`,stroke:cssv('--c-7'),'stroke-width':10,fill:'none',opacity:.35}); svg.append(zone);
+    if(c!=null){ const cl=Math.max(-50,Math.min(50,c)); const a=(cl/50)*Math.PI/2.6; const ok=Math.abs(c)<=5; svg.append(S('line',{x1:cx,y1:cy,x2:cx+Math.sin(a)*(r-14),y2:cy-Math.cos(a)*(r-14),stroke:cssv(ok?'--c-7':Math.abs(c)<15?'--c-3':'--c-root'),'stroke-width':4,'stroke-linecap':'round'})); }
+    svg.append(S('circle',{cx,cy,r:6,fill:cssv('--ink')}));
+    const t1=S('text',{x:18,y:H-4,'font-size':12,fill:cssv('--muted')}); t1.textContent='flat'; const t2=S('text',{x:W-18,y:H-4,'font-size':12,'text-anchor':'end',fill:cssv('--muted')}); t2.textContent='sharp'; svg.append(t1,t2); }
+  const strRow=h('div',{class:'chips'});
+  function drawStrings(active){ strRow.innerHTML=''; TUNINGS[tun].m.forEach((m,i)=>{ const nm=SHARP[m%12]+Math.floor(m/12-1); const b=h('button',{class:'chip'+(active===i?' ok':''),type:'button',title:'Play reference'},(6-i)+': '+nm+' ♪'); b.onclick=()=>{ ac(); pluck(m,null,2.5,.6); }; strRow.append(b); }); }
+  function detect(b,sr){ let rms=0; for(let i=0;i<b.length;i++)rms+=b[i]*b[i]; rms=Math.sqrt(rms/b.length); if(rms<0.008)return -1;
+    let r1=0,r2=b.length-1; const th=0.2; for(let i=0;i<b.length/2;i++)if(Math.abs(b[i])<th){ r1=i; break; } for(let i=1;i<b.length/2;i++)if(Math.abs(b[b.length-i])<th){ r2=b.length-i; break; }
+    const x=b.slice(r1,r2), n=x.length; const c=new Float32Array(n); for(let i=0;i<n;i++){ let s=0; for(let j=0;j<n-i;j++)s+=x[j]*x[j+i]; c[i]=s; }
+    let d=0; while(d<n-1&&c[d]>c[d+1])d++; let mx=-1,mp=-1; for(let i=d;i<n;i++)if(c[i]>mx){ mx=c[i]; mp=i; } if(mp<=0||mp>=n-1)return -1;
+    const x1=c[mp-1],x2=c[mp],x3=c[mp+1]; const a=(x1+x3-2*x2)/2, bb=(x3-x1)/2; const T=a?mp-bb/(2*a):mp; return sr/T; }
+  function loop(){ an.getFloatTimeDomainData(buf); const f=detect(buf,AC.sampleRate);
+    if(f>60&&f<1400){ hist.push(f); if(hist.length>5)hist.shift(); const fm=[...hist].sort((p,q)=>p-q)[Math.floor(hist.length/2)];
+      const n=12*Math.log2(fm/a4)+69; const nr=Math.round(n); const cents=Math.round((n-nr)*100); noteEl.textContent=SHARP[(nr%12+12)%12]; noteEl.dataset.oct=Math.floor(nr/12)-1; hzEl.textContent=fm.toFixed(1)+' Hz · '+(cents>0?'+':'')+cents+' cents';
+      centsEl.textContent=Math.abs(cents)<=5?'In tune ✓':cents<0?'Tune up ↑':'Tune down ↓'; centsEl.className='tu-cents '+(Math.abs(cents)<=5?'ok':'off'); drawMeter(cents);
+      const ms=TUNINGS[tun].m.map(m=>Math.abs(m-n)); const best=ms.indexOf(Math.min(...ms)); drawStrings(ms[best]<1.5?best:-1); }
+    raf=requestAnimationFrame(loop); }
+  async function start(){ if(stream){ stop(); return; } const a=ac(); if(!a)return;
+    if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){ blocked(); return; }
+    try{ stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}); }catch(e){ blocked(e); return; }
+    const src=a.createMediaStreamSource(stream); an=a.createAnalyser(); an.fftSize=2048; buf=new Float32Array(an.fftSize); src.connect(an); startB.textContent='■ Stop tuner'; msg.textContent='Listening… play one string at a time and let it ring.'; loop(); }
+  function stop(){ cancelAnimationFrame(raf); if(stream)stream.getTracks().forEach(t=>t.stop()); stream=null; startB.textContent='🎤 Start tuner'; msg.textContent='Tuner stopped.'; }
+  function blocked(){ msg.innerHTML='<b>The microphone is not available here.</b> Inside the hosted course page the browser does not give the page microphone access. Open your self-hosted copy (GitHub Pages, the iPad Home Screen app, or the single HTML file in a desktop browser) and allow the microphone when asked. Meanwhile, tune by ear with the reference notes below: play a reference, then match your string until the wobble (beating) disappears.'; }
+  tunS.onchange=()=>{ tun=tunS.value; drawStrings(-1); }; a4I.onchange=()=>{ a4=Math.max(425,Math.min(455,+a4I.value||440)); };
+  startB.onclick=start; drawMeter(null); drawStrings(-1);
+  el.append(h('div',{class:'tu-wrap'},h('div',{class:'tu-display'},noteEl,svg,centsEl,hzEl),h('div',{},h('div',{class:'controls'},startB,lab('Tuning',tunS),lab('A4 (Hz)',a4I)),msg,h('h4',{},'Strings and reference notes'),strRow,h('p',{class:'small muted'},'Tap a string to hear its reference pitch. The highlighted string is the one the tuner thinks you are playing.')))); }
+
+/* ============ PRACTICE BUILDER ============ */
+const _T=(n,sub,bar,bpm)=>`<div class="tabx" data-sub="${sub}" data-bar="${bar}" data-bpm="${bpm}" data-notes="${n}"></div>`;
+const _G=(tool,attrs)=>`<div data-tool="${tool}" ${attrs||''}></div>`;
+const _RG=(p,bpm,ch,sub)=>`<div class="rhythm" data-pattern="${p}" data-bpm="${bpm}" data-chord="${ch}"${sub?` data-sub="${sub}"`:''}></div>`;
+const _PC=(prog,key,mode,bpm)=>`<div class="progchart" data-key="${key}" data-bpm="${bpm||100}" ${mode?`data-vmode="${mode}"`:'data-voicings="0"'} data-prog="${prog}"></div>`;
+const DRILLS=[
+ // Technique
+ {id:'chromatic',n:'Chromatic 1-2-3-4',c:'Technique',min:5,k:'timer',met:1,bpm:60,how:'One finger per fret, alternate picking, fingers close to the frets. Raise 4 bpm when it is clean three times.',html:_T('6:5 6:6 6:7 6:8 5:5 5:6 5:7 5:8 4:5 4:6 4:7 4:8 3:5 3:6 3:7 3:8 2:5 2:6 2:7 2:8 1:5 1:6 1:7 1:8',2,8,60)},
+ {id:'spider',n:'Spider permutations',c:'Technique',min:5,k:'timer',met:1,bpm:60,how:'Chromatic with scrambled finger order (1-3-2-4 shown). Change the order each day.',html:_T('6:5 6:7 6:6 6:8 5:5 5:7 5:6 5:8 4:5 4:7 4:6 4:8 3:5 3:7 3:6 3:8 2:5 2:7 2:6 2:8 1:5 1:7 1:6 1:8',2,8,60)},
+ {id:'bends',n:'Bend check and vibrato',c:'Technique',min:3,k:'timer',how:'Play the target note fretted, then bend up to match it. Add even vibrato to every held note.',html:_T('3:9 - 3:7b - 3:9 - 3:7b - 2:10 - 2:8b - 2:10 - 2:8b -',2,8,70)},
+ {id:'legato',n:'Legato trills',c:'Technique',min:3,k:'timer',how:'Hammer and pull between two frets with the fretting hand only. Keep the volume even. Change finger pairs every 20 seconds.',html:_T('3:5 3:7h 3:5p 3:7h 3:5p 3:7h 3:5p 3:7h 3:5 3:8h 3:5p 3:8h 3:5p 3:8h 3:5p 3:8h',4,16,70)},
+ {id:'tapping',n:'Tapped arpeggios',c:'Technique',min:5,k:'timer',met:1,bpm:60,how:'Tap with the picking hand, pull off, hammer on. Equal volume on all three notes.',html:_T('1:12t 1:5p 1:8h 1:12t 1:5p 1:8h 1:12t 1:5p 1:8h 1:12t 1:5p 1:8h 1:13t 1:5p 1:8h 1:13t 1:5p 1:8h 1:13t 1:5p 1:8h 1:13t 1:5p 1:8h',3,12,60)},
+ {id:'octaves',n:'Scale in octaves',c:'Technique',min:5,k:'timer',met:1,bpm:70,how:'Mute the string between the two notes with the index finger. Thumb or downstrokes.',html:_T('5:3+3:5 5:5+3:7 5:7+3:9 5:8+3:10 5:10+3:12 4:7+2:10 4:9+2:12 4:10+2:13',2,8,70)},
+ {id:'hybrid',n:'Hybrid-picked arpeggios',c:'Technique',min:4,k:'timer',how:'Pick the bass notes; pluck the high strings with middle and ring fingers. Let everything ring.',html:_T('5:3 3:0 2:3 1:3 4:2 3:0 2:3 1:3 5:0 3:6 2:0 1:0 4:7 3:6 2:0 1:0',2,8,90)},
+ // Fretboard
+ {id:'notequiz',n:'Note quiz',c:'Fretboard',min:5,k:'game',how:'Name the dot, or find the named note. Set a time per note, then try a 60-second sprint.',html:_G('notequiz')},
+ {id:'octavehop',n:'Octave hop',c:'Fretboard',min:4,k:'game',how:'Find the octave of the shown note on the named string.',html:_G('octavequiz')},
+ {id:'findall',n:'Find every note',c:'Fretboard',min:4,k:'game',how:'Tap every instance of the note from frets 0 to 12, as fast as you can.',html:_G('findall')},
+ {id:'stringcall',n:'Note call-outs',c:'Fretboard',min:4,k:'game',how:'Find the called note on the called string before the bar runs out.',html:_G('flash','data-deck="stringnote" data-sec="5"')},
+ {id:'keycall',n:'Key signature call-outs',c:'Fretboard',min:3,k:'game',how:'Answer out loud before the bar runs out.',html:_G('flash','data-deck="keysig" data-sec="5"')},
+ {id:'vertical',n:'Vertical naming',c:'Fretboard',min:3,k:'timer',how:'Pick a fret. Name the note on every string at that fret, low to high and back. A new fret each day.',html:''},
+ {id:'cycle4',n:'Cycle of 4ths on one string',c:'Fretboard',min:3,k:'timer',met:1,bpm:50,how:'On one string, play C F B♭ E♭ A♭ D♭ G♭ B E A D G, one note per click.',html:''},
+ // Triads & chords
+ {id:'triadquiz',n:'Triad quiz',c:'Triads & chords',min:5,k:'game',how:'Find the named triad, inversion and string set; reveal to check.',html:_G('triadquiz')},
+ {id:'triadcall',n:'Triad call-outs',c:'Triads & chords',min:4,k:'game',how:'Play the called triad before the bar runs out.',html:_G('flash','data-deck="triadcall" data-sec="8"')},
+ {id:'chordquiz',n:'Name that chord',c:'Triads & chords',min:4,k:'game',how:'A chord shape appears: tap it to hear it, then pick its name.',html:_G('chordquiz')},
+ {id:'spell',n:'Spell-a-chord',c:'Triads & chords',min:3,k:'game',how:'Say the notes of the chord before the bar runs out.',html:_G('flash','data-deck="spell" data-sec="8"')},
+ {id:'numerals',n:'Random numerals',c:'Triads & chords',min:4,k:'game',how:'Name the chord for the numeral and key, then play it near your last chord.',html:_G('flash','data-deck="numerals" data-sec="8"')},
+ {id:'changes',n:'One-minute changes',c:'Triads & chords',min:4,k:'game',how:'Count clean changes between two chords in 60 seconds. Log three pairs.',html:_G('changetimer')},
+ {id:'triadclimb',n:'Triad climb',c:'Triads & chords',min:4,k:'timer',met:1,bpm:60,how:'One triad through its inversions and back, naming the inversion as you land.',html:_T('3:0+2:1+1:0 3:5+2:5+1:3 3:9+2:8+1:8 3:12+2:13+1:12 3:9+2:8+1:8 3:5+2:5+1:3 3:0+2:1+1:0 -',1,4,60)},
+ {id:'nearest',n:'Nearest neighbour I–IV–V–I',c:'Triads & chords',min:4,k:'timer',met:1,bpm:70,how:'Change chords without moving more than two frets.',html:_T('3:5+2:5+1:3 - - - 3:5+2:6+1:5 - - - 3:4+2:3+1:3 - - - 3:5+2:5+1:3 - - -',1,4,70)},
+ {id:'diatriads',n:'Diatonic triad run',c:'Triads & chords',min:3,k:'timer',met:1,bpm:70,how:'The seven triads of C up strings 1-2-3. Say each name.',html:_T('3:5+2:5+1:3 3:7+2:6+1:5 3:9+2:8+1:7 3:10+2:10+1:8 3:12+2:12+1:10 3:14+2:13+1:12 3:16+2:15+1:13 3:17+2:17+1:15',1,4,70)},
+ {id:'shells',n:'Shells round the keys',c:'Triads & chords',min:6,k:'timer',how:'ii–V–I with shells; change the key each time through the circle of 4ths.',html:_PC('ii:m7|V:7|I:maj7|%','C','shell',100)},
+ {id:'invcycle',n:'Drop-2 inversion cycle',c:'Triads & chords',min:4,k:'timer',met:1,bpm:60,how:'Each note moves up to the next chord tone. Change the chord type each day.',html:_T('5:3+4:5+3:4+2:5 - 5:7+4:9+3:5+2:8 - 5:10+4:10+3:9+2:12 - 5:14+4:14+3:12+2:13 -',1,4,60)},
+ {id:'dropdia',n:'Diatonic drop-2 run',c:'Triads & chords',min:4,k:'timer',met:1,bpm:70,how:'All seven 7th chords of C in drop-2, root in the bass.',html:_T('5:3+4:5+3:4+2:5 - 5:5+4:7+3:5+2:6 - 5:7+4:9+3:7+2:8 - 5:8+4:10+3:9+2:10 - 5:10+4:12+3:10+2:12 - 5:12+4:14+3:12+2:13 - 5:14+4:15+3:14+2:15 - 5:3+4:5+3:4+2:5 -',1,4,70)},
+ {id:'slide913',n:'9–13 slide',c:'Triads & chords',min:3,k:'timer',how:'Alternate C9 and C13: only the top string moves.',html:_T('5:3+4:2+3:3+2:3+1:3 - - 5:3+4:2+3:3+2:3+1:5 - 5:3+4:2+3:3+2:3+1:3 - - 5:3+4:2+3:3+2:3+1:3 - - 5:3+4:2+3:3+2:3+1:5 - 5:3+4:2+3:3+2:3+1:5 5:3+4:2+3:3+2:3+1:3 -',2,8,90)},
+ // Scales & improvisation
+ {id:'pent3s',n:'Pentatonic in 3s',c:'Scales & improvisation',min:4,k:'timer',met:1,bpm:70,how:'Three up, step back two, through box 1. Then descending.',html:_T('6:5 6:8 5:5 6:8 5:5 5:7 5:5 5:7 4:5 5:7 4:5 4:7 4:5 4:7 3:5 4:7 3:5 3:7 3:5 3:7 2:5 3:7 2:5 2:8 2:5 2:8 1:5 2:8 1:5 1:8 - - - - - -',3,12,70)},
+ {id:'connect',n:'Connect pentatonic positions',c:'Scales & improvisation',min:4,k:'timer',how:'Slide on the G string into the next position and keep climbing.',html:_T('6:5 6:8 5:5 5:7 4:5 4:7 3:5 3:7 3:9/ 2:8 2:10 1:8 1:10 1:12 - -',2,8,80)},
+ {id:'bebop',n:'Bebop descent',c:'Scales & improvisation',min:4,k:'timer',met:1,bpm:100,how:'Descend from a chord tone of G7 so chord tones land on the beats. Swing it.',html:_T('3:4 3:2 3:0 4:4 4:3 4:2 4:0 5:3',2,8,100)},
+ {id:'iivi',n:'ii–V–I line',c:'Scales & improvisation',min:5,k:'timer',met:1,bpm:100,how:'Arpeggios from the 3rd up to the 9th, resolving to Cmaj7. Then move it to other keys.',html:_T('4:3 3:2 3:5 2:5 3:4 2:3 2:6 1:5 1:3 2:5 2:1 3:4 2:1 - - -',2,8,100)},
+ {id:'triadpairs',n:'Triad pairs (Dorian)',c:'Scales & improvisation',min:4,k:'timer',how:'Alternate C and D triads over an Am7 vamp.',html:_T('3:5 2:5 1:3 3:7 2:7 1:5 2:7 3:7 3:5 2:5 1:3 2:5 3:7 2:7 1:5 -',2,8,80)},
+ {id:'guidetones',n:'Guide tones through a blues',c:'Scales & improvisation',min:5,k:'timer',how:'Play the 3rd and 7th of each chord as double stops, then make a melody from them.',html:_PC('I:7|IV:7|I:7|v:m7 I:7|IV:7|#iv:°7|I:7|VI:7|ii:m7|V:7|I:7 VI:7|ii:m7 V:7','F','shell',110)},
+ {id:'land3rd',n:'Land on the 3rd (blues)',c:'Scales & improvisation',min:6,k:'timer',how:'Over a blues in A, play the 3rd of each new chord on its first beat: C♯, F♯, G♯.',html:_PC('I:7|IV:7|I:7|%|IV:7|%|I:7|%|V:7|IV:7|I:7|V:7','A',null,100)},
+ {id:'improv',n:'Free improvisation',c:'Scales & improvisation',min:10,k:'timer',how:'Put on a backing track. One idea per chorus: space, a motif, then build. Record the last minute.',html:''},
+ // Rhythm
+ {id:'motion',n:'Constant motion 16ths',c:'Rhythm',min:3,k:'timer',met:1,bpm:60,rh:1,how:'The hand never stops: down on beats and "&", up on "e" and "a".',html:_RG('DxxxDxxxDxxxDxxx',60,'Am7')},
+ {id:'backbeat',n:'Backbeat scratch',c:'Rhythm',min:3,k:'timer',met:1,bpm:70,rh:1,how:'Muted 16ths with chord hits on 2 and 4.',html:_RG('xxxxDxxxxxxxDxxx',70,'E9')},
+ {id:'eanda',n:'The "e" and the "a"',c:'Rhythm',min:3,k:'timer',met:1,bpm:70,rh:1,how:'Hits on 16th upbeats; keep the hand moving.',html:_RG('D--u--D--u----d-',70,'Am7')},
+ {id:'threefour',n:'Three over four',c:'Rhythm',min:3,k:'timer',met:1,bpm:70,rh:1,how:'Accents every three 16ths against the beat.',html:_RG('DudUduDudUduDudu',70,'Em7')},
+ {id:'ninth',n:'Ninth-chord funk',c:'Rhythm',min:4,k:'timer',met:1,bpm:85,rh:1,how:'Hit the one hard; scratch through; catch the upbeat stabs.',html:_RG('D-x-x-xUx-D-x-xU',85,'E9')},
+ {id:'ghost',n:'Ghost-note groove',c:'Rhythm',min:4,k:'timer',met:1,bpm:80,rh:1,how:'Mostly muted scratches with sharp hits.',html:_RG('DxxuxxDxxuxxDxux',80,'D9')},
+ {id:'disco',n:'Continuous 16ths',c:'Rhythm',min:3,k:'timer',met:1,bpm:90,rh:1,how:'Every 16th sounds; accents drive it. Stamina.',html:_RG('duDududUduDududU',90,'Am triad')},
+ {id:'tresillo',n:'Tresillo 3+3+2',c:'Rhythm',min:3,k:'timer',met:1,bpm:80,rh:1,how:'Hits grouped 3+3+2 sixteenths.',html:_RG('D--D--D-D--D--D-',80,'Cmaj7')},
+ {id:'charleston',n:'Charleston comping',c:'Rhythm',min:3,k:'timer',met:1,bpm:110,rh:1,meter:'4/4',how:'Hit on 1 and the "and" of 2. Metronome on 2 and 4.',html:_RG('D--U----',110,'Cmaj7',2)},
+ {id:'folk',n:'Folk strum',c:'Rhythm',min:3,k:'timer',met:1,bpm:70,rh:1,how:'D – D U – U D U with constant motion.',html:_RG('D-DU-UDU',70,'G (open)',2)},
+ {id:'ladder',n:'Subdivision ladder',c:'Rhythm',min:3,k:'timer',met:1,bpm:60,how:'4 bars each of quarters, 8ths, triplets, 16ths and back, on a muted string.',html:''},
+ {id:'gap',n:'Gap trainer',c:'Rhythm',min:3,k:'timer',met:1,bpm:70,gap:'2',how:'Keep playing through the silent bars; land exactly with the click.',html:''},
+ {id:'odd',n:'7/8 riff',c:'Rhythm',min:4,k:'timer',met:1,bpm:80,meter:'7/8 (2+2+3)',how:'Count 1-2 1-2 1-2-3. Pedal notes mark each group.',html:_T('5:0 2:5 5:0 2:7 5:0 2:8 2:7 4:0 2:5 4:0 2:3 4:0 2:5 2:3',2,7,80)},
+ // Ear
+ {id:'earint',n:'Interval ear training',c:'Ear',min:4,k:'game',how:'Hear two notes, pick the interval. Sing it back.',html:_G('ear','data-mode="int"')},
+ {id:'earqual',n:'Chord quality ear training',c:'Ear',min:4,k:'game',how:'Hear a chord, pick its quality.',html:_G('ear','data-mode="qual"')},
+ {id:'eardeg',n:'Scale-degree ear training',c:'Ear',min:4,k:'game',how:'A cadence sets the key; name the degree of the next note.',html:_G('ear','data-mode="deg"')},
+ {id:'intcall',n:'Interval call-outs',c:'Ear',min:3,k:'game',how:'Name the note an interval above the root before the bar runs out.',html:_G('flash','data-deck="intervals" data-sec="8"')},
+ {id:'transcribe',n:'Transcription',c:'Ear',min:10,k:'timer',how:'Two bars of a solo by ear: sing it, find it, slow it down, write it as tab.',html:''},
+ // Repertoire
+ {id:'tune',n:'Real Book tune',c:'Repertoire',min:10,k:'timer',how:'Work on a tune using its 7-day routine: today\'s comping stage and soloing stage.',html:'<p class="small"><a href="#rb-guide" data-jump="rb-guide">Open the Real Book</a></p>'},
+ {id:'maint',n:'Tune maintenance',c:'Repertoire',min:5,k:'timer',how:'Head, one chorus comping, one chorus soloing on an old tune.',html:''}
+];
+const PRESETS=[
+ {name:'Quick 20',items:[['chromatic',3],['notequiz',5],['triadquiz',5],['backbeat',3],['earint',4]]},
+ {name:'Fretboard blitz 15',items:[['notequiz',4],['octavehop',4],['findall',4],['stringcall',3]]},
+ {name:'Jazz 40',items:[['spider',4],['chordquiz',4],['shells',8],['iivi',8],['guidetones',8],['charleston',4],['earqual',4]]},
+ {name:'Funk 30',items:[['motion',3],['backbeat',4],['ninth',6],['ghost',5],['disco',4],['slide913',4],['earint',4]]},
+ {name:'Rock 30',items:[['chromatic',4],['bends',4],['folk',4],['nearest',5],['pent3s',5],['improv',8]]},
+ {name:'Ear workout 15',items:[['earint',5],['earqual',5],['eardeg',5]]}
+];
+function drill(id){ return DRILLS.find(d=>d.id===id); }
+function metroHTML(d,it){ const bpm=it.bpm||d.bpm||80; const meter=it.meter||d.meter||'4/4'; return `<div data-tool="metronome" data-bpm="${bpm}" data-meter="${meter}"${d.gap?` data-gap="${d.gap}"`:''}></div>`; }
+function builder(el){ let sched=store.get('curSched',null)||{name:'My practice',items:[]}; let view='edit';
+  const edit=h('div',{class:'pb-edit'}), run=h('div',{class:'pb-run panel',hidden:''});
+  function save(){ store.set('curSched',sched); }
+  function libList(q,cat){ const wrap=h('div',{class:'pb-lib'}); const cats=[...new Set(DRILLS.map(d=>d.c))];
+    cats.forEach(c=>{ if(cat!=='All'&&c!==cat)return; const items=DRILLS.filter(d=>d.c===c&&(!q||(d.n+' '+d.how).toLowerCase().includes(q))); if(!items.length)return;
+      wrap.append(h('h4',{},c)); items.forEach(d=>{ const add=h('button',{class:'btn ghost pb-add',type:'button','aria-label':'Add '+d.n},'+ Add'); add.onclick=()=>{ sched.items.push({id:d.id,min:d.min,bpm:d.bpm||null}); save(); renderSched(); };
+        wrap.append(h('div',{class:'pb-libitem'},h('div',{},h('b',{},d.n),' ',h('span',{class:'badge'+(d.k==='game'?' got':'')},d.k==='game'?'🎮 game':'⏱ timer'),d.met?h('span',{class:'badge'},'♩ metronome'):null,h('div',{class:'small muted'},d.how)),add)); }); });
+    return wrap; }
+  const search=h('input',{type:'text',id:nid('pbs'),placeholder:'Search drills',style:'width:100%'}); let cat='All';
+  const catChips=h('div',{class:'chips'}); ['All',...new Set(DRILLS.map(d=>d.c))].forEach(c=>{ const b=h('button',{class:'chip',type:'button','aria-pressed':c===cat},c); b.onclick=()=>{ cat=c; $$('.chip',catChips).forEach(x=>x.setAttribute('aria-pressed',x===b)); renderLib(); }; catChips.append(b); });
+  const libBox=h('div',{}); function renderLib(){ libBox.innerHTML=''; libBox.append(libList(search.value.trim().toLowerCase(),cat)); } search.oninput=renderLib;
+  const nameI=h('input',{type:'text',id:nid('pbn'),value:sched.name,style:'width:100%;font-weight:700'}); nameI.oninput=()=>{ sched.name=nameI.value; save(); };
+  const list=h('ol',{class:'pb-list'}); const total=h('div',{class:'small muted'}); const savedSel=h('select',{id:nid('pbl'),'aria-label':'Saved schedules'});
+  function renderSaved(){ const S=store.get('schedules',[]); savedSel.innerHTML=''; savedSel.append(h('option',{value:''},'Load a schedule…')); const og1=h('optgroup',{label:'Presets'}); PRESETS.forEach((p,i)=>og1.append(h('option',{value:'p'+i},p.name))); savedSel.append(og1); if(S.length){ const og2=h('optgroup',{label:'My schedules'}); S.forEach((p,i)=>og2.append(h('option',{value:'s'+i},p.name+' ('+p.items.reduce((a,b)=>a+b.min,0)+' min)'))); savedSel.append(og2); } }
+  savedSel.onchange=()=>{ const v=savedSel.value; if(!v)return; if(v[0]==='p'){ const p=PRESETS[+v.slice(1)]; sched={name:p.name,items:p.items.map(([id,min])=>({id,min,bpm:(drill(id)||{}).bpm||null}))}; } else { sched=JSON.parse(JSON.stringify(store.get('schedules',[])[+v.slice(1)])); } nameI.value=sched.name; save(); renderSched(); savedSel.value=''; };
+  const saveB=h('button',{class:'btn ghost',type:'button'},'💾 Save schedule'), delB=h('button',{class:'btn ghost',type:'button'},'Delete saved'), clrB=h('button',{class:'btn ghost',type:'button'},'Clear'), startB=h('button',{class:'btn',type:'button'},'▶ Start practice'); const note=h('p',{class:'small'});
+  saveB.onclick=()=>{ if(!sched.items.length){ note.textContent='Add at least one drill first.'; return; } const S=store.get('schedules',[]); const i=S.findIndex(x=>x.name===sched.name); if(i>=0)S[i]=JSON.parse(JSON.stringify(sched)); else S.push(JSON.parse(JSON.stringify(sched))); store.set('schedules',S); renderSaved(); note.textContent=`Saved "${sched.name}".`; };
+  delB.onclick=()=>{ const S=store.get('schedules',[]); const i=S.findIndex(x=>x.name===sched.name); if(i<0){ note.textContent='This schedule has not been saved, so there is nothing to delete.'; return; } S.splice(i,1); store.set('schedules',S); renderSaved(); note.textContent=`Deleted "${sched.name}" from your saved schedules.`; };
+  clrB.onclick=()=>{ sched.items=[]; save(); renderSched(); };
+  startB.onclick=()=>{ if(!sched.items.length){ note.textContent='Add at least one drill first.'; return; } startRun(); };
+  function renderSched(){ list.innerHTML=''; sched.items.forEach((it,i)=>{ const d=drill(it.id); if(!d)return;
+      const m=h('input',{type:'number',min:1,max:60,value:it.min,id:nid('pbm'),style:'width:4em','aria-label':'Minutes'}); m.onchange=()=>{ it.min=Math.max(1,Math.min(60,+m.value||1)); save(); tot(); };
+      const ctl=[h('label',{class:'pb-f'},m,' min')];
+      if(d.met||d.html.includes('tabx')||d.rh){ const b=h('input',{type:'number',min:30,max:260,value:it.bpm||d.bpm||80,id:nid('pbb'),style:'width:4.5em','aria-label':'Tempo'}); b.onchange=()=>{ it.bpm=Math.max(30,Math.min(260,+b.value||80)); save(); }; ctl.push(h('label',{class:'pb-f'},b,' bpm')); }
+      if(d.met){ const mc=h('input',{type:'checkbox',id:nid('pbc')}); mc.checked=it.metro!==false; mc.onchange=()=>{ it.metro=mc.checked; save(); }; ctl.push(h('label',{class:'pb-f'},mc,' metronome')); }
+      const up=h('button',{class:'tw-b',type:'button','aria-label':'Move up'},'↑'), dn=h('button',{class:'tw-b',type:'button','aria-label':'Move down'},'↓'), rm=h('button',{class:'tw-b',type:'button','aria-label':'Remove'},'✕');
+      up.onclick=()=>{ if(i>0){ [sched.items[i-1],sched.items[i]]=[sched.items[i],sched.items[i-1]]; save(); renderSched(); } }; dn.onclick=()=>{ if(i<sched.items.length-1){ [sched.items[i+1],sched.items[i]]=[sched.items[i],sched.items[i+1]]; save(); renderSched(); } }; rm.onclick=()=>{ sched.items.splice(i,1); save(); renderSched(); };
+      list.append(h('li',{class:'pb-item'},h('div',{class:'pb-name'},h('b',{},d.n),h('span',{class:'small muted'},' · '+d.c+(d.k==='game'?' · 🎮':''))),h('div',{class:'pb-ctl'},...ctl,up,dn,rm))); });
+    if(!sched.items.length)list.append(h('li',{class:'small muted pb-empty'},'Your schedule is empty. Add drills from the library, or load a preset.')); tot(); }
+  function tot(){ total.textContent=`${sched.items.length} drill${sched.items.length===1?'':'s'} · ${sched.items.reduce((a,b)=>a+b.min,0)} minutes`; }
+  // ---- runner ----
+  let idx=0, done=[], tmr=null, panes=[];
+  const rTitle=h('h3',{style:'margin-top:.2rem'}), rMeta=h('div',{class:'eyebrow'}), rHow=h('p',{}), rTimerBox=h('div',{class:'pb-timer'}), rBody=h('div',{}), rDots=h('div',{class:'pb-dots'}), rMsg=h('p',{class:'small'});
+  const autoC=h('input',{type:'checkbox',id:nid('pba'),checked:''});
+  const prevB=h('button',{class:'btn ghost',type:'button'},'← Previous'), doneB=h('button',{class:'btn',type:'button'},'✓ Done, next'), skipB=h('button',{class:'btn ghost',type:'button'},'Skip'), endB=h('button',{class:'btn ghost',type:'button'},'Finish & log'), backB=h('button',{class:'btn ghost',type:'button'},'← Back to builder');
+  function startRun(){ view='run'; edit.hidden=true; run.hidden=false; idx=0; done=sched.items.map(()=>false); panes=sched.items.map(()=>null); rMsg.textContent=''; show(0); try{ el.scrollIntoView({block:'start'}); }catch(e){} }
+  function stopAll(){ if(tmr)tmr.stop(); $$('.btn',rBody).forEach(b=>{ if(/Stop|■/.test(b.textContent))b.click(); }); hush(); }
+  function show(i){ stopAll(); idx=i; const it=sched.items[i], d=drill(it.id); rMeta.textContent=`Drill ${i+1} of ${sched.items.length} · ${d.c} · ${d.k==='game'?'game':'timed practice'}`; rTitle.textContent=d.n; rHow.innerHTML=glinks(d.how);
+    rTimerBox.innerHTML=''; tmr=makeTimer(it.min,{big:true,onDone:mins=>{ done[idx]=true; dots(); addPracticeMinutes(0); if(autoC.checked){ const nx=next(); if(nx>=0)setTimeout(()=>show(nx),900); else finish(); } }}); rTimerBox.append(tmr.el);
+    rBody.innerHTML=''; if(!panes[i]){ const p=h('div',{}); let html=d.html; if(it.bpm)html=html.replace(/data-bpm="\d+"/g,`data-bpm="${it.bpm}"`); if(d.met&&it.metro!==false&&!d.rh)html=metroHTML(d,it)+html; if(d.rh&&it.metro!==false)html=html+metroHTML(d,it); if(!html)html='<p class="small muted">No app tool needed: follow the instructions with your guitar while the timer runs.</p>'; p.innerHTML=html; panes[i]=p; rBody.append(p); mount(p); } else rBody.append(panes[i]);
+    dots(); tmr.start(); }
+  function next(){ for(let j=idx+1;j<sched.items.length;j++)if(!done[j])return j; return -1; }
+  function dots(){ rDots.innerHTML=''; sched.items.forEach((it,j)=>{ const b=h('button',{class:'pb-dot'+(done[j]?' done':'')+(j===idx?' cur':''),type:'button',title:drill(it.id).n},String(j+1)); b.onclick=()=>show(j); rDots.append(b); }); }
+  function finish(){ stopAll(); const mins=sched.items.reduce((a,it,j)=>a+(done[j]?it.min:0),0); const n=done.filter(Boolean).length; if(!n){ rMsg.textContent='Mark at least one drill done (or let its timer finish) before logging.'; return; }
+    logSession(store.get('curweek',1),'custom',mins,n); const S=sessionStats(); rMsg.textContent=`Logged "${sched.name}": ${n} drill${n===1?'':'s'}, ${mins} minutes. Streak ${S.streak} 🔥 · Level ${S.level}.`; beep3(); done=done.map(()=>false); dots(); }
+  prevB.onclick=()=>{ if(idx>0)show(idx-1); }; doneB.onclick=()=>{ done[idx]=true; dots(); const nx=next(); if(nx>=0)show(nx); else finish(); }; skipB.onclick=()=>{ const nx=idx+1<sched.items.length?idx+1:-1; if(nx>=0)show(nx); }; endB.onclick=finish;
+  backB.onclick=()=>{ stopAll(); view='edit'; run.hidden=true; edit.hidden=false; };
+  run.append(h('div',{class:'controls'},backB,h('label',{for:autoC.id,class:'pb-auto'},autoC,'Move on automatically when the timer ends')),rDots,rMeta,rTitle,rTimerBox,rHow,rBody,h('div',{class:'controls'},prevB,doneB,skipB,endB),rMsg);
+  edit.append(h('div',{class:'pb-grid'},
+    h('div',{class:'panel'},h('span',{class:'eyebrow'},'Your schedule'),nameI,h('div',{class:'controls'},savedSel),list,total,h('div',{class:'controls'},startB,saveB,delB,clrB),note),
+    h('div',{class:'panel'},h('span',{class:'eyebrow'},'Drill library'),search,catChips,libBox)));
+  el.append(edit,run); renderSaved(); renderSched(); renderLib(); }
+
 /* ============ CHECKLISTS ============ */
 function checklists(){ const all=$$('input[data-check]'); const saved=store.get('checks',{});
   all.forEach(cb=>{ cb.checked=!!saved[cb.dataset.check]; cb.addEventListener('change',()=>{ const s=store.get('checks',{}); s[cb.dataset.check]=cb.checked; store.set('checks',s); prog(); }); });
@@ -4723,7 +4978,7 @@ function nav(){ const chapters=$$('.chapter'); const rail=$('.rail nav'); const 
   const start=(location.hash&&location.hash.slice(1))||store.get('chapter',chapters[0].id); show(start,false); }
 
 function fixedChords(el){ const row=h('div',{class:'chordrow'}); el.dataset.list.split(';').forEach(t=>{ const [n,r,f]=t.split('|'); row.append(chordCard(n,[...f].map(c=>c==='x'?-1:parseInt(c,10)),r,'tap to hear')); }); el.append(row); }
-const MOUNTERS={chordfinder:chordFinder,sessionstats:statsTool,octavequiz:octaveQuiz,findall:findAll,flash:flash,routine:routineTool,tuneroutine:tuneRoutine,pglossary:pglossary,backup:backupTool,triadquiz:triadQuiz,changetimer:changeTimer,fixedchords:fixedChords,explorer,notequiz:noteQuiz,circle,chords:chordLib,triads:triadFinder,drop2,metronome,ear};
+const MOUNTERS={chordquiz:chordQuiz,tuner:tuner,builder:builder,chordfinder:chordFinder,sessionstats:statsTool,octavequiz:octaveQuiz,findall:findAll,flash:flash,routine:routineTool,tuneroutine:tuneRoutine,pglossary:pglossary,backup:backupTool,triadquiz:triadQuiz,changetimer:changeTimer,fixedchords:fixedChords,explorer,notequiz:noteQuiz,circle,chords:chordLib,triads:triadFinder,drop2,metronome,ear};
 function mount(root){ $$('[data-tool]',root).forEach(el=>{ if(el.dataset.mounted)return; el.dataset.mounted='1'; try{ MOUNTERS[el.dataset.tool](el);}catch(err){ el.append(h('p',{class:'small muted'},'This tool failed to load: '+err.message)); console.error(err);} });
   $$('[data-board]',root).forEach(el=>{ if(el.dataset.mounted)return; el.dataset.mounted='1'; staticBoard(el); });
   $$('.tabx',root).forEach(el=>{ if(el.dataset.mounted)return; el.dataset.mounted='1'; tabBlock(el); });
