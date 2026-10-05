@@ -216,6 +216,33 @@ td.num,th.num{font-variant-numeric:tabular-nums}
 .pghead{display:flex;justify-content:space-between;gap:.5rem;align-items:baseline}
 .pgitem ol{margin:.3rem 0;padding-left:1.1rem}
 textarea{background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:.5rem}
+.tw{display:inline-flex;align-items:center;gap:.2rem;font:600 .78rem var(--f-mono);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:.12rem .3rem .12rem .5rem;position:relative;overflow:hidden;white-space:nowrap}
+.tw-ic{opacity:.7}.tw-disp{min-width:3.2em;text-align:center;font-variant-numeric:tabular-nums}
+.tw-b{all:unset;cursor:pointer;width:1.6em;height:1.6em;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ink)}
+.tw-b:hover{background:var(--sunk)}.tw-b:focus-visible{outline:2px solid var(--c-3)}
+.tw-go{background:var(--accent);color:var(--accent-ink)}.tw-go:hover{background:var(--accent)}
+.tw-bar{position:absolute;left:0;bottom:0;height:3px;width:100%;pointer-events:none}.tw-bar i{display:block;height:100%;width:0;background:var(--c-3)}
+.tw.running{border-color:var(--accent)}.tw.done{border-color:var(--c-7);background:color-mix(in srgb,var(--c-7) 14%,var(--bg))}
+.ex-tools{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;width:100%;justify-content:flex-end}
+.tw-done{font:600 .78rem var(--f-body);border:1px solid var(--c-7);color:var(--c-7);background:transparent;border-radius:999px;padding:.2rem .6rem;cursor:pointer}
+.tw-done.pop{background:var(--c-7);color:#fff}
+.tool > .tool-title .tw{margin-left:auto}
+.qbar{height:6px;background:var(--sunk);border-radius:999px;overflow:hidden;margin:.4rem 0}.qbar i{display:block;height:100%;width:0;background:var(--c-3);transition:width .05s linear}
+.flash-a{min-height:2rem;font:700 1.3rem var(--f-body);color:var(--c-7);margin:.3rem 0;opacity:0}.flash-a.show{opacity:1}
+.runlist{list-style:none;padding:0;margin:.4rem 0;display:grid;gap:4px}
+.runrow{display:grid;grid-template-columns:auto 2.6em minmax(0,1fr) auto;gap:.5rem;align-items:center;padding:.45rem .5rem;border-radius:4px;background:var(--bg);font-size:.88rem}
+.runrow.extra{background:var(--sunk)}.runrow.current{outline:2px solid var(--accent)}.runrow.ticked .rtext{text-decoration:line-through;color:var(--muted)}
+.runrow input{accent-color:var(--c-7);width:1.1rem;height:1.1rem}.rmin{font:700 .8rem var(--f-mono);color:var(--accent)}
+@media (max-width:560px){.runrow{grid-template-columns:auto 2.4em minmax(0,1fr)}.runrow .tw{grid-column:2 / -1;justify-self:start}}
+.routine-tool.celebrate{box-shadow:0 0 0 3px var(--c-7)}
+.run-foot{margin-top:.4rem}
+.heat{display:grid;grid-template-rows:repeat(7,12px);grid-auto-flow:column;grid-auto-columns:12px;gap:3px;margin:.4rem 0}
+.heat i{border-radius:2px;background:var(--sunk)}.heat i.l1{background:color-mix(in srgb,var(--c-7) 35%,var(--sunk))}.heat i.l2{background:color-mix(in srgb,var(--c-7) 65%,var(--sunk))}.heat i.l3{background:var(--c-7)}
+.badge{font:600 .75rem var(--f-body);padding:.25rem .55rem;border-radius:999px;border:1px dashed var(--line);color:var(--muted)}.badge.got{border:1px solid var(--c-3);color:var(--ink);background:color-mix(in srgb,var(--c-3) 18%,var(--surface))}
+.dash{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:1rem;align-items:start;margin-top:1.6rem}
+@media (max-width:900px){.dash{grid-template-columns:1fr}}
+.cf-name{font:800 2.2rem var(--f-display);margin-top:.6rem}
+.cf-out .small{margin:.2rem 0}
 .level{display:inline-block;font:700 .7rem var(--f-mono);padding:.15rem .45rem;border-radius:3px;background:var(--sunk);color:var(--ink)}
 @media (max-width:520px){.chart{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
@@ -272,7 +299,7 @@ details[open] summary{margin-bottom:.4rem}
     <div>
       <span class="eyebrow">Guitar course · 32 weeks · 20–60 minutes a day</span>
       <h1 style="margin-top:.6rem">Fretwork</h1>
-      <p class="lede">A complete, week-by-week course that turns the shapes already in your hands into a fretboard you can see, harmony you can hear and grooves you can lock into. Jazz, funk, soul, rock, blues, and a road into math rock. The second half is aimed squarely at becoming a competent jazz, soul and funk player. Alongside it: a mini real book of 19 tunes with comping and soloing guides, a daily practice glossary, and a handbook of tools. It also runs offline on an iPad.</p>
+      <p class="lede">A complete, week-by-week course that turns the shapes already in your hands into a fretboard you can see, harmony you can hear and grooves you can lock into. Jazz, funk, soul, rock, blues, and a road into math rock. The second half is aimed squarely at becoming a competent jazz, soul and funk player. Alongside it: a mini real book of 27 rock, jazz, soul and funk tunes with comping and soloing guides, a chord finder, a daily practice glossary, and a handbook of tools. It also runs offline on an iPad.</p>
     </div>
     <div class="profile">
       <span class="eyebrow">Who this course is for</span>
@@ -288,6 +315,12 @@ details[open] summary{margin-bottom:.4rem}
     </div>
   </div>
 
+  <div class="dash">
+    <div data-tool="routine" data-dash="1"></div>
+    <div data-tool="sessionstats"></div>
+  </div>
+  <p class="small muted">Pick your current week, choose 20, 40 or 60 minutes, and press Start session: each item runs its own timer and ticks itself off, then the next begins. Finish &amp; log records the session for your streak, level and calendar. Every exercise in the lessons also has its own timer and a Done counter.</p>
+
   <h2>How the course is built</h2>
   <p>Everything runs in one direction. Work through the weeks in order; each lesson teaches what it needs and nothing sends you hunting elsewhere. The Real Book and the Handbook are there for when you want them, not as homework.</p>
   <div class="tablewrap"><table>
@@ -301,7 +334,7 @@ details[open] summary{margin-bottom:.4rem}
       <tr><td><b>VI · The Rhythm Section</b></td><td>21–24</td><td>Funk mastery, soul and gospel harmony, neo-soul, writing parts</td><td>Stab parts, triads over bass (IV/V)</td><td><div class="progressbar" data-progress="wk21-"><i></i></div><span class="small muted" data-label></span></td></tr>
       <tr><td><b>VII · Melody</b></td><td>25–28</td><td>Octaves, 3rds and 6ths, chord melody, building a solo</td><td>Triads under the melody note</td><td><div class="progressbar" data-progress="wk25-"><i></i></div><span class="small muted" data-label></span></td></tr>
       <tr><td><b>VIII · The Working Musician</b></td><td>29–32</td><td>Reharmonisation, intros and endings, jamming, a recorded set</td><td>Triad substitutions in reharmonisation</td><td><div class="progressbar" data-progress="wk29-"><i></i></div><span class="small muted" data-label></span></td></tr>
-      <tr><td><b>Mini Real Book</b></td><td>Week 5 on</td><td>14 standards and grooves, each with comping and soloing guides</td><td>Every chart can show its changes as voice-led triads</td><td><div class="progressbar" data-progress="rb-"><i></i></div><span class="small muted" data-label></span></td></tr>
+      <tr><td><b>Mini Real Book</b></td><td>Week 5 on</td><td>27 songs and standards (8 rock to start, then 19 jazz, soul and funk), each with comping and soloing guides and a 7-day routine</td><td>Every chart can show its changes as voice-led triads</td><td><div class="progressbar" data-progress="rb-"><i></i></div><span class="small muted" data-label></span></td></tr>
     </tbody>
   </table></div>
   <p class="small muted">Progress is saved in this browser when you tick a lesson's checklist.</p>
@@ -439,9 +472,15 @@ details[open] summary{margin-bottom:.4rem}
     </tbody>
   </table></div>
 
+  
+  <div class="tool"><div class="tool-title"><h4>Octave hop</h4><span class="eyebrow">Game · find the octave</span></div><div data-tool="octavequiz"></div></div>
+  <p class="small muted">Set a time per note once you are accurate; then try a 60-second sprint and beat your best.</p>
   <div class="lesson-sec"><span class="num">1.4</span><h2>The note quiz</h2></div>
   <p>Turn on strings 4 and 3 only, natural notes only. Aim for a streak of 20 and an average under 3 seconds by day 7. Use the octave shapes to work answers out; speed comes from repetition.</p>
   <div class="tool"><div class="tool-title"><h4>Note quiz</h4><span class="eyebrow">Fretboard trainer</span></div><div data-tool="notequiz"></div></div>
+  <div class="tool"><div class="tool-title"><h4>Find every note</h4><span class="eyebrow">Game · one note a day</span></div><div data-tool="findall"></div></div>
+  <p class="small muted">The "one note a day" drill as a game: tap every instance of the note, frets 0–12, as fast as you can. Wrong taps cost 2 seconds. Your best time per note is saved.</p>
+
 
   <div class="lesson-sec"><span class="num">1.5</span><h2>What a triad is</h2></div>
   <p>A triad is three notes: a <b>root</b>, a <b>3rd</b> and a <b>5th</b>. C major is C (root), E (3rd), G (5th). The 3rd decides major or minor; the 5th adds weight. Every chord you play, including your 9ths and 13ths, has a triad at its core, so triads are the most efficient chords to learn.</p>
@@ -489,6 +528,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk01-5" data-check="wk01-5"><label for="wk01-5">Ear trainer: m3 / M3 / P5 at 90% or better.</label></li>
   </ul>
   <div class="callout warn"><b>If you're stuck</b>Notes still slow? Do only one string a day and say every note from open to 12 before the quiz. Triad shapes sliding out of your head? Draw them: three vertical lines, dots, and write R, 3, 5 next to each dot. Strumming hand stiff? Halve the tempo and let the forearm, not the fingers, drive the motion.</div>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -510,6 +550,8 @@ details[open] summary{margin-bottom:.4rem}
   <p>The high e has the same notes as the low E, two octaves up, so you already know it. That leaves the B string. Find B-string notes from the D string (three frets up, two strings over) or from the A string (two frets back, three strings over). Every shape that crosses from G to B shifts up one fret; you will meet this again in every chord and scale.</p>
   <div class="ex"><header><h4>Vertical naming</h4><span class="meta">2 min a day · a new fret each day</span></header><div class="body"><p>Pick a fret (5, 7, 3, 10, 8, 1, 12). Name the note on every string at that fret, low to high and back. Then pick a note and play it on every string from low to high, frets 0–12, one note per click at 50 bpm.</p></div></div>
 
+  
+  <div class="tool"><div class="tool-title"><h4>Note call-outs</h4><span class="eyebrow">Flashcards · timed</span></div><div data-tool="flash" data-deck="stringnote" data-sec="5"></div></div>
   <div class="lesson-sec"><span class="num">2.2</span><h2>F and G on strings 1-2-3</h2></div>
   <p>Same three shapes as C, moved. Find them in the finder (choose F, then G), then play the climbs.</p>
   <div class="tool"><div class="tool-title"><h4>Triad finder</h4><span class="eyebrow">Try F and G</span></div>
@@ -554,6 +596,7 @@ details[open] summary{margin-bottom:.4rem}
   <p>The chart below generates voice-led triads for you. Set the voicing type to <b>Triads · strings 1-2-3</b>, pick a neck zone, and play along with Play the changes. Then change the zone and do it again. Am is new: find its shapes in the finder first (choose A, Minor).</p>
   <div class="progchart" data-key="C" data-bpm="80" data-vmode="tri1" data-zone="3-8" data-prog="I|vi|IV|V"></div>
 
+  <div class="callout why"><b>Rock Real Book</b><a href="#rk-knockin" data-jump="rk-knockin">Knockin' on Heaven's Door</a> and <a href="#rk-letitbe" data-jump="rk-letitbe">Let It Be</a> use exactly these skills: triads in one zone and the nearest-neighbour change.</div>
   <div class="lesson-sec"><span class="num">✓</span><h2>Check</h2></div>
   <ul class="checks">
     <li><input type="checkbox" id="wk02-1" data-check="wk02-1"><label for="wk02-1">Note quiz, all strings, natural notes: streak of 20.</label></li>
@@ -563,6 +606,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk02-5" data-check="wk02-5"><label for="wk02-5">Backbeat scratch at 70 bpm for 2 minutes, and an improvisation that uses both pentatonic positions.</label></li>
   </ul>
   <div class="callout warn"><b>If you're stuck</b>If the shapes blur together, learn only root position of C, F and G first, then add one inversion per day. If the scratch pattern falls apart, play only the hits on 2 and 4 with the hand still moving, then add scratches back.</div>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -605,6 +649,8 @@ details[open] summary{margin-bottom:.4rem}
     <div data-board data-frets="10" data-dots="3:5:1:root;3:6:♭2:ext;3:7:2:ext;2:4:♭3:3;2:5:3:3;2:6:4:ext;2:7:♭5:5;2:8:5:5;1:4:♭6:ext;1:5:6:ext;1:6:♭7:7;1:7:7:7;1:8:8:root"></div></div>
   <div class="ex"><header><h4>Interval drill</h4><span class="meta">5 min</span></header><div class="body"><ol class="small"><li>Pick a root on the 5th string. Play root then each interval, saying its name.</li><li>Sing the second note before you play it.</li><li>Repeat from a G-string root and notice the one-fret shift.</li></ol></div></div>
 
+  
+  <div class="tool"><div class="tool-title"><h4>Interval call-outs</h4><span class="eyebrow">Flashcards · timed</span></div><div data-tool="flash" data-deck="intervals" data-sec="8"></div></div>
   <div class="lesson-sec"><span class="num">3.2</span><h2>The major scale is a ruler</h2></div>
   <p>The major scale is the pattern <b>W W H W W W H</b> (whole step = 2 frets, half step = 1). From C: C D E F G A B C. Every chord and scale is described against this ruler: "♭3" means "the 3rd of the major scale, one fret lower". Play it on one string to feel the pattern:</p>
   <div class="tabx" data-sub="2" data-bar="8" data-bpm="80" data-notes="5:3 5:5 5:7 5:8 5:10 5:12 5:14 5:15 5:14 5:12 5:10 5:8 5:7 5:5 5:3 -"></div>
@@ -652,6 +698,7 @@ details[open] summary{margin-bottom:.4rem}
   <p>Am – F – C – G (vi – IV – I – V) uses this week's minor shapes. Play it with triads on strings 1-2-3, then 2-3-4, in two zones each. Then improvise over it with the A minor pentatonic, landing on a note of each chord as it arrives.</p>
   <div class="progchart" data-key="C" data-bpm="84" data-vmode="tri1" data-zone="3-8" data-prog="vi|IV|I|V"></div>
 
+  <div class="callout why"><b>Rock Real Book</b>Try <a href="#rk-alabama" data-jump="rk-alabama">Sweet Home Alabama</a>: three triads, one loop, and a first taste of Mixolydian.</div>
   <div class="lesson-sec"><span class="num">✓</span><h2>Check</h2></div>
   <ul class="checks">
     <li><input type="checkbox" id="wk03-1" data-check="wk03-1"><label for="wk03-1">Play and name every interval from a 5th-string root and a 3rd-string root.</label></li>
@@ -661,6 +708,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk03-5" data-check="wk03-5"><label for="wk03-5">Box 1 in 3s at 80 bpm triplets; pattern 2 at 70 bpm; ear: major vs minor at 90%.</label></li>
   </ul>
   <div class="callout warn"><b>If you're stuck</b>Intervals feel abstract? Learn just 3 this week: ♭3, 3 and 5. They are the only ones triads need. The rest will come in Week 6 with 7th chords.</div>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -695,6 +743,8 @@ details[open] summary{margin-bottom:.4rem}
   <p>The quiz names a triad, an inversion and a string set. Find it, play it, name each note's job, then reveal. Start with major and minor on 1-2-3 and 2-3-4. Add the lower sets later in the week. Aim to find each in under 5 seconds.</p>
   <div class="tool"><div class="tool-title"><h4>Triad quiz</h4><span class="eyebrow">Flashcards for your hands</span></div><div data-tool="triadquiz"></div></div>
 
+  
+  <div class="tool"><div class="tool-title"><h4>Triad call-outs</h4><span class="eyebrow">Flashcards · timed</span></div><div data-tool="flash" data-deck="triadcall" data-sec="8"></div></div>
   <div class="lesson-sec"><span class="num">4.4</span><h2>The whole pentatonic</h2></div>
   <div class="ex"><header><h4>Full-neck run</h4><span class="meta">A minor pentatonic · 8th notes · 70 bpm</span></header><div class="body">
     <p>Play position 5 (frets 2–5) ascending, slide up to position 1 for the descent, then position 2 ascending, position 3 descending, and so on up to position 5 at fret 14. No stopping. Then improvise along the same path, a phrase in each position.</p></div></div>
@@ -706,6 +756,7 @@ details[open] summary{margin-bottom:.4rem}
   <p>A 12-bar blues in A using only triads. Choose <b>Triads · strings 2-3-4</b> first, then strings 1-2-3. The dominant 7ths are reduced to major triads for now; you add the 7th in Week 6.</p>
   <div class="progchart" data-key="A" data-bpm="100" data-vmode="tri2" data-zone="3-8" data-prog="I:7|IV:7|I:7|%|IV:7|%|I:7|%|V:7|IV:7|I:7|V:7"></div>
 
+  <div class="callout why"><b>Rock Real Book</b><a href="#rk-heyjoe" data-jump="rk-heyjoe">Hey Joe</a> is a five-chord cycle that is perfect for triads on every string set.</div>
   <div class="lesson-sec"><span class="num">✓</span><h2>Check · Part I benchmarks</h2></div>
   <ul class="checks">
     <li><input type="checkbox" id="wk04-1" data-check="wk04-1"><label for="wk04-1"><b>Fretboard:</b> note quiz on all strings, average under 2.0 s.</label></li>
@@ -716,6 +767,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk04-6" data-check="wk04-6"><label for="wk04-6"><b>Rhythm:</b> pattern 1 at 80 bpm for 2 minutes. Recording made and reviewed.</label></li>
   </ul>
   <div class="callout warn"><b>If you're stuck</b>Don't start Part II until the triad benchmarks pass. Everything in Part II is built on them. Repeat this week with the triad quiz as your main drill.</div>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -746,6 +798,8 @@ details[open] summary{margin-bottom:.4rem}
   </ul>
   <div class="ex"><header><h4>Say the key</h4><span class="meta">2 min · also away from the guitar</span></header><div class="body"><p class="small">Pick a key. Say its notes, then its seven chords ("G, A minor, B minor, C, D, E minor, F♯ diminished"). This week: C, G, D, F, B♭. Next week add A, E, E♭, A♭.</p></div></div>
 
+  
+  <div class="tool"><div class="tool-title"><h4>Key signature call-outs</h4><span class="eyebrow">Flashcards · timed</span></div><div data-tool="flash" data-deck="keysig" data-sec="5"></div></div>
   <div class="lesson-sec"><span class="num">5.3</span><h2>The diatonic pattern</h2></div>
   <div class="tablewrap"><table style="text-align:center">
     <thead><tr><th>Degree</th><th>I</th><th>ii</th><th>iii</th><th>IV</th><th>V</th><th>vi</th><th>vii</th></tr></thead>
@@ -764,6 +818,9 @@ details[open] summary{margin-bottom:.4rem}
   <div class="tool"><div class="tool-title"><h4>Triad finder</h4><span class="eyebrow">Check your shapes</span></div><div data-tool="triads" data-root="G" data-q="maj" data-set="2"></div></div>
   <div class="ex"><header><h4>Random numerals</h4><span class="meta">5 min</span></header><div class="body"><p class="small">Write 1–7 on scraps of paper and draw them from a cup, or use a random-number app. Play that chord of today's key, in the nearest inversion to the last one, on one string set. This trains "find chord X from where I am now", which is exactly the skill a chord change needs.</p></div></div>
 
+  
+  <div class="tool"><div class="tool-title"><h4>Random numerals</h4><span class="eyebrow">Flashcards · timed</span></div><div data-tool="flash" data-deck="numerals" data-sec="8"></div></div>
+  <p class="small muted">Name the chord, then play it in the nearest inversion before the bar runs out.</p>
   <div class="lesson-sec"><span class="num">5.5</span><h2>Slash chords and bass lines</h2></div>
   <p>A slash chord names a chord and its bass note: C/E is C with E lowest, G/B is G with B lowest. They let the bass walk by step while the chords change, the sound of a lot of soul, gospel and pop. Here is a descending bass line, C B A G F E D, then G.</p>
   <div class="tabx" data-sub="1" data-bar="4" data-bpm="70" data-notes="5:3+4:2+3:0+2:1 - 5:2+4:0+3:0+2:3 - 5:0+4:2+3:2+2:1 - 6:3+4:2+3:2+2:1 - 4:3+3:2+2:1+1:0 - 6:0+5:3+4:2+3:0+2:1 - 4:0+3:2+2:1+1:1 - 6:3+5:2+4:0+3:0+2:0 -"></div>
@@ -777,6 +834,7 @@ details[open] summary{margin-bottom:.4rem}
   <p>I – V – vi – IV is behind hundreds of songs. Play it with triads in G, then D, then F, in two zones each. Then improvise over it with the major pentatonic of the key (the same shapes as the relative minor pentatonic), landing on a chord tone when each chord arrives.</p>
   <div class="progchart" data-key="G" data-bpm="90" data-vmode="tri1" data-zone="3-8" data-prog="I|V|vi|IV"></div>
 
+  <div class="callout why"><b>Rock Real Book</b><a href="#rk-wonderful" data-jump="rk-wonderful">Wonderful Tonight</a> (slash chords) and <a href="#rk-creep" data-jump="rk-creep">Creep</a> (chords from outside the key) put this week's ideas into real songs.</div>
   <div class="lesson-sec"><span class="num">✓</span><h2>Check</h2></div>
   <ul class="checks">
     <li><input type="checkbox" id="wk05-1" data-check="wk05-1"><label for="wk05-1">Name the key signature of any key on the circle within 5 seconds.</label></li>
@@ -785,6 +843,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk05-4" data-check="wk05-4"><label for="wk05-4">Slash-chord bass line at 70 bpm, all notes ringing.</label></li>
     <li><input type="checkbox" id="wk05-5" data-check="wk05-5"><label for="wk05-5">Pop axis in three keys with triads; ear: four triad types at 85%.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -813,8 +872,12 @@ details[open] summary{margin-bottom:.4rem}
       <tr><td>°7</td><td>diminished</td><td>diminished 7th</td><td>1 ♭3 ♭5 𝄫7</td><td>C E♭ G♭ A</td><td>Passing chord</td></tr>
     </tbody>
   </table></div>
+  <p>Check any shape you know with the chord finder: tap the notes and it names the chord and labels each note's job.</p>
+  <div class="tool"><div class="tool-title"><h4>Chord finder</h4><span class="eyebrow">Place notes, get the name</span></div><div data-tool="chordfinder"></div></div>
   <p>The <b>3rd and 7th</b> define each type. The root can be left to the bass player, and the 5th adds little. That is why the next voicings drop the 5th.</p>
 
+  
+  <div class="tool"><div class="tool-title"><h4>Spell-a-chord</h4><span class="eyebrow">Flashcards · timed</span></div><div data-tool="flash" data-deck="spell" data-sec="8"></div></div>
   <div class="lesson-sec"><span class="num">6.2</span><h2>Shell voicings</h2></div>
   <p>Root, 3rd and 7th. From a 6th-string root the order is R–7–3; from a 5th-string root it is R–3–7. Mute the strings in between with the underside of your fingers.</p>
   <div class="tool"><div class="tool-title"><h4>Shell library</h4><span class="eyebrow">Pick a root</span></div><div data-tool="chords" data-sets="shells6,shells5" data-root="G"></div></div>
@@ -855,6 +918,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk06-4" data-check="wk06-4"><label for="wk06-4">Guide-tone line in C and F; Charleston rhythm over the ii–V–I with the click on 2 and 4.</label></li>
     <li><input type="checkbox" id="wk06-5" data-check="wk06-5"><label for="wk06-5">Change timer: Dm7↔G7 shells at 40+ per minute.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -932,6 +996,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk07-5" data-check="wk07-5"><label for="wk07-5">Comp the jazz blues in F at 110 bpm, click on 2 and 4.</label></li>
   </ul>
   <div class="callout warn"><b>If you're stuck</b>Too many shapes? Learn only root position and the inversion with the 7th in the bass this week; add the other two next week. Those two alone get you through most ii–V–Is.</div>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -963,6 +1028,8 @@ details[open] summary{margin-bottom:.4rem}
     </tbody>
   </table></div>
 
+    <p>Not sure what a grip you already play is called? Put it in the chord finder.</p>
+  <div class="tool"><div class="tool-title"><h4>Chord finder</h4><span class="eyebrow">Place notes, get the name</span></div><div data-tool="chordfinder"></div></div>
   <div class="lesson-sec"><span class="num">8.2</span><h2>The 9–13 slide</h2></div>
   <p>On a dominant chord, alternate the 9 and 13 voicings on the same root. Only the top string moves, two frets. This keeps one-chord vamps alive for minutes.</p>
   <div class="tabx" data-sub="2" data-bar="8" data-bpm="90" data-notes="5:3+4:2+3:3+2:3+1:3 - - 5:3+4:2+3:3+2:3+1:5 - 5:3+4:2+3:3+2:3+1:3 - - 5:3+4:2+3:3+2:3+1:3 - - 5:3+4:2+3:3+2:3+1:5 - 5:3+4:2+3:3+2:3+1:5 5:3+4:2+3:3+2:3+1:3 -"></div>
@@ -1013,6 +1080,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk08-4" data-check="wk08-4"><label for="wk08-4"><b>Changes:</b> change timer at 40+ for your three hardest pairs.</label></li>
     <li><input type="checkbox" id="wk08-5" data-check="wk08-5"><label for="wk08-5"><b>Groove:</b> pattern 4 at 90 bpm for 3 minutes; pattern 6 at 100 bpm for 2 minutes.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1059,6 +1127,7 @@ details[open] summary{margin-bottom:.4rem}
   <div class="progchart" data-key="A" data-bpm="100" data-voicings="0" data-prog="I:7|IV:7|I:7|%|IV:7|%|I:7|%|V:7|IV:7|I:7|V:7"></div>
   <p class="small muted">Loop it or use a backing track. Chorus 1: 3rds on beat 1 only. Chorus 2: arpeggios only. Chorus 3: pentatonic phrases that end on a chord tone.</p>
 
+  <div class="callout why"><b>Rock Real Book</b><a href="#rk-sultans" data-jump="rk-sultans">Sultans of Swing</a> and <a href="#rk-hotel" data-jump="rk-hotel">Hotel California</a> are rock songs built for triad and 7th-chord arpeggios.</div>
   <div class="lesson-sec"><span class="num">✓</span><h2>Check</h2></div>
   <ul class="checks">
     <li><input type="checkbox" id="wk09-1" data-check="wk09-1"><label for="wk09-1">C major in five positions, G major in two, at 80 bpm 8ths.</label></li>
@@ -1066,6 +1135,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk09-3" data-check="wk09-3"><label for="wk09-3">A7, D7, E7 arpeggios in 5th position, and the A7–D7 line.</label></li>
     <li><input type="checkbox" id="wk09-4" data-check="wk09-4"><label for="wk09-4">A full blues chorus landing on each new chord's 3rd.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1126,6 +1196,7 @@ details[open] summary{margin-bottom:.4rem}
   <p>Improvise for 3 minutes using only 16th-note rhythms and the C/D triad pair, then the full A Dorian. When the D7 arrives, land on F♯ (its 3rd and the Dorian colour). Then try the same on <a href="#rb-oye" data-jump="rb-oye">Oye Como Va</a>.</p>
   <div class="progchart" data-key="A" data-bpm="96" data-vmode="tri1" data-prog="i:m7|IV:7|i:m7|IV:7"></div>
 
+  <div class="callout why"><b>Rock Real Book</b>Mixolydian in rock: <a href="#rk-alabama" data-jump="rk-alabama">Sweet Home Alabama</a>.</div>
   <div class="lesson-sec"><span class="num">✓</span><h2>Check</h2></div>
   <ul class="checks">
     <li><input type="checkbox" id="wk10-1" data-check="wk10-1"><label for="wk10-1">Play Dorian, Mixolydian and Lydian on A and name the colour note of each.</label></li>
@@ -1133,6 +1204,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk10-3" data-check="wk10-3"><label for="wk10-3">The funk line at 85 bpm with clean ghost notes.</label></li>
     <li><input type="checkbox" id="wk10-4" data-check="wk10-4"><label for="wk10-4">3 minutes over the Dorian vamp using 16th-note rhythms; recorded.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1193,6 +1265,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk11-3" data-check="wk11-3"><label for="wk11-3">Name the upper-structure triads for Cmaj9, C9 and Cm11.</label></li>
     <li><input type="checkbox" id="wk11-4" data-check="wk11-4"><label for="wk11-4">Three choruses of jazz blues, recorded; the changes are audible without the backing.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1255,6 +1328,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk12-4" data-check="wk12-4"><label for="wk12-4"><b>Arpeggios:</b> maj7, m7, 7 in two positions in any key.</label></li>
     <li><input type="checkbox" id="wk12-5" data-check="wk12-5"><label for="wk12-5"><b>Real Book:</b> one Level 1 or Level 2 tune comped and soloed to a backing track.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1323,6 +1397,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk13-3" data-check="wk13-3"><label for="wk13-3">C, F, G spread triads in all inversions on strings 5-3-2.</label></li>
     <li><input type="checkbox" id="wk13-4" data-check="wk13-4"><label for="wk13-4">Your own 2-bar 7/8 riff, recorded.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1374,6 +1449,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk14-2" data-check="wk14-2"><label for="wk14-2">Both polyrhythm grids at 80 bpm, metronome steady.</label></li>
     <li><input type="checkbox" id="wk14-3" data-check="wk14-3"><label for="wk14-3">Three chords and one scale found in F A C G C E.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1413,6 +1489,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk15-2" data-check="wk15-2"><label for="wk15-2">Comping from memory in two zones.</label></li>
     <li><input type="checkbox" id="wk15-3" data-check="wk15-3"><label for="wk15-3">Full performance recorded to a backing track.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1450,6 +1527,7 @@ details[open] summary{margin-bottom:.4rem}
     <div class="panel"><span class="eyebrow">Part VIII · Weeks 29–32</span><h4>The Working Musician</h4><p class="small">Reharmonisation, intros and endings, jam sessions, a three-tune set and a final recording.</p></div>
   </div>
   <p>Before Week 17, make sure two Real Book tunes are in daily maintenance. Part V uses them constantly.</p>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1526,6 +1604,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk17-3" data-check="wk17-3"><label for="wk17-3">The bebop ii–V–I at 140 bpm.</label></li>
     <li><input type="checkbox" id="wk17-4" data-check="wk17-4"><label for="wk17-4">A blues chorus recorded with bebop lines.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1573,6 +1652,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk18-2" data-check="wk18-2"><label for="wk18-2">One line varied five ways.</label></li>
     <li><input type="checkbox" id="wk18-3" data-check="wk18-3"><label for="wk18-3">Your own ii–V line written down and learned in three keys.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1632,6 +1712,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk19-3" data-check="wk19-3"><label for="wk19-3">Minor ii–V–i line in six keys.</label></li>
     <li><input type="checkbox" id="wk19-4" data-check="wk19-4"><label for="wk19-4">Two choruses of Blue Bossa with altered colour on each V.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1683,6 +1764,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk20-3" data-check="wk20-3"><label for="wk20-3"><b>Minor:</b> minor ii–V–i line in six keys; 7♭9 voicings in four.</label></li>
     <li><input type="checkbox" id="wk20-4" data-check="wk20-4"><label for="wk20-4"><b>Comping:</b> three choruses of a standard with drop-3s, changing rhythm every 4 bars.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1728,6 +1810,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk21-2" data-check="wk21-2"><label for="wk21-2">Single-note and octave parts at 95 bpm.</label></li>
     <li><input type="checkbox" id="wk21-3" data-check="wk21-3"><label for="wk21-3">Five minutes of one part, recorded, no slips.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1765,12 +1848,14 @@ details[open] summary{margin-bottom:.4rem}
 
   <div class="lesson-sec"><span class="num">→</span><h2>Apply</h2></div>
   <p>Take the pop axis (I–V–vi–IV) from Week 5 and add a passing diminished, a minor iv and a sus resolution. Then study <a href="#rb-twoofus" data-jump="rb-twoofus">Just the Two of Us</a>.</p>
+  <div class="callout why"><b>Rock Real Book</b>The minor iv and a borrowed major III in rock: <a href="#rk-creep" data-jump="rk-creep">Creep</a>.</div>
   <div class="lesson-sec"><span class="num">✓</span><h2>Check</h2></div>
   <ul class="checks">
     <li><input type="checkbox" id="wk22-1" data-check="wk22-1"><label for="wk22-1">The walk-up in two keys.</label></li>
     <li><input type="checkbox" id="wk22-2" data-check="wk22-2"><label for="wk22-2">Backdoor ii–V and minor iv in three keys.</label></li>
     <li><input type="checkbox" id="wk22-3" data-check="wk22-3"><label for="wk22-3">A reharmonised pop progression, recorded.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1813,6 +1898,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk23-2" data-check="wk23-2"><label for="wk23-2">Double-stop fills in A, D and E minor pentatonic.</label></li>
     <li><input type="checkbox" id="wk23-3" data-check="wk23-3"><label for="wk23-3">A recorded neo-soul loop with your own fills.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1852,6 +1938,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk24-3" data-check="wk24-3"><label for="wk24-3"><b>Soul harmony:</b> walk-up, backdoor, minor iv and sus resolution in two keys.</label></li>
     <li><input type="checkbox" id="wk24-4" data-check="wk24-4"><label for="wk24-4"><b>Ear:</b> one funk or soul guitar part learned by ear.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1888,6 +1975,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk25-2" data-check="wk25-2"><label for="wk25-2">A tune's melody in octaves.</label></li>
     <li><input type="checkbox" id="wk25-3" data-check="wk25-3"><label for="wk25-3">A recorded blues chorus in octaves.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1924,6 +2012,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk26-1" data-check="wk26-1"><label for="wk26-1">3rds and 6ths in C, G and F.</label></li>
     <li><input type="checkbox" id="wk26-2" data-check="wk26-2"><label for="wk26-2">A harmonised melody recorded over a backing track.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -1959,6 +2048,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk27-1" data-check="wk27-1"><label for="wk27-1">The 4-bar example at 80 bpm.</label></li>
     <li><input type="checkbox" id="wk27-2" data-check="wk27-2"><label for="wk27-2">Your 8-bar arrangement, in time, recorded.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -2002,6 +2092,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk28-3" data-check="wk28-3"><label for="wk28-3"><b>Soloing:</b> three choruses with a clear arc, recorded.</label></li>
     <li><input type="checkbox" id="wk28-4" data-check="wk28-4"><label for="wk28-4"><b>Ear:</b> a full chorus transcribed.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -2045,6 +2136,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk29-2" data-check="wk29-2"><label for="wk29-2">8 bars of a standard reharmonised and checked against the melody.</label></li>
     <li><input type="checkbox" id="wk29-3" data-check="wk29-3"><label for="wk29-3">A pop song reharmonised as soul-jazz, recorded.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -2087,6 +2179,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk30-3" data-check="wk30-3"><label for="wk30-3">One tune comped and soloed in a random key.</label></li>
     <li><input type="checkbox" id="wk30-4" data-check="wk30-4"><label for="wk30-4">Played with at least one other musician, in person or online.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -2121,6 +2214,7 @@ details[open] summary{margin-bottom:.4rem}
     <li><input type="checkbox" id="wk31-1" data-check="wk31-1"><label for="wk31-1">Three lead sheets written from memory and checked.</label></li>
     <li><input type="checkbox" id="wk31-2" data-check="wk31-2"><label for="wk31-2">Full set run-through without stopping.</label></li>
   </ul>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
@@ -2151,13 +2245,14 @@ details[open] summary{margin-bottom:.4rem}
     <div class="panel"><h4>Writing</h4><p class="small">Write a tune a month: a blues head, a soul song, a funk groove, a math-rock piece. Use reharmonisation tools on your own songs.</p></div>
     <div class="panel"><h4>Playing out</h4><p class="small">Jam sessions, a duo with a singer, an online collaboration. Real situations teach what practice cannot.</p></div>
   </div>
+  <div data-tool="sessionstats" data-compact="1"></div>
   <div class="pager"></div>
 </section>
 
 <!-- ===================== REAL BOOK GUIDE ===================== -->
 <section class="chapter" id="rb-guide" data-part="Mini Real Book" data-num="RB" data-title="How to Tackle a Standard" hidden>
   <div class="chap-head"><span class="eyebrow">Mini Real Book</span><h1>How to Tackle a Standard</h1>
-    <p class="lede">Nineteen tunes and grooves, ordered by difficulty, each with its changes, an analysis, and step-by-step guides for comping and soloing. This page is the method that every tune page follows.</p></div>
+    <p class="lede">Twenty-seven songs, tunes and grooves, ordered by difficulty: eight rock songs to start, then jazz, soul and funk, each with its changes, an analysis, and step-by-step guides for comping and soloing. This page is the method that every tune page follows.</p></div>
 
   <div class="callout why"><b>What is here and what is not</b>Each page gives the chord changes and how to play them. Melodies are not written out: learn them by ear from the recordings listed, which is how jazz musicians learn tunes and is the best ear training there is. Many tunes exist in several versions; these charts give a common, playable version. If a recording differs, follow the recording.</div>
 
@@ -2219,7 +2314,7 @@ details[open] summary{margin-bottom:.4rem}
   <div class="lesson-sec"><span class="num">F</span><h2>The tunes</h2></div>
   <div class="tablewrap rbindex"><table>
     <thead><tr><th>Tune</th><th>Level</th><th>Key</th><th>Form</th><th>Teaches</th><th>Start after</th><th>Done</th></tr></thead>
-    <tbody>
+    <tbody><tr><td colspan="7" class="eyebrow">Rock: start here</td></tr><tr><td><a href="#rk-knockin" data-jump="rk-knockin">Knockin' on Heaven's Door</a></td><td><span class="level">R1</span></td><td>G</td><td>4-bar phrases</td><td>Triads, major pentatonic, targeting 3rds</td><td>Week 2</td><td><div class="progressbar" data-progress="rk-knockin-"><i></i></div></td></tr><tr><td><a href="#rk-letitbe" data-jump="rk-letitbe">Let It Be</a></td><td><span class="level">R1</span></td><td>C</td><td>4-bar loops</td><td>Pop axis, piano-style bass + triads</td><td>Week 2</td><td><div class="progressbar" data-progress="rk-letitbe-"><i></i></div></td></tr><tr><td><a href="#rk-alabama" data-jump="rk-alabama">Sweet Home Alabama</a></td><td><span class="level">R1</span></td><td>D</td><td>One loop</td><td>Mixolydian, ♭VII, arpeggiated triads</td><td>Week 3</td><td><div class="progressbar" data-progress="rk-alabama-"><i></i></div></td></tr><tr><td><a href="#rk-wonderful" data-jump="rk-wonderful">Wonderful Tonight</a></td><td><span class="level">R1</span></td><td>G</td><td>Loops + bridge</td><td>Slash chords, melodic bends, 3rds</td><td>Week 5</td><td><div class="progressbar" data-progress="rk-wonderful-"><i></i></div></td></tr><tr><td><a href="#rk-heyjoe" data-jump="rk-heyjoe">Hey Joe</a></td><td><span class="level">R2</span></td><td>E</td><td>5-chord cycle</td><td>Circle of fifths, bass-and-triad fills</td><td>Week 4</td><td><div class="progressbar" data-progress="rk-heyjoe-"><i></i></div></td></tr><tr><td><a href="#rk-creep" data-jump="rk-creep">Creep</a></td><td><span class="level">R2</span></td><td>G</td><td>One loop</td><td>Borrowed chords (III, iv), dynamics</td><td>Week 5</td><td><div class="progressbar" data-progress="rk-creep-"><i></i></div></td></tr><tr><td><a href="#rk-sultans" data-jump="rk-sultans">Sultans of Swing</a></td><td><span class="level">R2</span></td><td>D minor</td><td>Verse loop</td><td>Andalusian cadence, fingerstyle triads</td><td>Week 9</td><td><div class="progressbar" data-progress="rk-sultans-"><i></i></div></td></tr><tr><td><a href="#rk-hotel" data-jump="rk-hotel">Hotel California</a></td><td><span class="level">R2</span></td><td>B minor</td><td>8 bars</td><td>Harmonic minor V7, arpeggio soloing</td><td>Week 12</td><td><div class="progressbar" data-progress="rk-hotel-"><i></i></div></td></tr><tr><td colspan="7" class="eyebrow">Jazz, soul and funk</td></tr>
       <tr><td><a href="#rb-oye" data-jump="rb-oye">Oye Como Va</a></td><td><span class="level">1</span></td><td>A minor</td><td>2-chord vamp</td><td>Dorian, Latin comping, voice leading two chords</td><td>Week 6</td><td><div class="progressbar" data-progress="rb-oye-"><i></i></div></td></tr>
       <tr><td><a href="#rb-grooves" data-jump="rb-grooves">Funk &amp; Soul Grooves</a></td><td><span class="level">1</span></td><td>various</td><td>Vamps</td><td>16th comping, 9ths, neo-soul changes</td><td>Week 8</td><td><div class="progressbar" data-progress="rb-grooves-"><i></i></div></td></tr>
       <tr><td><a href="#rb-cantaloupe" data-jump="rb-cantaloupe">Cantaloupe Island</a></td><td><span class="level">1</span></td><td>F minor</td><td>16 bars</td><td>Modal shifts, moving a pentatonic</td><td>Week 6</td><td><div class="progressbar" data-progress="rb-cantaloupe-"><i></i></div></td></tr>
@@ -2237,6 +2332,260 @@ details[open] summary{margin-bottom:.4rem}
       <tr><td><a href="#rb-rhythm" data-jump="rb-rhythm">Rhythm Changes</a></td><td><span class="level">3</span></td><td>B♭</td><td>32 AABA</td><td>Fast turnarounds, dominant-chain bridge</td><td>Week 16</td><td><div class="progressbar" data-progress="rb-rhythm-"><i></i></div></td></tr>
     <tr><td><a href="#rb-twoofus" data-jump="rb-twoofus">Just the Two of Us</a></td><td><span class="level">2</span></td><td>F minor</td><td>4-bar loop</td><td>The 4–3–6, neo-soul comping</td><td>Week 22</td><td><div class="progressbar" data-progress="rb-twoofus-"><i></i></div></td></tr><tr><td><a href="#rb-ladybird" data-jump="rb-ladybird">Lady Bird</a></td><td><span class="level">2</span></td><td>C</td><td>16 bars</td><td>Backdoor ii–V, maj7 turnaround</td><td>Week 20</td><td><div class="progressbar" data-progress="rb-ladybird-"><i></i></div></td></tr><tr><td><a href="#rb-solar" data-jump="rb-solar">Solar</a></td><td><span class="level">3</span></td><td>C minor</td><td>12 bars</td><td>ii–V–Is stepping down by whole steps</td><td>Week 19</td><td><div class="progressbar" data-progress="rb-solar-"><i></i></div></td></tr><tr><td><a href="#rb-alice" data-jump="rb-alice">Blues for Alice</a></td><td><span class="level">3</span></td><td>F</td><td>12-bar Bird blues</td><td>Chains of ii–Vs, bebop</td><td>Week 17</td><td><div class="progressbar" data-progress="rb-alice-"><i></i></div></td></tr></tbody>
   </table></div>
+  <div class="pager"></div>
+</section>
+
+
+<!-- ===================== ROCK STANDARDS ===================== -->
+<section class="chapter" id="rk-knockin" data-part="Mini Real Book" data-num="RK1" data-title="Knockin' on Heaven's Door" hidden>
+  <div class="chap-head"><span class="eyebrow">Mini Real Book · Rock · Level 1</span><h1>Knockin' on Heaven's Door</h1>
+    <div class="tunemeta"><div><span>Writer</span><b>Bob Dylan (1973)</b></div><div><span>Key</span><b>G</b></div><div><span>Form</span><b>Two 4-bar phrases, repeated</b></div><div><span>Feel</span><b>Slow, straight 8ths</b></div><div><span>Tempo</span><b>~70 bpm</b></div></div>
+    <p class="lede">Four chords, two phrases, and endless room to play. The ideal first tune for triad voice leading and melodic major-pentatonic soloing.</p></div>
+  <h2>The changes</h2>
+  <div class="progchart" data-key="G" data-bpm="70" data-vmode="tri1" data-zone="3-8" data-prog="I|V|ii|%|I|V|IV|%"></div>
+  <h2>What's going on</h2>
+  <p>G – D – Am, then G – D – C: I – V – ii and I – V – IV in G. All diatonic, so one scale covers everything. The only change between the two phrases is the last chord: ii (minor, sad) versus IV (major, open).</p>
+  <h2>Comping</h2>
+  <ol>
+    <li>Open chords with the strum below. Let the chords ring.</li>
+    <li>Triads on strings 1-2-3 in one zone (Show voicings → Triads). Notice G to D to Am needs only small moves.</li>
+    <li>Add hammer-ons from the 2nd to the 3rd inside each triad (Week 8 soul triads).</li>
+  </ol>
+  <div class="rhythm" data-pattern="D-DU-UDU" data-sub="2" data-bpm="70" data-chord="G (open)"></div>
+  <h2>Soloing</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Chord</th><th>Scale</th><th>Target</th></tr></thead>
+    <tbody>
+      <tr><td>G</td><td>G major pentatonic (same notes as E minor pentatonic)</td><td>B (3rd)</td></tr>
+      <tr><td>D</td><td>G major pentatonic</td><td>F♯ (3rd), A</td></tr>
+      <tr><td>Am</td><td>G major pentatonic</td><td>C (♭3), E</td></tr>
+      <tr><td>C</td><td>G major pentatonic</td><td>E (3rd), G</td></tr>
+    </tbody>
+  </table></div>
+  <p>Your E minor pentatonic box at fret 12 (or open position) is the G major pentatonic. Treat G as home instead of E. Long notes, slow bends, lots of space.</p>
+  <h2>Listen</h2><p>Bob Dylan (1973). Eric Clapton's reggae-feel version (1975) for a different groove on the same chords.</p>
+  <div data-tool="tuneroutine" data-hard="the D to Am change" data-target="the 3rd of each chord" data-feel="the folk strum"></div>
+  <h2>Checklist</h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="rk-knockin-1" data-check="rk-knockin-1"><label for="rk-knockin-1">Strum the changes from memory at 70 bpm.</label></li>
+    <li><input type="checkbox" id="rk-knockin-2" data-check="rk-knockin-2"><label for="rk-knockin-2">Play them as triads in two zones.</label></li>
+    <li><input type="checkbox" id="rk-knockin-3" data-check="rk-knockin-3"><label for="rk-knockin-3">Solo two choruses landing on 3rds.</label></li>
+  </ul>
+  <div class="pager"></div>
+</section>
+
+<section class="chapter" id="rk-letitbe" data-part="Mini Real Book" data-num="RK2" data-title="Let It Be" hidden>
+  <div class="chap-head"><span class="eyebrow">Mini Real Book · Rock · Level 1</span><h1>Let It Be</h1>
+    <div class="tunemeta"><div><span>Writers</span><b>Lennon–McCartney, The Beatles (1970)</b></div><div><span>Key</span><b>C</b></div><div><span>Form</span><b>Verse / chorus, 4-bar loops</b></div><div><span>Feel</span><b>Slow, straight</b></div><div><span>Tempo</span><b>~72 bpm</b></div></div>
+    <p class="lede">The pop axis (I–V–vi–IV) in its most famous form. A piano song, which makes it perfect for practising triads with a moving bass.</p></div>
+  <h2>The changes</h2>
+  <div class="progchart" data-key="C" data-bpm="72" data-vmode="tri2" data-zone="3-8" data-prog="I V|vi IV|I V|IV I"></div>
+  <h2>What's going on</h2>
+  <p>C – G – Am – F, then C – G – F – C. Two chords per bar. The vi (Am) is the relative minor; the second half swaps it for a IV–I "Amen" ending (Week 22).</p>
+  <h2>Comping</h2>
+  <ol>
+    <li>Triads on strings 2-3-4 with the root on the 5th or 6th string, played like a piano: bass on 1, triad on 2–4.</li>
+    <li>Make the bass walk: C – G/B – Am – F (the slash-chord line from Week 5).</li>
+    <li>Then strings 1-2-3 for the chorus to lift the energy.</li>
+  </ol>
+  <h2>Soloing</h2>
+  <p>C major pentatonic (A minor pentatonic shapes, with C as home). Targets: E over C, B over G, C over Am, A over F. The song's guitar solos are melodic and bluesy at once: mix in the ♭3 (E♭) as a passing note into E.</p>
+  <h2>Listen</h2><p>The Beatles, <i>Let It Be</i> (1970). Note the two different album and single guitar solos.</p>
+  <div data-tool="tuneroutine" data-hard="the bass walk under the triads" data-target="E, B, C, A" data-feel="piano-style bass and triad"></div>
+  <h2>Checklist</h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="rk-letitbe-1" data-check="rk-letitbe-1"><label for="rk-letitbe-1">Piano-style triads with bass, from memory.</label></li>
+    <li><input type="checkbox" id="rk-letitbe-2" data-check="rk-letitbe-2"><label for="rk-letitbe-2">The progression in two other keys.</label></li>
+    <li><input type="checkbox" id="rk-letitbe-3" data-check="rk-letitbe-3"><label for="rk-letitbe-3">A short melodic solo over the verse.</label></li>
+  </ul>
+  <div class="pager"></div>
+</section>
+
+<section class="chapter" id="rk-alabama" data-part="Mini Real Book" data-num="RK3" data-title="Sweet Home Alabama" hidden>
+  <div class="chap-head"><span class="eyebrow">Mini Real Book · Rock · Level 1</span><h1>Sweet Home Alabama</h1>
+    <div class="tunemeta"><div><span>Band</span><b>Lynyrd Skynyrd (1974)</b></div><div><span>Key</span><b>D Mixolydian</b></div><div><span>Form</span><b>One loop throughout</b></div><div><span>Feel</span><b>Medium, laid-back</b></div><div><span>Tempo</span><b>~98 bpm</b></div></div>
+    <p class="lede">D – C – G, over and over. Your first taste of Mixolydian and the ♭VII chord, the sound of a huge amount of rock.</p></div>
+  <h2>The changes</h2>
+  <div class="progchart" data-key="D" data-bpm="98" data-vmode="tri1" data-zone="3-8" data-prog="I|bVII|IV|%"></div>
+  <p class="small muted">The famous riff decorates these chords; listen to the record for exact placement.</p>
+  <h2>What's going on</h2>
+  <p>I – ♭VII – IV in D. The C chord is not in D major; it comes from D Mixolydian (D major with C natural). You can also hear the whole thing as a I–IV–V in G that starts on the V, which is why it sounds both settled and restless.</p>
+  <h2>Comping</h2>
+  <ol>
+    <li>Triads on strings 1-2-3: D, C and G sit within three frets of each other around fret 2–5.</li>
+    <li>Arpeggiate the triads and add hammer-ons, like the record's riff.</li>
+    <li>Hybrid picking (Week 13) makes the arpeggios ring.</li>
+  </ol>
+  <h2>Soloing</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Chord</th><th>Scale</th><th>Target</th></tr></thead>
+    <tbody>
+      <tr><td>D</td><td>D major pentatonic / D Mixolydian</td><td>F♯</td></tr>
+      <tr><td>C</td><td>D Mixolydian</td><td>E (3rd of C), C</td></tr>
+      <tr><td>G</td><td>D major pentatonic</td><td>B (3rd of G)</td></tr>
+    </tbody>
+  </table></div>
+  <p>Country-rock phrasing: major pentatonic with slides into the 3rd, and the minor 3rd (F) bent a quarter step toward F♯.</p>
+  <h2>Listen</h2><p>Lynyrd Skynyrd, <i>Second Helping</i> (1974).</p>
+  <div data-tool="tuneroutine" data-hard="the riff's arpeggios" data-target="F♯, E, B" data-feel="arpeggiated triads with hammer-ons"></div>
+  <h2>Checklist</h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="rk-alabama-1" data-check="rk-alabama-1"><label for="rk-alabama-1">Triads and arpeggios through the loop for 3 minutes.</label></li>
+    <li><input type="checkbox" id="rk-alabama-2" data-check="rk-alabama-2"><label for="rk-alabama-2">The main riff by ear.</label></li>
+    <li><input type="checkbox" id="rk-alabama-3" data-check="rk-alabama-3"><label for="rk-alabama-3">A solo using D Mixolydian, landing on E over C.</label></li>
+  </ul>
+  <div class="pager"></div>
+</section>
+
+<section class="chapter" id="rk-wonderful" data-part="Mini Real Book" data-num="RK4" data-title="Wonderful Tonight" hidden>
+  <div class="chap-head"><span class="eyebrow">Mini Real Book · Rock · Level 1</span><h1>Wonderful Tonight</h1>
+    <div class="tunemeta"><div><span>Writer</span><b>Eric Clapton (1977)</b></div><div><span>Key</span><b>G</b></div><div><span>Form</span><b>Verse loops with a bridge</b></div><div><span>Feel</span><b>Slow ballad</b></div><div><span>Tempo</span><b>~95 bpm</b></div></div>
+    <p class="lede">A ballad built on a walking bass and one of rock's best-known melodic guitar lines. Teaches slash chords and singing tone.</p></div>
+  <h2>The changes</h2>
+  <div class="progchart" data-key="G" data-bpm="95" data-vmode="tri2" data-zone="1-5" data-prog="I V|IV V|I V|IV V"></div>
+  <p class="small muted">The V is usually played as D/F♯, so the bass walks G – F♯ – C – D.</p>
+  <h2>What's going on</h2>
+  <p>I – V – IV – V. The D/F♯ (V with its 3rd in the bass) turns a plain progression into a falling bass line. That is the slash-chord idea from Week 5.</p>
+  <h2>Comping</h2>
+  <ol>
+    <li>Open G, D/F♯ (2x0232, thumb or index on the low F♯), C, D.</li>
+    <li>Arpeggiate gently: bass note on 1, the rest of the chord picked through the bar.</li>
+    <li>Then triads on strings 2-3-4 with the bass notes on the 6th string.</li>
+  </ol>
+  <h2>Soloing</h2>
+  <p>G major pentatonic, played slowly with wide vibrato and bends to pitch. The famous intro line is harmonised in 3rds: learn it by ear and harmonise it yourself with the Week 26 3rds shapes.</p>
+  <h2>Listen</h2><p>Eric Clapton, <i>Slowhand</i> (1977).</p>
+  <div data-tool="tuneroutine" data-hard="the D/F♯ change" data-target="B over G, F♯ over D" data-feel="gentle arpeggios"></div>
+  <h2>Checklist</h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="rk-wonderful-1" data-check="rk-wonderful-1"><label for="rk-wonderful-1">Arpeggiated changes with the walking bass.</label></li>
+    <li><input type="checkbox" id="rk-wonderful-2" data-check="rk-wonderful-2"><label for="rk-wonderful-2">The intro line by ear, then harmonised in 3rds.</label></li>
+  </ul>
+  <div class="pager"></div>
+</section>
+
+<section class="chapter" id="rk-heyjoe" data-part="Mini Real Book" data-num="RK5" data-title="Hey Joe" hidden>
+  <div class="chap-head"><span class="eyebrow">Mini Real Book · Rock · Level 2</span><h1>Hey Joe</h1>
+    <div class="tunemeta"><div><span>Recorded by</span><b>The Jimi Hendrix Experience (1966)</b></div><div><span>Key</span><b>E</b></div><div><span>Form</span><b>One 5-chord cycle</b></div><div><span>Feel</span><b>Medium, swung rock</b></div><div><span>Tempo</span><b>~84 bpm</b></div></div>
+    <p class="lede">C – G – D – A – E: every chord a 5th higher than the last. A rock tune that is secretly a lesson in the circle of fifths.</p></div>
+  <h2>The changes</h2>
+  <div class="progchart" data-key="E" data-bpm="84" data-vmode="tri1" data-zone="3-8" data-prog="bVI bIII|bVII IV|I|%"></div>
+  <h2>What's going on</h2>
+  <p>In E: ♭VI – ♭III – ♭VII – IV – I. Each root moves up a 5th (C→G→D→A→E), around the circle clockwise, arriving home on E. Three of the chords are borrowed from E minor, which is why E minor pentatonic works over everything.</p>
+  <h2>Comping</h2>
+  <ol>
+    <li>Triads on strings 1-2-3 in one zone: the cycle in triads is a great nearest-neighbour exercise.</li>
+    <li>Hendrix mixes chords with bass-line fills: play the root on the 6th or 5th string, then a triad, then a walking bass note into the next chord.</li>
+    <li>Add the thumb-over-the-neck style: bass note with the thumb, triad with the fingers.</li>
+  </ol>
+  <h2>Soloing</h2>
+  <p>E minor pentatonic over the whole cycle: the roots of G, D, A and E are all in it, and over C it supplies E and G (the chord's 3rd and 5th). Over E, add G♯ (the major 3rd) for the big resolution.</p>
+  <h2>Listen</h2><p>The Jimi Hendrix Experience, <i>Are You Experienced</i> (US edition, 1967; single 1966).</p>
+  <div data-tool="tuneroutine" data-hard="the C–G–D–A cycle" data-target="each chord's root on beat 1" data-feel="bass-and-triad fills"></div>
+  <h2>Checklist</h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="rk-heyjoe-1" data-check="rk-heyjoe-1"><label for="rk-heyjoe-1">The cycle with triads in two zones.</label></li>
+    <li><input type="checkbox" id="rk-heyjoe-2" data-check="rk-heyjoe-2"><label for="rk-heyjoe-2">The bass-line intro by ear.</label></li>
+    <li><input type="checkbox" id="rk-heyjoe-3" data-check="rk-heyjoe-3"><label for="rk-heyjoe-3">A solo resolving to G♯ over E.</label></li>
+  </ul>
+  <div class="pager"></div>
+</section>
+
+<section class="chapter" id="rk-creep" data-part="Mini Real Book" data-num="RK6" data-title="Creep" hidden>
+  <div class="chap-head"><span class="eyebrow">Mini Real Book · Rock · Level 2</span><h1>Creep</h1>
+    <div class="tunemeta"><div><span>Band</span><b>Radiohead (1992)</b></div><div><span>Key</span><b>G</b></div><div><span>Form</span><b>One 4-chord loop</b></div><div><span>Feel</span><b>Slow, big dynamics</b></div><div><span>Tempo</span><b>~92 bpm</b></div></div>
+    <p class="lede">G – B – C – Cm. Two chords that are not in the key, and the reason the song sounds the way it does.</p></div>
+  <h2>The changes</h2>
+  <div class="progchart" data-key="G" data-bpm="92" data-vmode="tri2" data-zone="3-8" data-prog="I|III|IV|iv"></div>
+  <h2>What's going on</h2>
+  <ul>
+    <li><b>B major (III):</b> its 3rd, D♯, is not in G. It acts like the V of Em (a secondary dominant) but goes to C instead.</li>
+    <li><b>C minor (iv):</b> the minor iv, borrowed from G minor (Week 22). Its E♭ falls to D, the 5th of G, as the loop restarts.</li>
+  </ul>
+  <h2>Comping</h2>
+  <ol>
+    <li>Verses: clean arpeggios of each triad.</li>
+    <li>Chorus: full barre chords, loud, with muted "chunks" before the downbeat.</li>
+    <li>Practise the dynamic switch: quiet for 4 bars, loud for 4 bars, in time.</li>
+  </ol>
+  <h2>Soloing and melody</h2>
+  <p>G major pentatonic over G and C; target D♯ over B and E♭ over Cm. Those two chromatic notes are the whole emotional content of the progression. Use the chord finder to check what each chord contains.</p>
+  <h2>Listen</h2><p>Radiohead, <i>Pablo Honey</i> (1993).</p>
+  <div data-tool="tuneroutine" data-hard="the C to Cm change" data-target="D♯ over B, E♭ over Cm" data-feel="quiet arpeggios, then loud chords"></div>
+  <h2>Checklist</h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="rk-creep-1" data-check="rk-creep-1"><label for="rk-creep-1">Arpeggios and barre chords, switching dynamics in time.</label></li>
+    <li><input type="checkbox" id="rk-creep-2" data-check="rk-creep-2"><label for="rk-creep-2">Explain why B and Cm are outside the key.</label></li>
+  </ul>
+  <div class="pager"></div>
+</section>
+
+<section class="chapter" id="rk-sultans" data-part="Mini Real Book" data-num="RK7" data-title="Sultans of Swing" hidden>
+  <div class="chap-head"><span class="eyebrow">Mini Real Book · Rock · Level 2</span><h1>Sultans of Swing</h1>
+    <div class="tunemeta"><div><span>Band</span><b>Dire Straits (1978)</b></div><div><span>Key</span><b>D minor</b></div><div><span>Form</span><b>Verse loop with a major-key chorus</b></div><div><span>Feel</span><b>Medium, straight 8ths</b></div><div><span>Tempo</span><b>~148 bpm</b></div></div>
+    <p class="lede">Dm – C – B♭ – A: the descending minor progression, played fingerstyle with triads and fast pentatonic lines.</p></div>
+  <h2>The changes (verse)</h2>
+  <div class="progchart" data-key="D" data-bpm="140" data-vmode="tri1" data-zone="3-8" data-prog="i|bVII|bVI|V"></div>
+  <h2>What's going on</h2>
+  <p>i – ♭VII – ♭VI – V in D minor: the Andalusian cadence. The bass walks down D – C – B♭ – A. The last chord is A <i>major</i>: its C♯ comes from D harmonic minor and pulls back to D.</p>
+  <h2>Comping</h2>
+  <ol>
+    <li>Triads on strings 1-2-3, descending with the bass.</li>
+    <li>Fingerstyle: thumb on the bass note, fingers pinch the triad, the way Mark Knopfler plays.</li>
+    <li>Short answering fills between phrases, using triad shapes.</li>
+  </ol>
+  <h2>Soloing</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Chord</th><th>Scale</th><th>Target</th></tr></thead>
+    <tbody>
+      <tr><td>Dm, C, B♭</td><td>D minor pentatonic / D natural minor</td><td>F, E, D</td></tr>
+      <tr><td>A</td><td>D harmonic minor</td><td><b>C♯</b>, then resolve to D</td></tr>
+    </tbody>
+  </table></div>
+  <p>Triad arpeggios (Week 9) through the descending chords are the core of Knopfler's style.</p>
+  <h2>Listen</h2><p>Dire Straits, <i>Dire Straits</i> (1978), and the live versions.</p>
+  <div data-tool="tuneroutine" data-hard="fingerstyle triads at tempo" data-target="C♯ over A" data-feel="fingerstyle pinches"></div>
+  <h2>Checklist</h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="rk-sultans-1" data-check="rk-sultans-1"><label for="rk-sultans-1">Fingerstyle triads through the verse at 120 bpm.</label></li>
+    <li><input type="checkbox" id="rk-sultans-2" data-check="rk-sultans-2"><label for="rk-sultans-2">Triad-arpeggio solo landing on C♯ over A.</label></li>
+  </ul>
+  <div class="pager"></div>
+</section>
+
+<section class="chapter" id="rk-hotel" data-part="Mini Real Book" data-num="RK8" data-title="Hotel California" hidden>
+  <div class="chap-head"><span class="eyebrow">Mini Real Book · Rock · Level 2</span><h1>Hotel California</h1>
+    <div class="tunemeta"><div><span>Band</span><b>Eagles (1976)</b></div><div><span>Key</span><b>B minor</b></div><div><span>Form</span><b>8-bar progression throughout</b></div><div><span>Feel</span><b>Medium, laid-back</b></div><div><span>Tempo</span><b>~74 bpm</b></div></div>
+    <p class="lede">Eight chords in a minor key, two guitar solos and a harmonised outro. The bridge from rock to jazz thinking: you have to follow the changes.</p></div>
+  <h2>The changes</h2>
+  <div class="progchart" data-key="B" data-bpm="74" data-vmode="tri1" data-zone="3-8" data-prog="i|V:7|bVII|IV:7|bVI|bIII|iv|V:7"></div>
+  <h2>What's going on</h2>
+  <p>Bm – F♯7 – A – E7 – G – D – Em – F♯7. The F♯7 (V7) is from B harmonic minor; its A♯ pulls to B. The E7 has a G♯, a Dorian colour borrowed into the minor key. The rest is B natural minor. The bass mostly descends, then climbs back to the V.</p>
+  <h2>Comping</h2>
+  <ol>
+    <li>The record uses a capo; open-position shapes give a similar ring. Arpeggiate each chord.</li>
+    <li>Triads on strings 1-2-3 in one zone: eight chords, minimal movement.</li>
+  </ol>
+  <h2>Soloing</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Chord</th><th>Scale / note</th><th>Target</th></tr></thead>
+    <tbody>
+      <tr><td>Bm</td><td>B minor pentatonic</td><td>D, F♯</td></tr>
+      <tr><td>F♯7</td><td>B harmonic minor</td><td><b>A♯</b></td></tr>
+      <tr><td>A</td><td>B natural minor</td><td>C♯</td></tr>
+      <tr><td>E7</td><td>B Dorian (G♯)</td><td><b>G♯</b></td></tr>
+      <tr><td>G, D, Em</td><td>B natural minor</td><td>B, F♯, G</td></tr>
+    </tbody>
+  </table></div>
+  <p>The famous outro is two guitars arpeggiating each chord in harmony. Arpeggiate each chord yourself, one per bar, then harmonise a line in 3rds (Week 26). This is chord-tone soloing (Week 9) in a rock setting.</p>
+  <h2>Listen</h2><p>Eagles, <i>Hotel California</i> (1976).</p>
+  <div data-tool="tuneroutine" data-hard="the F♯7 and E7 bars" data-target="A♯ over F♯7, G♯ over E7" data-feel="arpeggiated chords"></div>
+  <h2>Checklist</h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="rk-hotel-1" data-check="rk-hotel-1"><label for="rk-hotel-1">The 8-bar progression from memory.</label></li>
+    <li><input type="checkbox" id="rk-hotel-2" data-check="rk-hotel-2"><label for="rk-hotel-2">Arpeggio solo through all eight chords, one per bar.</label></li>
+    <li><input type="checkbox" id="rk-hotel-3" data-check="rk-hotel-3"><label for="rk-hotel-3">A♯ over every F♯7 and G♯ over every E7.</label></li>
+  </ul>
   <div class="pager"></div>
 </section>
 
@@ -2367,7 +2716,7 @@ details[open] summary{margin-bottom:.4rem}
   <p>A sections: Dm7, D Dorian (the notes of C major). B section: E♭m7, E♭ Dorian (the notes of D♭ major). Everything moves up one fret for the bridge, then back. The hard part is counting: 32 bars of almost nothing. Count bars out loud while you comp.</p>
   <h2>Comping</h2>
   <p>The tune's famous answering chord is a stack of 4ths with a major 3rd on top. On guitar:</p>
-  <div data-tool="fixedchords" data-list="Dm11 (So What)|D|x77787;E♭m11 (So What)|E♭|x88898;Dm11 (lower)|D|x55565"></div>
+  <div data-tool="fixedchords" data-list="So What chord, D Dorian|D|x77787;So What chord, E♭ Dorian|E♭|x88898;So What chord, lower|D|x55565"></div>
   <ol>
     <li>Answer the bass riff with two So What chords: the shape, then the same shape two frets lower (still all D Dorian notes: E A D G B, then D G C F A).</li>
     <li>Move the whole idea up one fret for the bridge.</li>
@@ -3036,6 +3385,9 @@ details[open] summary{margin-bottom:.4rem}
 <section class="chapter" id="h-voicings" data-part="Handbook" data-num="H2" data-title="Voicing Library" hidden>
   <div class="chap-head"><span class="eyebrow">Handbook</span><h1>Voicing Library</h1>
     <p class="lede">Every chord tool in one place: triads close and spread, drop-2s, shells and extended grips, in any key.</p></div>
+  <h2>Name any chord</h2>
+  <p>Tap a fret on each string (or type a shape like <code>x32010</code>) and the finder names the chord, shows each note's job, gives other valid names for the same notes, and draws the diagram.</p>
+  <div class="tool"><div class="tool-title"><h4>Chord finder</h4><span class="eyebrow">Place notes, get the name</span></div><div data-tool="chordfinder"></div></div>
   <h2>Triads</h2>
   <div class="tool"><div class="tool-title"><h4>Triad finder</h4><span class="eyebrow">Close and spread sets</span></div><div data-tool="triads" data-root="C" data-q="maj" data-set="1"></div></div>
   <div class="tool"><div class="tool-title"><h4>Triad quiz</h4><span class="eyebrow">Daily drill</span></div><div data-tool="triadquiz"></div></div>
@@ -3073,6 +3425,17 @@ details[open] summary{margin-bottom:.4rem}
   <div class="tool"><div class="tool-title"><h4>Metronome</h4><span class="eyebrow">Time</span></div><div data-tool="metronome"></div></div>
   <div class="tool"><div class="tool-title"><h4>Ear trainer</h4><span class="eyebrow">Ear</span></div><div data-tool="ear"></div></div>
   <div class="tool"><div class="tool-title"><h4>One-minute change timer</h4><span class="eyebrow">Changes</span></div><div data-tool="changetimer"></div></div>
+
+  <div class="tool"><div class="tool-title"><h4>Chord finder</h4><span class="eyebrow">Place notes, get the name</span></div><div data-tool="chordfinder"></div></div>
+  <h2>Games</h2>
+  <p>Each game keeps your best score in this browser. Set a time limit once you are accurate, then go for speed.</p>
+  <div class="tool"><div class="tool-title"><h4>Octave hop</h4><span class="eyebrow">Game</span></div><div data-tool="octavequiz"></div></div>
+
+  <div class="tool"><div class="tool-title"><h4>Find every note</h4><span class="eyebrow">Game</span></div><div data-tool="findall"></div></div>
+
+  <div class="tool"><div class="tool-title"><h4>Call-out flashcards</h4><span class="eyebrow">Six decks</span></div><div data-tool="flash" data-deck="numerals" data-sec="8"></div></div>
+
+  <div class="tool"><div class="tool-title"><h4>Your practice</h4><span class="eyebrow">Stats</span></div><div data-tool="sessionstats"></div></div>
   <h2>Rhythm grid gallery</h2>
   <div class="tablewrap"><table>
     <thead><tr><th>#</th><th>Pattern</th><th>Use</th></tr></thead>
@@ -3714,6 +4077,7 @@ function noteQuiz(el){
   const strings=new Set([1,2,3,4,5,6]); const maxF=12; let naturalsOnly=true;
   const modeChips=h('div',{class:'chips'}); const stringChips=h('div',{class:'chips'});
   const prompt=h('div',{class:'big-prompt'}); const status=h('div',{class:'status'}); const box=h('div',{class:'fb'}); const answers=h('div',{class:'answer-grid'});
+  const limS=limitSel(id+'l','0'); const cd=qCountdown(); const sprB=h('button',{class:'btn ghost',type:'button'},'⚡ 60-second sprint'); let sprint=false,sEnd=0,sScore=0,sIv=null;
   const natBtn=h('button',{class:'chip',type:'button','aria-pressed':'true'},'Natural notes only');
   natBtn.onclick=()=>{ naturalsOnly=!naturalsOnly; natBtn.setAttribute('aria-pressed',naturalsOnly); next(); };
   [['name','Name the dot'],['find','Find the note']].forEach(([m,t])=>{ const b=h('button',{class:'chip',type:'button','aria-pressed':m===mode},t); b.onclick=()=>{ mode=m; $$('.chip',modeChips).forEach(x=>x.setAttribute('aria-pressed',x===b)); next(); }; modeChips.append(b); });
@@ -3722,19 +4086,22 @@ function noteQuiz(el){
   const tun=TUNINGS.std.m; const NAT=[0,2,4,5,7,9,11];
   function pick(){ const ss=[...strings]; for(let k=0;k<200;k++){ const s=ss[Math.floor(Math.random()*ss.length)]; const f=Math.floor(Math.random()*(maxF+1)); const pc=(tun[6-s]+f)%12; if(naturalsOnly&&!NAT.includes(pc))continue; if(target&&target.s===s&&target.f===f)continue; return {s,f,pc}; } return {s:6,f:0,pc:4}; }
   function nm(pc){ return SHARP[pc]===FLAT[pc]?SHARP[pc]:SHARP[pc]+'/'+FLAT[pc]; }
-  function upd(){ const avg=times.length?(times.reduce((a,b)=>a+b,0)/times.length/1000).toFixed(1):'–'; status.textContent=`Score ${score}/${tries} · Streak ${streak} · Best streak ${best} · Avg ${avg}s`; }
+  function upd(msg){ const avg=times.length?(times.reduce((a,b)=>a+b,0)/times.length/1000).toFixed(1):'–'; const sb=store.get('best-nq-'+mode,0); status.textContent=(sprint?`Sprint: ${sScore} · ${Math.max(0,Math.ceil((sEnd-performance.now())/1000))}s left · `:'')+`Score ${score}/${tries} · Streak ${streak} · Best streak ${best} · Avg ${avg}s · Best sprint ${sb}`+(msg?' · '+msg:''); }
   function draw(extra){ box.innerHTML=''; const dots=[]; if(mode==='name'&&target)dots.push({s:target.s,f:target.f,label:'?',cat:'3',ring:true}); (extra||[]).forEach(x=>dots.push(x));
     box.append(h('div',{class:'scroll'},drawFretboard({dots,frets:maxF,onCell:mode==='find'?cell:null}))); }
   function next(){ target=pick(); t0=performance.now(); answers.innerHTML='';
     if(mode==='name'){ prompt.textContent='What note is this?'; const pcs=naturalsOnly?NAT:[...Array(12).keys()];
       pcs.forEach(pc=>{ const b=h('button',{class:'chip',type:'button'},nm(pc)); b.onclick=()=>answer(pc===target.pc,b); answers.append(b); }); }
     else { prompt.textContent=`Find ${nm(target.pc)} on the ${SN[target.s]} string`; }
-    draw(); upd(); }
-  function answer(ok,btn){ tries++; if(ok){ score++; streak++; times.push(performance.now()-t0); if(times.length>20)times.shift(); if(streak>best){best=streak;store.set('nq-best',best);} if(btn)btn.classList.add('ok'); pluck(tun[6-target.s]+target.f,null,1,0.5); setTimeout(next,450); }
-    else { streak=0; if(btn)btn.classList.add('bad'); }
+    draw(); upd(); const lim=+limS.value; if(lim&&!sprint)cd.start(lim,timeout); }
+  function timeout(){ tries++; streak=0; if(mode==='name'){ $$('.chip',answers).forEach(b=>{ if(b.textContent===nm(target.pc))b.classList.add('ok'); }); } else { const pos=[]; for(let f=0;f<=maxF;f++)if((tun[6-target.s]+f)%12===target.pc)pos.push({s:target.s,f,label:SHARP[target.pc].replace('♯','#'),cat:'7'}); draw(pos); } upd('Time!'); setTimeout(next,1100); }
+  sprB.onclick=()=>{ if(sprint)return; ac(); sprint=true; sScore=0; cd.stop(); sEnd=performance.now()+60000; next(); sIv=setInterval(()=>{ upd(); if(performance.now()>=sEnd){ clearInterval(sIv); sprint=false; const k='best-nq-'+mode; const b=store.get(k,0); if(sScore>b)store.set(k,sScore); beep3(); addPracticeMinutes(1); upd(`Sprint over: ${sScore}${sScore>b?' — new best!':''}`); } },250); };
+  limS.onchange=()=>next();
+  function answer(ok,btn){ tries++; cd.stop(); if(ok){ score++; streak++; if(sprint)sScore++; times.push(performance.now()-t0); if(times.length>20)times.shift(); if(streak>best){best=streak;store.set('nq-best',best);} if(btn)btn.classList.add('ok'); pluck(tun[6-target.s]+target.f,null,1,0.5); setTimeout(next,sprint?200:450); }
+    else { streak=0; if(btn)btn.classList.add('bad'); const lim=+limS.value; if(lim&&!sprint)cd.start(lim,timeout); }
     upd(); }
   function cell(s,f){ if(s!==target.s){ return; } const pc=(tun[6-s]+f)%12; if(pc===target.pc){ draw([{s,f,label:SHARP[pc].replace('♯','#'),cat:'7'}]); answer(true); } else { draw([{s,f,label:SHARP[pc].replace('♯','#'),cat:'root'}]); answer(false); } }
-  el.append(h('div',{class:'controls'},modeChips,natBtn),h('div',{class:'controls'},h('span',{class:'small muted'},'Strings:'),stringChips),prompt,box,answers,status);
+  el.append(h('div',{class:'controls'},modeChips,natBtn),h('div',{class:'controls'},h('span',{class:'small muted'},'Strings:'),stringChips),h('div',{class:'controls'},lab('Time per note',limS),sprB),prompt,cd.el,box,answers,status);
   next();
 }
 
@@ -3849,15 +4216,16 @@ function triadQuiz(el){ const id=nid('tq'); const qs=new Set(['maj','min']); con
   const qChips=h('div',{class:'chips'}), sChips=h('div',{class:'chips'}); const prompt=h('div',{class:'big-prompt'}); const sub=h('p',{class:'small muted'}); const reveal=h('div',{}); const stat=h('div',{class:'status'});
   function chipset(wrap,items,set){ items.forEach(([k,t])=>{ const b=h('button',{class:'chip',type:'button','aria-pressed':set.has(k)},t); b.onclick=()=>{ if(set.has(k)&&set.size>1)set.delete(k); else set.add(k); b.setAttribute('aria-pressed',set.has(k)); }; wrap.append(b); }); }
   chipset(qChips,[['maj','Major'],['min','Minor'],['dim','Dim'],['aug','Aug']],qs); chipset(sChips,[['1','1-2-3'],['2','2-3-4'],['3','3-4-5'],['4','4-5-6'],['s2','spread 5-3-2'],['s3','spread 6-4-3']],sets);
+  const limS=sel(id+'l',[['0','Reveal by hand'],['8','Auto-reveal 8 s'],['5','Auto-reveal 5 s'],['3','Auto-reveal 3 s']],'0'); const cd=qCountdown();
   const nextB=h('button',{class:'btn',type:'button'},'New triad'), showB=h('button',{class:'btn ghost',type:'button'},'Reveal'), okB=h('button',{class:'chip',type:'button'},'✓ I had it'), noB=h('button',{class:'chip',type:'button'},'✗ Missed it');
   function pick(){ for(let k=0;k<100;k++){ const root=ROOTS[Math.floor(Math.random()*12)]; const q=[...qs][Math.floor(Math.random()*qs.size)]; const set=[...sets][Math.floor(Math.random()*sets.size)]; const inv=invs[Math.floor(Math.random()*3)];
       const opts=findTriads(root,q,TRIAD_SETS[set]).filter(v=>v.inv===inv&&Math.min(...v.fr)<=12); if(opts.length)return {root,q,set,inv,v:opts[0]}; } return null; }
   function next(){ cur=pick(); reveal.innerHTML=''; if(!cur)return; t0=performance.now(); const invName=cur.inv==='Root'?'root position':cur.inv.replace(' inv',' inversion');
-    prompt.textContent=`${cur.root}${CHORDS[cur.q].s} · ${invName}`; sub.textContent=`${TRIAD_SET_NAMES[cur.set]}. Find it, play it, name each note's job, then reveal.`; }
-  showB.onclick=()=>{ if(!cur)return; const secs=((performance.now()-t0)/1000).toFixed(1); reveal.innerHTML=''; const strs=TRIAD_SETS[cur.set]; const full=[-1,-1,-1,-1,-1,-1]; cur.v.fr.forEach((f,i)=>full[6-strs[i]]=f);
+    prompt.textContent=`${cur.root}${CHORDS[cur.q].s} · ${invName}`; sub.textContent=`${TRIAD_SET_NAMES[cur.set]}. Find it, play it, name each note's job, then reveal.`; const lim=+limS.value; if(lim)cd.start(lim,()=>showB.click()); else cd.stop(); }
+  showB.onclick=()=>{ if(!cur)return; cd.stop(); const secs=((performance.now()-t0)/1000).toFixed(1); reveal.innerHTML=''; const strs=TRIAD_SETS[cur.set]; const full=[-1,-1,-1,-1,-1,-1]; cur.v.fr.forEach((f,i)=>full[6-strs[i]]=f);
     reveal.append(h('div',{class:'chordrow'},chordCard(cur.root+CHORDS[cur.q].s,full,cur.root,'one answer · '+secs+'s',CHORDS[cur.q].f)),h('p',{class:'small muted'},'Any shape with the same notes on these strings and the right bass note is correct. The same shape also sits 12 frets higher or lower.')); };
   okB.onclick=()=>{ if(!cur)return; got++; tot++; stat.textContent=`${got}/${tot} found`; next(); }; noB.onclick=()=>{ if(!cur)return; tot++; stat.textContent=`${got}/${tot} found`; next(); }; nextB.onclick=next;
-  el.append(h('div',{class:'controls'},h('span',{class:'small muted'},'Qualities:'),qChips),h('div',{class:'controls'},h('span',{class:'small muted'},'String sets:'),sChips),prompt,sub,h('div',{class:'controls'},nextB,showB,okB,noB),reveal,stat); next(); }
+  el.append(h('div',{class:'controls'},h('span',{class:'small muted'},'Qualities:'),qChips),h('div',{class:'controls'},h('span',{class:'small muted'},'String sets:'),sChips),h('div',{class:'controls'},lab('Timing',limS)),prompt,cd.el,sub,h('div',{class:'controls'},nextB,showB,okB,noB),reveal,stat); next(); }
 
 /* ============ CHANGE TIMER ============ */
 function changeTimer(el){ const id=nid('ct'); const a=h('input',{type:'text',id:id+'a',value:el.dataset.a||'Cmaj7',size:8}), b=h('input',{type:'text',id:id+'b',value:el.dataset.b||'A7',size:8});
@@ -3923,7 +4291,7 @@ function tabBlock(el){ const d=el.dataset; const sub=+(d.sub||2), bar=+(d.bar||8
   el.append(pre,h('div',{class:'tabctl'},playB,rng,bl,h('label',{for:rid+'c',style:'display:flex;gap:.3rem;align-items:center'},metroC,'click'))); }
 
 /* ============ RHYTHM GRID ============ */
-const RCH={E9:[-1,7,6,7,7,7],Am7:[5,-1,5,5,5,-1],D9:[-1,5,4,5,5,5],Em7:[-1,7,9,7,8,7],Cmaj7:[-1,3,2,4,-1,-1],'C triad':[-1,-1,-1,5,5,3],'F triad':[-1,-1,-1,5,6,5],'G triad':[-1,-1,-1,4,3,3],'Am triad':[-1,-1,-1,5,5,5]};
+const RCH={E9:[-1,7,6,7,7,7],Am7:[5,-1,5,5,5,-1],D9:[-1,5,4,5,5,5],Em7:[-1,7,9,7,8,7],Cmaj7:[-1,3,2,4,-1,-1],'C triad':[-1,-1,-1,5,5,3],'F triad':[-1,-1,-1,5,6,5],'G triad':[-1,-1,-1,4,3,3],'Am triad':[-1,-1,-1,5,5,5],'G (open)':[3,2,0,0,0,3],'C (open)':[-1,3,2,0,1,0],'D (open)':[-1,-1,0,2,3,2],'Em (open)':[0,2,2,0,0,0],'Am (open)':[-1,0,2,2,1,0]};
 function rhythm(el){ const d=el.dataset; const pat=d.pattern.replace(/\s/g,''); let bpm=+(d.bpm||80); const sub=+(d.sub||4); const n=pat.length; let ch=d.chord||'E9';
   const g=h('div',{class:'rgrid',style:`grid-template-columns:repeat(${n},minmax(0,1fr))`});
   const counts=sub===4?['1','e','&','a','2','e','&','a','3','e','&','a','4','e','&','a']:sub===2?['1','&','2','&','3','&','4','&']:sub===3?['1','trip','let','2','trip','let','3','trip','let','4','trip','let']:[];
@@ -3932,16 +4300,18 @@ function rhythm(el){ const d=el.dataset; const pat=d.pattern.replace(/\s/g,''); 
     const cls=c==='-'?'':(c==='x'?'mute':(c===c.toUpperCase()?'acc':'hit')); const cell=h('div',{class:'cell '+cls},c==='-'?arrow:(c==='x'?'×':arrow)); cells.push(cell); g.append(cell); }
   const rid=nid('rg'); const playB=h('button',{class:'btn',type:'button'},'▶ Loop'); const rng=h('input',{type:'range',min:40,max:140,value:bpm,id:rid}); const bl=h('span',{},bpm+' bpm');
   const chS=sel(rid+'c',Object.keys(RCH).map(k=>[k,k]),ch); chS.onchange=()=>ch=chS.value;
+  const durS=sel(rid+'d',[['0','Loop: no limit'],['1','Loop: 1 min'],['2','Loop: 2 min'],['3','Loop: 3 min'],['5','Loop: 5 min']],'2'); const left=h('span',{class:'tw-disp small'},''); let stopAt=0;
   let running=false, nextT=0, idx=0, iv=null; const q=[];
   rng.oninput=()=>{ bpm=+rng.value; bl.textContent=bpm+' bpm'; };
   function sched(){ const a=ac(); const step=60/bpm/sub; while(nextT<a.currentTime+0.12){ const c=pat[idx]; const midis=RCH[ch].map((f,s)=>f<0?null:TUNINGS.std.m[s]+f).filter(x=>x!=null);
       if(idx%sub===0)click(nextT,idx===0?1:0);
       if(c==='x')noiseHit(nextT,0.45); else if(c!=='-')strum(midis,nextT,c===c.toUpperCase()?0.22:0.14,c===c.toUpperCase()?0.75:0.4,(idx%2===1)&&sub!==3);
       q.push({i:idx,t:nextT}); nextT+=step; idx=(idx+1)%n; }
-    while(q.length&&q[0].t<=a.currentTime){ const it=q.shift(); cells.forEach((c,j)=>c.classList.toggle('now',j===it.i)); } }
-  playB.onclick=()=>{ const a=ac(); if(!a)return; if(running){ running=false; clearInterval(iv); cells.forEach(c=>c.classList.remove('now')); playB.textContent='▶ Loop'; return; }
-    running=true; idx=0; nextT=a.currentTime+0.1; q.length=0; iv=setInterval(sched,25); playB.textContent='■ Stop'; };
-  el.append(h('div',{class:'scroll'},g),h('div',{class:'tabctl'},playB,rng,bl,lab('Chord',chS))); }
+    while(q.length&&q[0].t<=a.currentTime){ const it=q.shift(); cells.forEach((c,j)=>c.classList.toggle('now',j===it.i)); }
+    if(stopAt){ const l=(stopAt-performance.now())/1000; left.textContent=fmtT(l)+' left'; if(l<=0){ const m=+durS.value; playB.click(); beep3(); addPracticeMinutes(m); left.textContent='Done ✓'; } } }
+  playB.onclick=()=>{ const a=ac(); if(!a)return; if(running){ running=false; clearInterval(iv); stopAt=0; cells.forEach(c=>c.classList.remove('now')); playB.textContent='▶ Loop'; return; }
+    running=true; idx=0; nextT=a.currentTime+0.1; q.length=0; iv=setInterval(sched,25); playB.textContent='■ Stop'; const m=+durS.value; stopAt=m?performance.now()+m*60000:0; if(!m)left.textContent=''; };
+  el.append(h('div',{class:'scroll'},g),h('div',{class:'tabctl'},playB,rng,bl,lab('Chord',chS),durS,left)); }
 
 /* ============ METRONOME ============ */
 function metronome(el){
@@ -4078,18 +4448,6 @@ function progChart(el){ const d=el.dataset; const id=nid('pc'); let key=d.key||'
 
 /* ============ ROUTINES ============ */
 function glinks(t){ return t.replace(/\[\[([^\]]+)\]\]/g,(m,x)=>`<button type="button" class="glink" data-term="${x}">${x}</button>`); }
-function routineTool(el){ const w=+el.dataset.week; const R=ROUTINES[w]; if(!R)return; let len=store.get('rlen','40');
-  const tabs=h('div',{class:'chips',role:'tablist'}); const body=h('div',{});
-  const opts=[['20','20 min'],['40','40 min'],['60','60 min'],['week','7-day shape']];
-  function render(){ body.innerHTML=''; $$('.chip',tabs).forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===len));
-    if(len==='week'){ const rows=[['Day 1','Read the Learn sections with the guitar on your lap and try every tool. Then the 40-minute routine at easy tempos.'],['Days 2–5','Your chosen routine (20, 40 or 60 min). Raise tempos a few bpm when the control tempo feels easy. Log tempos and counts.'],['Day 6','Play day: '+R.play],['Day 7','Check day: work through the checklist. Retake one benchmark from an earlier week. Note what to carry into next week.']];
-      body.append(h('div',{class:'tablewrap'},h('table',{class:'plan'},h('tbody',{},...rows.map(([d,t])=>{ const tr=h('tr',{},h('td',{},d)); const td=h('td',{}); td.innerHTML=glinks(t); tr.append(td); return tr; }))))); return; }
-    const items=len==='20'?R.r20:len==='60'?R.r40.concat(R.add):R.r40; const tot=items.reduce((a,b)=>a+b[0],0);
-    const tb=h('tbody',{}); items.forEach(([m,t],i)=>{ const td=h('td',{}); td.innerHTML=glinks(t); tb.append(h('tr',{class:len==='60'&&i>=R.r40.length?'extra':''},h('td',{},m+' min'),td)); });
-    body.append(h('table',{class:'plan'},tb),h('p',{class:'small muted',style:'margin:.4rem 0 0'},`Total ${tot} minutes.`+(len==='60'?' The last rows are the extra 20 minutes.':'')+' Tap a highlighted drill to see how to do it.')); }
-  opts.forEach(([k,t])=>{ const b=h('button',{class:'chip',type:'button','data-k':k},t); b.onclick=()=>{ len=k; if(k!=='week')store.set('rlen',k); render(); }; tabs.append(b); });
-  el.classList.add('panel','routine-tool'); el.append(h('div',{class:'tool-title'},h('span',{class:'eyebrow'},'Practice routine · Week '+w),tabs),h('p',{class:'small',style:'margin:.5rem 0'},h('b',{},'Focus: '),R.focus),body); render(); }
-
 /* ============ TUNE ROUTINE ============ */
 function tuneRoutine(el){ const d=el.dataset; const hard=d.hard||'the hardest 4 bars'; const tgt=d.target||'the 3rd of each chord'; const feel=d.feel||'the comping rhythm on this page';
   const rows=[['Day 1','Listen to two recordings; sing along. Comping stage 1 (roots) with the playback. Map the form.','15'],
@@ -4130,6 +4488,217 @@ function backupTool(el){ const out=h('textarea',{id:'bk-out',rows:4,style:'width
   let top=false; try{ top=window.self===window.top; }catch(e){}
   el.append(h('h4',{},'Back up'),h('div',{class:'controls'},ex,cp,top?dl:null),out,h('h4',{},'Restore'),inp,h('div',{class:'controls'},im),msg); }
 
+
+/* ============ PLAY LAYER: timers, sessions, stats, games ============ */
+function todayStr(d){ d=d||new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function fmtT(s){ s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+function beep3(){ const a=ac(); if(!a)return; const t=a.currentTime+0.02; click(t,3); click(t+0.22,3); click(t+0.44,3); }
+function addPracticeMinutes(m){ if(!(m>0))return; const ex=store.get('exmin',0); store.set('exmin',ex+m); const days=store.get('pdays',{}); const k=todayStr(); days[k]=(days[k]||0)+m; store.set('pdays',days); statsChanged(); }
+function statsChanged(){ document.dispatchEvent(new Event('fw-stats')); }
+let wakeLock=null; function holdWake(on){ try{ if(on&&navigator.wakeLock&&!wakeLock)navigator.wakeLock.request('screen').then(l=>wakeLock=l,()=>{}); if(!on&&wakeLock){ wakeLock.release(); wakeLock=null; } }catch(e){} }
+
+/* --- reusable countdown timer --- */
+function makeTimer(defMin,opt){ opt=opt||{}; let total=Math.max(15,Math.round(defMin*60)), left=total, iv=null, end=0;
+  const disp=h('span',{class:'tw-disp'},fmtT(left)); const bar=h('i',{}); const barW=h('span',{class:'tw-bar'},bar);
+  const minus=h('button',{class:'tw-b',type:'button','aria-label':'One minute less'},'−'), plus=h('button',{class:'tw-b',type:'button','aria-label':'One minute more'},'+');
+  const go=h('button',{class:'tw-b tw-go',type:'button','aria-label':'Start or pause timer'},'▶'), rs=h('button',{class:'tw-b',type:'button','aria-label':'Reset timer'},'↺');
+  const el=h('span',{class:'tw'+(opt.big?' tw-big':'')},h('span',{class:'tw-ic','aria-hidden':'true'},'⏱'),minus,disp,plus,go,rs,barW);
+  function paint(){ disp.textContent=fmtT(left); bar.style.width=(100*(1-left/total))+'%'; }
+  function tick(){ left=Math.max(0,(end-performance.now())/1000); paint(); if(left<=0){ stop(); el.classList.add('done'); beep3(); if(opt.onDone)opt.onDone(total/60); } }
+  function start(){ if(iv)return; ac(); if(left<=0)left=total; el.classList.remove('done'); end=performance.now()+left*1000; iv=setInterval(tick,200); go.textContent='❚❚'; el.classList.add('running'); holdWake(true); if(opt.onStart)opt.onStart(); }
+  function stop(){ clearInterval(iv); iv=null; go.textContent='▶'; el.classList.remove('running'); holdWake(false); }
+  function reset(){ stop(); left=total; el.classList.remove('done'); paint(); }
+  function setMin(m){ total=Math.max(15,Math.round(m*60)); reset(); }
+  go.onclick=()=>{ iv?stop():start(); }; rs.onclick=reset;
+  minus.onclick=()=>{ if(iv)return; setMin(Math.max(0.5,total/60-1)); }; plus.onclick=()=>{ if(iv)return; setMin(total/60+1); };
+  paint(); return {el,start,stop,reset,setMin,running:()=>!!iv,left:()=>left}; }
+
+/* --- inject timers + done counters into every exercise card and tool --- */
+function decorate(root){
+  $$('.ex',root).forEach(ex=>{ if(ex.dataset.timed)return; ex.dataset.timed='1'; const hd=$('header',ex); if(!hd)return; const title=($('h4',hd)||{}).textContent||'exercise';
+    const chap=ex.closest('.chapter'); const id=(chap?chap.id:'x')+'|'+title; const meta=($('.meta',hd)||{}).textContent||''; const m=meta.match(/(\d+)\s*min/); const def=m?+m[1]:3;
+    const counts=store.get('excount',{}); const done=h('button',{class:'tw-done',type:'button'},'✓ Done'+(counts[id]?' ×'+counts[id]:''));
+    done.onclick=()=>{ const c=store.get('excount',{}); c[id]=(c[id]||0)+1; store.set('excount',c); done.textContent='✓ Done ×'+c[id]; done.classList.add('pop'); setTimeout(()=>done.classList.remove('pop'),400); const days=store.get('pdays',{}); const k=todayStr(); if(!days[k]){ days[k]=0.01; store.set('pdays',days); } statsChanged(); };
+    const t=makeTimer(def,{onDone:mins=>{ addPracticeMinutes(mins); }});
+    hd.append(h('div',{class:'ex-tools'},t.el,done)); });
+  $$('.tool > .tool-title',root).forEach(tt=>{ if(tt.dataset.timed)return; tt.dataset.timed='1'; if($('[data-tool="routine"],[data-tool="changetimer"],[data-tool="pglossary"],[data-tool="backup"],[data-tool="sessionstats"]',tt.parentElement))return;
+    const t=makeTimer(5,{onDone:mins=>addPracticeMinutes(mins)}); tt.append(t.el); }); }
+
+/* --- session log & stats --- */
+function sessionStats(){ const L=store.get('sessions',[]); const days=store.get('pdays',{}); const exmin=store.get('exmin',0);
+  const dm={}; Object.keys(days).forEach(k=>dm[k]=(dm[k]||0)+days[k]); L.forEach(s=>dm[s.d]=(dm[s.d]||0)+s.m);
+  const sessMin=L.reduce((a,s)=>a+s.m,0); const totalMin=Math.round(sessMin+exmin);
+  const has=d=>dm[todayStr(d)]>0; let streak=0; const d=new Date(); if(!has(d))d.setDate(d.getDate()-1); while(has(d)){ streak++; d.setDate(d.getDate()-1); }
+  const keys=Object.keys(dm).filter(k=>dm[k]>0).sort(); let best=0,run=0,prev=null; keys.forEach(k=>{ const cur=new Date(k+'T12:00:00'); if(prev&&(cur-prev)/864e5<1.5)run++; else run=1; best=Math.max(best,run); prev=cur; });
+  const wk=new Date(); wk.setDate(wk.getDate()-6); const wkS=todayStr(wk); const thisWeek=L.filter(s=>s.d>=wkS).length;
+  const xp=totalMin+20*L.length; const level=1+Math.floor(Math.sqrt(xp/60)); const lo=60*(level-1)*(level-1), hi=60*level*level;
+  const sprint=Math.max(store.get('best-nq-name',0),store.get('best-nq-find',0)); const excount=Object.values(store.get('excount',{})).reduce((a,b)=>a+b,0);
+  const badges=[['First session',L.length>=1],['3-day streak',best>=3],['7-day streak',best>=7],['30-day streak',best>=30],['10 sessions',L.length>=10],['50 sessions',L.length>=50],['100 sessions',L.length>=100],['10 hours',totalMin>=600],['50 hours',totalMin>=3000],['Sprint 25+',sprint>=25],['50 exercises',excount>=50],['Level 10',level>=10]];
+  return {L,dm,totalMin,streak,best,thisWeek,xp,level,lo,hi,badges,excount}; }
+function logSession(w,len,mins,n){ const L=store.get('sessions',[]); L.push({d:todayStr(),w,len,m:Math.round(mins),n,t:Date.now()}); store.set('sessions',L); statsChanged(); }
+
+function statsTool(el){ const compact=el.dataset.compact==='1';
+  function render(){ el.innerHTML=''; const S=sessionStats();
+    if(compact){ el.className='panel stats-compact'; el.append(h('span',{class:'eyebrow'},'Your practice'),h('div',{class:'kv'},
+        h('div',{},h('b',{},S.streak+'🔥'),h('span',{},'day streak')),h('div',{},h('b',{},S.thisWeek),h('span',{},'sessions, 7 days')),h('div',{},h('b',{},'Lv '+S.level),h('span',{},S.xp+' XP')),h('div',{},h('b',{},(S.totalMin/60).toFixed(1)),h('span',{},'hours total'))),
+        h('p',{class:'small muted',style:'margin:.3rem 0 0'},'Run today\'s session from the routine card at the top of this lesson, or from ',h('a',{href:'#start','data-jump':'start'},'Start Here'),'.')); return; }
+    el.className='panel stats-full';
+    const pct=Math.round(100*(S.xp-S.lo)/(S.hi-S.lo));
+    el.append(h('div',{class:'tool-title'},h('h4',{},'Your practice'),h('span',{class:'eyebrow'},'Level '+S.level)),
+      h('div',{class:'kv'},h('div',{},h('b',{},S.streak+'🔥'),h('span',{},'current streak')),h('div',{},h('b',{},S.best),h('span',{},'best streak')),h('div',{},h('b',{},S.L.length),h('span',{},'sessions')),h('div',{},h('b',{},S.thisWeek),h('span',{},'last 7 days')),h('div',{},h('b',{},(S.totalMin/60).toFixed(1)),h('span',{},'hours')),h('div',{},h('b',{},S.excount),h('span',{},'exercises done'))),
+      h('div',{class:'small muted'},`${S.xp} XP · ${S.hi-S.xp} XP to level ${S.level+1} (1 XP per minute, +20 per session)`),h('div',{class:'progressbar'},h('i',{style:`width:${pct}%`})));
+    // heatmap: last 16 weeks
+    const hm=h('div',{class:'heat','aria-label':'Practice calendar, last 16 weeks'}); const start=new Date(); start.setDate(start.getDate()-111); start.setDate(start.getDate()-((start.getDay()+6)%7));
+    const end=new Date(); for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){ const k=todayStr(d); const m=S.dm[k]||0; const lv=m<=0?0:m<20?1:m<40?2:3; hm.append(h('i',{class:'l'+lv,title:k+': '+Math.round(m)+' min'})); }
+    el.append(h('div',{class:'small muted',style:'margin-top:.8rem'},'Practice calendar (columns are weeks, Monday at top)'),h('div',{class:'scroll'},hm),
+      h('div',{class:'chips',style:'margin-top:.8rem'},...S.badges.map(([n,ok])=>h('span',{class:'badge'+(ok?' got':'')},(ok?'★ ':'☆ ')+n))));
+    const recent=S.L.slice(-5).reverse(); if(recent.length)el.append(h('div',{class:'small muted',style:'margin-top:.6rem'},'Recent: '+recent.map(s=>`${s.d} · W${s.w} · ${s.m} min`).join('  |  '))); }
+  document.addEventListener('fw-stats',render); render(); }
+
+/* --- session runner (replaces the static routine table) --- */
+function routineTool(el){ const dash=el.dataset.dash==='1'; let w=dash?store.get('curweek',1):+el.dataset.week; let len=store.get('rlen','40');
+  const head=h('div',{class:'tool-title'}); const body=h('div',{}); const foot=h('div',{class:'small muted run-foot'});
+  let rows=[], idx=-1, timer=null, running=false;
+  function items(){ const R=ROUTINES[w]; return len==='20'?R.r20:len==='60'?R.r40.concat(R.add):R.r40; }
+  function weekSel(){ const s=h('select',{id:nid('rw'),'aria-label':'Course week'}); for(let i=1;i<=32;i++){ const ch=document.getElementById('wk'+String(i).padStart(2,'0')); s.append(h('option',{value:i},'Week '+i+(ch?' · '+ch.dataset.title.replace(/&amp;/g,'&'):''))); } s.value=w; s.onchange=()=>{ w=+s.value; store.set('curweek',w); build(); }; return s; }
+  function build(){ stopRun(); head.innerHTML=''; body.innerHTML=''; const R=ROUTINES[w];
+    const chips=h('div',{class:'chips'}); [['20','20 min'],['40','40 min'],['60','60 min']].forEach(([k,t])=>{ const b=h('button',{class:'chip',type:'button','aria-pressed':k===len},t); b.onclick=()=>{ len=k; store.set('rlen',k); build(); }; chips.append(b); });
+    head.append(h('span',{class:'eyebrow'},dash?"Today's practice":'Practice routine · Week '+w),chips);
+    if(dash)body.append(h('div',{class:'controls',style:'margin:.3rem 0'},lab('Your current week',weekSel()),h('a',{href:'#wk'+String(w).padStart(2,'0'),'data-jump':'wk'+String(w).padStart(2,'0'),class:'small'},'Open this week\'s lesson →')));
+    else { const set=h('button',{class:'chip',type:'button'},store.get('curweek',1)===w?'★ My current week':'Make this my current week'); set.onclick=()=>{ store.set('curweek',w); set.textContent='★ My current week'; statsChanged(); }; body.append(h('div',{class:'controls',style:'margin:.3rem 0'},set)); }
+    body.append(h('p',{class:'small',style:'margin:.3rem 0 .5rem'},h('b',{},'Focus: '),R.focus));
+    const list=h('ol',{class:'runlist'}); rows=items().map(([m,t],i)=>{ const cb=h('input',{type:'checkbox',id:nid('rc'),'aria-label':'Done'}); const txt=h('span',{class:'rtext'}); txt.innerHTML=glinks(t);
+      const tm=makeTimer(m,{onDone:()=>{ cb.checked=true; li.classList.add('ticked'); if(running)advance(i); updFoot(); }});
+      const li=h('li',{class:'runrow'+(len==='60'&&i>=R.r40.length?' extra':'')},cb,h('span',{class:'rmin'},m+'′'),txt,tm.el);
+      cb.onchange=()=>{ li.classList.toggle('ticked',cb.checked); updFoot(); };
+      list.append(li); return {m,cb,li,tm}; });
+    const startB=h('button',{class:'btn',type:'button'},'▶ Start session'), skipB=h('button',{class:'btn ghost',type:'button'},'Skip ⏭'), logB=h('button',{class:'btn ghost',type:'button'},'Finish & log');
+    startB.onclick=()=>{ if(running){ stopRun(); startB.textContent='▶ Resume session'; return; } ac(); running=true; startB.textContent='❚❚ Pause session'; const first=rows.findIndex(r=>!r.cb.checked); if(first<0){ finish(); return; } go(idx>=0&&!rows[idx].cb.checked?idx:first); };
+    skipB.onclick=()=>{ if(idx<0)return; rows[idx].tm.stop(); advance(idx,true); };
+    logB.onclick=()=>finish();
+    body.append(list,h('div',{class:'controls'},startB,skipB,logB),foot);
+    function go(i){ idx=i; rows.forEach((r,j)=>r.li.classList.toggle('current',j===i)); rows[i].tm.start(); try{ rows[i].li.scrollIntoView({block:'nearest'}); }catch(e){} }
+    function advance(i,skipped){ const nx=rows.findIndex((r,j)=>j>i&&!r.cb.checked); if(nx<0){ running=false; startB.textContent='▶ Start session'; rows.forEach(r=>r.li.classList.remove('current')); if(rows.every(r=>r.cb.checked))finish(); return; } go(nx); }
+    el._stop=()=>{ running=false; rows.forEach(r=>r.tm.stop()); };
+    updFoot(); }
+  function stopRun(){ running=false; rows.forEach(r=>r.tm.stop()); }
+  function updFoot(){ const done=rows.filter(r=>r.cb.checked); const S=sessionStats(); foot.textContent=`${done.length}/${rows.length} done · ${done.reduce((a,r)=>a+r.m,0)} min ticked · streak ${S.streak} day${S.streak===1?'':'s'} · ${S.L.filter(s=>s.w===w).length} session${S.L.filter(s=>s.w===w).length===1?'':'s'} logged for week ${w}`; }
+  function finish(){ const done=rows.filter(r=>r.cb.checked); stopRun(); if(!done.length){ foot.textContent='Tick at least one item (or let its timer finish) before logging.'; return; }
+    const mins=done.reduce((a,r)=>a+r.m,0); logSession(w,len,mins,done.length); const S=sessionStats();
+    build(); foot.textContent=`Logged: ${mins} minutes. Streak ${S.streak} 🔥 · Level ${S.level} · ${S.L.length} sessions in total.`; el.classList.add('celebrate'); setTimeout(()=>el.classList.remove('celebrate'),1200); beep3(); }
+  el.classList.add('panel','routine-tool'); el.append(head,body);
+  document.addEventListener('fw-stats',()=>{ if(rows.length)updFoot(); });
+  build(); }
+
+/* --- shared countdown for quiz games --- */
+function qCountdown(){ const bar=h('i',{}); const el=h('div',{class:'qbar'},bar); let iv=null,end=0,dur=0;
+  return {el,start(sec,onEnd){ this.stop(); if(!sec)return; dur=sec; end=performance.now()+sec*1000; iv=setInterval(()=>{ const l=(end-performance.now())/1000; bar.style.width=Math.max(0,100*l/dur)+'%'; if(l<=0){ this.stop(); onEnd(); } },50); },stop(){ clearInterval(iv); iv=null; bar.style.width='0%'; }}; }
+function limitSel(id,def){ return sel(id,[['0','No limit'],['5','5 s'],['3','3 s'],['2','2 s'],['1.5','1.5 s']],def||'0'); }
+
+/* --- octave hop game --- */
+function octaveQuiz(el){ const id=nid('oq'); const tun=TUNINGS.std.m; const NAT=[0,2,4,5,7,9,11]; const SN=['','high e','B','G','D','A','low E'];
+  const MAP={6:[4,1],5:[3,2],4:[2],3:[1]}; const srcs=new Set([6,5]); let natural=true, cur=null, score=0, tries=0, streak=0, sprint=false, sEnd=0, sScore=0, sIv=null;
+  const limS=limitSel(id+'l','5'); const cd=qCountdown(); const prompt=h('div',{class:'big-prompt'}); const box=h('div',{class:'fb'}); const stat=h('div',{class:'status'});
+  const chips=h('div',{class:'chips'}); [[6,'From low E'],[5,'From A'],[4,'From D'],[3,'From G']].forEach(([s,t])=>{ const b=h('button',{class:'chip',type:'button','aria-pressed':srcs.has(s)},t); b.onclick=()=>{ if(srcs.has(s)&&srcs.size>1)srcs.delete(s); else srcs.add(s); b.setAttribute('aria-pressed',srcs.has(s)); next(); }; chips.append(b); });
+  const natB=h('button',{class:'chip',type:'button','aria-pressed':'true'},'Natural notes only'); natB.onclick=()=>{ natural=!natural; natB.setAttribute('aria-pressed',natural); next(); };
+  const sprB=h('button',{class:'btn ghost',type:'button'},'⚡ 60-second sprint');
+  function draw(extra){ box.innerHTML=''; const dots=[]; if(cur)dots.push({s:cur.s,f:cur.f,label:SHARP[cur.pc].replace('♯','#'),cat:'root',ring:true}); (extra||[]).forEach(x=>dots.push(x)); box.append(h('div',{class:'scroll'},drawFretboard({dots,frets:15,onCell:cell}))); }
+  function next(){ const ss=[...srcs]; for(let k=0;k<100;k++){ const s=ss[Math.floor(Math.random()*ss.length)]; const f=Math.floor(Math.random()*11); const pc=(tun[6-s]+f)%12; if(natural&&!NAT.includes(pc))continue; const opts=MAP[s]; const t=opts[Math.floor(Math.random()*opts.length)]; cur={s,f,pc,t}; break; }
+    prompt.textContent=`Find this ${SHARP[cur.pc].replace('♯','♯')} on the ${SN[cur.t]} string`; draw(); upd(); const lim=+limS.value; if(lim&&!sprint)cd.start(lim,timeout); }
+  function timeout(){ tries++; streak=0; const pos=[]; for(let f=0;f<=15;f++)if((tun[6-cur.t]+f)%12===cur.pc)pos.push({s:cur.t,f,label:'✓',cat:'7'}); draw(pos); upd('Time! The octave is shown in green.'); setTimeout(next,1200); }
+  function cell(s,f){ if(!cur||s!==cur.t)return; const pc=(tun[6-s]+f)%12; cd.stop();
+    if(pc===cur.pc){ score++; tries++; streak++; if(sprint)sScore++; pluck(tun[6-cur.s]+cur.f,null,.8,.4); pluck(tun[6-s]+f,ac()&&ac().currentTime+.15,1,.45); draw([{s,f,label:'✓',cat:'7'}]); upd(); setTimeout(next,sprint?250:600); }
+    else { tries++; streak=0; draw([{s,f,label:'✗',cat:'root'}]); upd('Not that one.'); const lim=+limS.value; if(lim&&!sprint)cd.start(lim,timeout); } }
+  function upd(msg){ const b=store.get('best-oq',0); stat.textContent=(sprint?`Sprint: ${sScore} · ${Math.max(0,Math.ceil((sEnd-performance.now())/1000))}s left · `:'')+`Score ${score}/${tries} · Streak ${streak} · Best sprint ${b}`+(msg?' · '+msg:''); }
+  sprB.onclick=()=>{ if(sprint)return; ac(); sprint=true; sScore=0; cd.stop(); sEnd=performance.now()+60000; next(); sIv=setInterval(()=>{ upd(); if(performance.now()>=sEnd){ clearInterval(sIv); sprint=false; const b=store.get('best-oq',0); if(sScore>b)store.set('best-oq',sScore); beep3(); addPracticeMinutes(1); upd(`Sprint over: ${sScore}${sScore>b?' — new best!':''}`); statsChanged(); } },250); };
+  limS.onchange=()=>next();
+  el.append(h('div',{class:'controls'},chips,natB),h('div',{class:'controls'},lab('Time per note',limS),sprB),prompt,cd.el,box,stat); next(); }
+
+/* --- find every instance of a note --- */
+function findAll(el){ const tun=TUNINGS.std.m; const NAT=[0,2,4,5,7,9,11]; let natural=true, target=null, found=new Set(), wrong=0, t0=0, iv=null;
+  const prompt=h('div',{class:'big-prompt'}); const box=h('div',{class:'fb'}); const stat=h('div',{class:'status'}); const clock=h('b',{class:'tw-disp'},'0.0 s');
+  const natB=h('button',{class:'chip',type:'button','aria-pressed':'true'},'Natural notes only'); natB.onclick=()=>{ natural=!natural; natB.setAttribute('aria-pressed',natural); };
+  const goB=h('button',{class:'btn',type:'button'},'▶ New round');
+  function positions(pc){ const p=[]; for(let s=1;s<=6;s++)for(let f=0;f<=12;f++)if((tun[6-s]+f)%12===pc)p.push(s+':'+f); return p; }
+  function draw(){ box.innerHTML=''; const dots=[...found].map(k=>{ const [s,f]=k.split(':').map(Number); return {s,f,label:'✓',cat:'7'}; }); box.append(h('div',{class:'scroll'},drawFretboard({dots,frets:12,onCell:cell}))); }
+  function round(){ ac(); const pool=natural?NAT:[...Array(12).keys()]; let pc; do{ pc=pool[Math.floor(Math.random()*pool.length)]; }while(target&&pc===target.pc&&pool.length>1);
+    target={pc,all:positions(pc)}; found=new Set(); wrong=0; t0=performance.now(); prompt.textContent=`Tap every ${SHARP[pc]===FLAT[pc]?SHARP[pc]:SHARP[pc]+'/'+FLAT[pc]}, frets 0–12`; clearInterval(iv); iv=setInterval(()=>clock.textContent=((performance.now()-t0)/1000).toFixed(1)+' s',100); draw(); upd(); }
+  function cell(s,f){ if(!target||found.size===target.all.length)return; const k=s+':'+f; if((tun[6-s]+f)%12===target.pc){ if(found.has(k))return; found.add(k); pluck(tun[6-s]+f,null,.6,.4); draw(); if(found.size===target.all.length)finish(); } else { wrong++; } upd(); }
+  function finish(){ clearInterval(iv); const t=(performance.now()-t0)/1000+wrong*2; const key='best-fa-'+target.pc; const b=store.get(key,0); const nb=!b||t<b; if(nb)store.set(key,+t.toFixed(1)); beep3(); addPracticeMinutes(0.5); stat.textContent=`Done in ${t.toFixed(1)} s (including +2 s per wrong tap).`+(nb?' New best for this note!':` Best: ${b} s.`); }
+  function upd(){ if(!target)return; stat.textContent=`${found.size}/${target.all.length} found · ${wrong} wrong (+2 s each)`; }
+  goB.onclick=round; el.append(h('div',{class:'controls'},goB,natB,clock),prompt,box,stat); prompt.textContent='Press New round'; target=null; box.append(h('div',{class:'scroll'},drawFretboard({dots:[],frets:12}))); }
+
+/* --- call-out flashcards with a timer --- */
+const QUAL_T=['','m','m','','','m','°'], QUAL_7=['maj7','m7','m7','maj7','7','m7','m7♭5'], NUMS=['I','ii','iii','IV','V','vi','vii°'];
+const FLASHDECKS={
+ stringnote:{n:'Note on a string',mk(){ const NAT=['C','D','E','F','G','A','B']; const n=NAT[Math.floor(Math.random()*7)]; const s=1+Math.floor(Math.random()*6); const open=TUNINGS.std.m[6-s]; let f=(parseRoot(n)-open%12+12)%12; return {q:`${n} on the ${['','high e','B','G','D','A','low E'][s]} string`,a:`Fret ${f}${f+12<=15?' (and '+(f+12)+')':''}`}; }},
+ numerals:{n:'Numerals in a key',mk(){ const k=ROOTS[Math.floor(Math.random()*12)]; const d=Math.floor(Math.random()*7); const sev=Math.random()<.5; const ivs=['1','2','3','4','5','6','7']; const r=spell(k,ivs[d]); return {q:`${sev?NUMS[d].replace('°','')+'7':NUMS[d]} in ${k} major`,a:r+(sev?QUAL_7[d]:QUAL_T[d])}; }},
+ intervals:{n:'Intervals',mk(){ const L=[['minor 3rd','♭3'],['major 3rd','3'],['perfect 4th','4'],['perfect 5th','5'],['minor 6th','♭6'],['major 6th','6'],['minor 7th','♭7'],['major 7th','7'],['major 2nd','2'],['tritone','♭5']]; const [nm,iv]=L[Math.floor(Math.random()*L.length)]; const r=ROOTS[Math.floor(Math.random()*12)]; return {q:`A ${nm} above ${r}`,a:spell(r,iv)}; }},
+ keysig:{n:'Key signatures',mk(){ const K=[['C','none'],['G','1 sharp: F♯'],['D','2 sharps: F♯ C♯'],['A','3 sharps: F♯ C♯ G♯'],['E','4 sharps'],['B','5 sharps'],['F','1 flat: B♭'],['B♭','2 flats: B♭ E♭'],['E♭','3 flats: B♭ E♭ A♭'],['A♭','4 flats'],['D♭','5 flats'],['F♯ / G♭','6 sharps or 6 flats']]; const [k,s]=K[Math.floor(Math.random()*K.length)]; return Math.random()<.5?{q:`Key signature of ${k} major?`,a:s}:{q:`Which major key has ${s.split(':')[0]}?`,a:k}; }},
+ spell:{n:'Spell a chord',mk(){ const T=[['maj','',['1','3','5']],['min','m',['1','♭3','5']],['maj7','maj7',['1','3','5','7']],['dom7','7',['1','3','5','♭7']],['m7','m7',['1','♭3','5','♭7']],['m7b5','m7♭5',['1','♭3','♭5','♭7']]]; const [k,sfx,f]=T[Math.floor(Math.random()*T.length)]; const r=ROOTS[Math.floor(Math.random()*12)]; return {q:`Spell ${r}${sfx}`,a:f.map(iv=>spell(r,iv)).join(' ')}; }},
+ triadcall:{n:'Triad call-outs',mk(){ const r=ROOTS[Math.floor(Math.random()*12)]; const q=Math.random()<.5?'':'m'; const inv=['root position','1st inversion','2nd inversion'][Math.floor(Math.random()*3)]; const set=['1-2-3','2-3-4','3-4-5','4-5-6'][Math.floor(Math.random()*4)]; return {q:`${r}${q} · ${inv} · strings ${set}`,a:'Play it, name each note, then check in the triad finder if unsure.'}; }}
+};
+function flash(el){ const id=nid('fl'); let deck=el.dataset.deck||'stringnote'; let cur=null, got=0, tot=0, streak=0;
+  const deckS=sel(id+'d',Object.keys(FLASHDECKS).map(k=>[k,FLASHDECKS[k].n]),deck); const secS=sel(id+'s',[['3','3 s'],['5','5 s'],['8','8 s'],['12','12 s'],['0','Reveal by hand']],el.dataset.sec||'5');
+  const q=h('div',{class:'big-prompt'}); const a=h('div',{class:'flash-a'}); const cd=qCountdown(); const stat=h('div',{class:'status'});
+  const nextB=h('button',{class:'btn',type:'button'},'▶ Next card'), revB=h('button',{class:'btn ghost',type:'button'},'Reveal'), okB=h('button',{class:'chip',type:'button'},'✓ Got it'), noB=h('button',{class:'chip',type:'button'},'✗ Missed');
+  function next(){ ac(); cur=FLASHDECKS[deck].mk(); q.textContent=cur.q; a.textContent=''; a.classList.remove('show'); const sec=+secS.value; if(sec)cd.start(sec,()=>{ reveal(); click(ac().currentTime+.01,2); }); }
+  function reveal(){ if(!cur)return; cd.stop(); a.textContent=cur.a; a.classList.add('show'); }
+  function mark(ok){ if(!cur)return; tot++; if(ok){ got++; streak++; } else streak=0; const key='best-fl-'+deck; const b=store.get(key,0); if(streak>b)store.set(key,streak); stat.textContent=`${got}/${tot} · streak ${streak} · best streak ${Math.max(b,streak)}`; next(); }
+  nextB.onclick=next; revB.onclick=reveal; okB.onclick=()=>mark(true); noB.onclick=()=>mark(false); deckS.onchange=()=>{ deck=deckS.value; got=tot=streak=0; stat.textContent=''; next(); };
+  el.append(h('div',{class:'controls'},lab('Deck',deckS),lab('Time to answer',secS)),q,cd.el,a,h('div',{class:'controls'},nextB,revB,okB,noB),stat); q.textContent='Press Next card. Answer out loud (or on the guitar) before the bar runs out.'; }
+
+
+/* ============ CHORD FINDER: notes -> chord name ============ */
+const CF_T=[['',['1','3','5']],['m',['1','♭3','5']],['5',['1','5']],['°',['1','♭3','♭5']],['+',['1','3','♯5']],['sus4',['1','4','5']],['sus2',['1','2','5']],
+ ['7',['1','3','5','♭7']],['maj7',['1','3','5','7']],['m7',['1','♭3','5','♭7']],['6',['1','3','5','6']],['m6',['1','♭3','5','6']],['m7♭5',['1','♭3','♭5','♭7']],['°7',['1','♭3','♭5','𝄫7']],
+ ['m(maj7)',['1','♭3','5','7']],['7sus4',['1','4','5','♭7']],['add9',['1','3','5','9']],['m(add9)',['1','♭3','5','9']],['7♭5',['1','3','♭5','♭7']],['+7',['1','3','♯5','♭7']],['maj7♯5',['1','3','♯5','7']],
+ ['9',['1','3','5','♭7','9']],['maj9',['1','3','5','7','9']],['m9',['1','♭3','5','♭7','9']],['6/9',['1','3','5','6','9']],['m6/9',['1','♭3','5','6','9']],['7♭9',['1','3','5','♭7','♭9']],['7♯9',['1','3','5','♭7','♯9']],
+ ['9sus4',['1','4','5','♭7','9']],['7♯11',['1','3','5','♭7','♯11']],['maj7♯11',['1','3','5','7','♯11']],['13',['1','3','5','♭7','13']],['m11',['1','♭3','5','♭7','11']],['m11',['1','♭3','5','♭7','9','11']],
+ ['13',['1','3','5','♭7','9','13']],['maj13',['1','3','5','7','9','13']],['7♯5♯9',['1','3','♯5','♭7','♯9']],['7♭9♯5',['1','3','♯5','♭7','♭9']],['maj7(add13)',['1','3','5','7','13']],['m7(add11)',['1','♭3','♭7','11']]];
+const PC_NAME=['C','D♭','D','E♭','E','F','F♯','G','A♭','A','B♭','B'];
+const IV_LONG={'1':'root','♭2':'♭2','2':'2nd','♭3':'minor 3rd','3':'major 3rd','4':'4th','♭5':'♭5','♯5':'♯5','5':'5th','6':'6th','♭7':'♭7','7':'major 7th','𝄫7':'𝄫7','9':'9th','♭9':'♭9','♯9':'♯9','11':'11th','♯11':'♯11','13':'13th'};
+function identifyChord(pcs,bass){ const out=[]; if(!pcs.length)return out;
+  for(let r=0;r<12;r++){ const rel=new Set(pcs.map(p=>(p-r+12)%12));
+    CF_T.forEach(([sfx,ivs],ti)=>{ const map={}; ivs.forEach(iv=>map[IV[iv][0]%12]=iv); const semis=Object.keys(map).map(Number);
+      if([...rel].some(x=>map[x]===undefined))return; const missing=semis.filter(x=>!rel.has(x)); const missOk=missing.every(x=>x===7||x===0||(x===2&&ivs.length>=6));
+      if(!missOk)return; const noRoot=missing.includes(0), no5=missing.includes(7);
+      if(noRoot&&pcs.length<3)return; if(pcs.length<=2&&missing.length)return;
+      let sc=10; if(r===bass)sc+=4; if(noRoot)sc-=5; if(no5)sc-=1; if(missing.includes(2))sc-=1.5; sc-=0.12*ivs.length+0.004*ti;
+      const ALT={1:'C♯',3:'D♯',6:'G♭',8:'G♯',10:'A♯'}; const weird=n=>ivs.map(iv=>spell(n,iv)).join('').match(/𝄫|𝄪|F♭|C♭|E♯|B♯/g)?.length||0;
+      let rn=PC_NAME[r]; if(ALT[r]&&weird(ALT[r])<weird(rn))rn=ALT[r]; const bassIv=map[(bass-r+12)%12]; if(bass!==r&&/𝄫|𝄪/.test(spell(rn,bassIv||'1')))sc-=0.6; const slash=bass!==r?'/'+spell(rn,bassIv||'1'):'';
+      const ivMap={}; pcs.forEach(p=>ivMap[p]=map[(p-r+12)%12]);
+      out.push({r,rn,sfx,name:rn+sfx+slash,score:sc,ivs,ivMap,noRoot,no5,missing}); }); }
+  const seen=new Set(); return out.sort((a,b)=>b.score-a.score).filter(x=>{ if(seen.has(x.name))return false; seen.add(x.name); return true; }).slice(0,5); }
+function chordFinder(el){ const tun=TUNINGS.std.m; let fr=[null,null,null,null,null,null]; let pick=0, res=[];
+  const id=nid('cf'); const box=h('div',{class:'fb'}); const nameEl=h('div',{class:'cf-name'},'—'); const why=h('p',{class:'small'}); const alts=h('div',{class:'chips'}); const diag=h('div',{class:'chordrow'});
+  const inp=h('input',{type:'text',id:id+'i',placeholder:'e.g. x32010 or 8 x 9 9 8 x',style:'width:12rem'}); const apply=h('button',{class:'btn ghost',type:'button'},'Show shape');
+  const playB=h('button',{class:'btn',type:'button'},'▶ Strum'), clr=h('button',{class:'btn ghost',type:'button'},'Clear');
+  const ex=h('div',{class:'chips'}); [['C','x32010'],['G7','320001'],['Dm7','xx0211'],['Cmaj9','x3243x'],['E7♯9','x7678x'],['Am7♭5','5x554x'],['C/E','032010'],['E G B♭ D (two names)','xx2333']].forEach(([n,s])=>{ const b=h('button',{class:'chip',type:'button'},n); b.onclick=()=>{ setShape(s); }; ex.append(b); });
+  function setShape(str){ str=str.trim().toLowerCase(); let parts=/\s/.test(str)?str.split(/\s+/):str.split(''); if(parts.length!==6){ why.textContent='Enter six values, low E to high e: a fret number or x.'; return; }
+    fr=parts.map(p=>p==='x'||p==='-'?null:Math.min(17,parseInt(p,10))).reverse().map(v=>Number.isNaN(v)?null:v); pick=0; inp.value=str; render(); }
+  function cell(s,f){ fr[s-1]=fr[s-1]===f?null:f; pick=0; if(fr[s-1]!=null){ ac(); pluck(tun[6-s]+f,null,1,.45); } render(); }
+  function render(){ const notes=[]; for(let s=6;s>=1;s--)if(fr[s-1]!=null)notes.push(tun[6-s]+fr[s-1]);
+    const pcs=[...new Set(notes.map(n=>n%12))]; const bass=notes.length?Math.min(...notes)%12:null; res=pcs.length?identifyChord(pcs,bass):[]; const cur=res[pick];
+    const dots=[]; for(let s=1;s<=6;s++){ const f=fr[s-1]; if(f==null)continue; const pc=(tun[6-s]+f)%12; const iv=cur?cur.ivMap[pc]:null; dots.push({s,f,label:iv||PC_NAME[pc].replace('♭','b').replace('♯','#'),cat:iv?cat(iv):'ext'}); }
+    box.innerHTML=''; box.append(h('div',{class:'scroll'},drawFretboard({dots,frets:15,onCell:cell})));
+    const shape=[6,5,4,3,2,1].map(s=>fr[s-1]==null?'x':fr[s-1]); inp.value=shape.join(shape.some(v=>v!=='x'&&v>9)?' ':'');
+    alts.innerHTML=''; diag.innerHTML='';
+    if(!pcs.length){ nameEl.textContent='Tap the fretboard'; why.textContent='Tap one fret per string (tap again to clear it), or type a shape below. Open strings: tap the area left of the nut.'; return; }
+    if(pcs.length===1){ nameEl.textContent=PC_NAME[pcs[0]]+' (single note)'; why.textContent='Add more notes to make a chord.'; return; }
+    if(!cur&&pcs.length===2){ const d=(pcs[1]-pcs[0]+12)%12; const nm={1:'minor 2nd',2:'major 2nd',3:'minor 3rd',4:'major 3rd',5:'perfect 4th',6:'tritone',7:'perfect 5th',8:'minor 6th',9:'major 6th',10:'minor 7th',11:'major 7th'}; nameEl.textContent='Interval: '+(nm[Math.min(d,12-d)===d?d:d]||''); why.textContent=pcs.map(p=>PC_NAME[p]).join(' and ')+'. Two notes imply a chord but do not name one; add a third note.'; return; }
+    if(!cur){ nameEl.textContent='No standard name'; why.textContent='These notes ('+pcs.map(p=>PC_NAME[p]).join(' ')+') do not match a common chord. Try removing a note, or check for a cluster of half steps.'; return; }
+    nameEl.textContent=cur.name;
+    const parts=pcs.map(p=>`${spell(cur.rn,cur.ivMap[p])} = ${IV_LONG[cur.ivMap[p]]||cur.ivMap[p]}`); const notesTxt=parts.join(' · ');
+    const extra=[]; if(cur.no5)extra.push('no 5th (fine: the 5th is often left out)'); if(cur.noRoot)extra.push('rootless: the root '+cur.rn+' is implied, usually by the bass player'); if(cur.missing.includes(2))extra.push('9th omitted');
+    const invTxt=cur.r===bass?'Root in the bass.':`${spell(cur.rn,cur.ivMap[bass])} in the bass: ${cur.ivMap[bass]==='3'||cur.ivMap[bass]==='♭3'?'1st inversion':cur.ivMap[bass]==='5'?'2nd inversion':cur.ivMap[bass]&&IV[cur.ivMap[bass]][1]===7?'3rd inversion':'slash chord'}.`;
+    why.textContent=`${notesTxt}. ${invTxt}${extra.length?' '+extra.join('; ')+'.':''}`;
+    res.forEach((r,i)=>{ const b=h('button',{class:'chip',type:'button','aria-pressed':i===pick},r.name); b.onclick=()=>{ pick=i; render(); }; alts.append(b); });
+    const lowHigh=[6,5,4,3,2,1].map(s=>fr[s-1]==null?-1:fr[s-1]); diag.append(chordCard(cur.name,lowHigh,cur.rn,'tap to hear',cur.ivs)); }
+  playB.onclick=()=>{ const m=[]; for(let s=6;s>=1;s--)if(fr[s-1]!=null)m.push(tun[6-s]+fr[s-1]); if(m.length){ ac(); strum(m,null,1.8,.6); } };
+  clr.onclick=()=>{ fr=[null,null,null,null,null,null]; pick=0; render(); }; apply.onclick=()=>setShape(inp.value); inp.addEventListener('keydown',e=>{ if(e.key==='Enter')setShape(inp.value); });
+  el.append(box,h('div',{class:'cf-out'},nameEl,why),h('div',{class:'controls'},h('span',{class:'small muted'},'Other names for the same notes:'),alts),h('div',{class:'controls'},playB,clr,lab('Shape (low E → high e)',inp),apply),h('div',{class:'controls'},h('span',{class:'small muted'},'Examples:'),ex),diag); render(); }
+
 /* ============ CHECKLISTS ============ */
 function checklists(){ const all=$$('input[data-check]'); const saved=store.get('checks',{});
   all.forEach(cb=>{ cb.checked=!!saved[cb.dataset.check]; cb.addEventListener('change',()=>{ const s=store.get('checks',{}); s[cb.dataset.check]=cb.checked; store.set('checks',s); prog(); }); });
@@ -4154,12 +4723,13 @@ function nav(){ const chapters=$$('.chapter'); const rail=$('.rail nav'); const 
   const start=(location.hash&&location.hash.slice(1))||store.get('chapter',chapters[0].id); show(start,false); }
 
 function fixedChords(el){ const row=h('div',{class:'chordrow'}); el.dataset.list.split(';').forEach(t=>{ const [n,r,f]=t.split('|'); row.append(chordCard(n,[...f].map(c=>c==='x'?-1:parseInt(c,10)),r,'tap to hear')); }); el.append(row); }
-const MOUNTERS={routine:routineTool,tuneroutine:tuneRoutine,pglossary:pglossary,backup:backupTool,triadquiz:triadQuiz,changetimer:changeTimer,fixedchords:fixedChords,explorer,notequiz:noteQuiz,circle,chords:chordLib,triads:triadFinder,drop2,metronome,ear};
+const MOUNTERS={chordfinder:chordFinder,sessionstats:statsTool,octavequiz:octaveQuiz,findall:findAll,flash:flash,routine:routineTool,tuneroutine:tuneRoutine,pglossary:pglossary,backup:backupTool,triadquiz:triadQuiz,changetimer:changeTimer,fixedchords:fixedChords,explorer,notequiz:noteQuiz,circle,chords:chordLib,triads:triadFinder,drop2,metronome,ear};
 function mount(root){ $$('[data-tool]',root).forEach(el=>{ if(el.dataset.mounted)return; el.dataset.mounted='1'; try{ MOUNTERS[el.dataset.tool](el);}catch(err){ el.append(h('p',{class:'small muted'},'This tool failed to load: '+err.message)); console.error(err);} });
   $$('[data-board]',root).forEach(el=>{ if(el.dataset.mounted)return; el.dataset.mounted='1'; staticBoard(el); });
   $$('.tabx',root).forEach(el=>{ if(el.dataset.mounted)return; el.dataset.mounted='1'; tabBlock(el); });
   $$('.rhythm',root).forEach(el=>{ if(el.dataset.mounted)return; el.dataset.mounted='1'; rhythm(el); });
-  $$('.progchart',root).forEach(el=>{ if(el.dataset.mounted)return; el.dataset.mounted='1'; progChart(el); }); }
+  $$('.progchart',root).forEach(el=>{ if(el.dataset.mounted)return; el.dataset.mounted='1'; progChart(el); });
+  decorate(root); }
 // re-render SVGs on theme change so colours follow
 try{ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{ $$('[data-mounted]').forEach(el=>{ el.removeAttribute('data-mounted'); Array.from(el.childNodes).forEach(n=>{ if(!(n.nodeType===1&&n.matches&&n.matches('.keep')))n.remove(); }); }); const vis=$$('.chapter').find(c=>!c.hidden); if(vis)mount(vis); }); }catch(e){}
 nav(); checklists();
